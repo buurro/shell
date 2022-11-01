@@ -1,3 +1,7 @@
+[hostname]
+ssh_only = false
+format = "[$ssh_symbol$hostname]($style) "
+
 [aws]
   format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]"
   symbol = "  "
