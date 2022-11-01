@@ -15,9 +15,11 @@
     bottom
     cachix
     git
+    htop
     httpie
     lazygit
     neofetch
+    nixpkgs-fmt
     poetry
     ranger
   ];
@@ -40,7 +42,7 @@
       enable = true;
       plugins = [ "git" "z" ];
     };
-    envExtra = ''
+    initExtra = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
       pasteinit() {
         OLD_SELF_INSERT=''${''${(s.:.)widgets[self-insert]}[2,3]}
@@ -72,6 +74,11 @@
     neovim = {
       enable = true;
       vimAlias = true;
+    };
+
+    broot = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 
