@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  unstablePkgs = import <nixpkgs-unstable> { };
+in
+
 {
   home.username = "marco";
   home.homeDirectory = "/home/marco";
@@ -73,6 +77,7 @@
 
     neovim = {
       enable = true;
+      package = unstablePkgs.neovim-unwrapped;
       vimAlias = true;
     };
 
@@ -83,4 +88,5 @@
   };
 
   home.file.".config/starship.toml".source = ./config/starship.toml;
+  home.file.".config/nvim".source = ./config/nvim;
 }
