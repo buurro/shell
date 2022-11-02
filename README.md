@@ -12,9 +12,10 @@ My linux shell setup.
 
 ```bash
 rm ~/.config/nixpkgs/home.nix
-git clone git@github.com:buurro/home.git ~/.config/nixpkgs
+git clone --recursive git@github.com:buurro/home.git ~/.config/nixpkgs
 home-manager switch -b backup
 ```
 
 ### TODO:
+
 - make it macOS compatible (maybe use [nix-darwin](https://github.com/LnL7/nix-darwin))
