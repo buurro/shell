@@ -44,7 +44,7 @@ in
     enableSyntaxHighlighting = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "z" ];
+      plugins = [ "git" "z" "docker" ];
     };
     initExtra = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
