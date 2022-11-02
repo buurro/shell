@@ -11,6 +11,8 @@ My linux shell setup.
 ## Usage
 
 ```bash
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
+nix-channel --update
 rm ~/.config/nixpkgs/home.nix
 git clone --recursive git@github.com:buurro/home.git ~/.config/nixpkgs
 home-manager switch -b backup

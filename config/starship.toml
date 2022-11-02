@@ -1,6 +1,8 @@
+format = "$all$username$hostname $character"
+
 [hostname]
 ssh_only = false
-format = "[$ssh_symbol$hostname]($style) "
+format = "[$hostname]($style)"
 
 [aws]
   format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]"
@@ -190,7 +192,8 @@ format = "[$ssh_symbol$hostname]($style) "
   format = "\\[[$time]($style)\\]"
 
 [username]
-  format = "\\[[$user]($style)\\]"
+  format = "[$user]($style) "
+  show_always = false
 
 [vagrant]
   format = "\\[[$symbol($version)]($style)\\]"

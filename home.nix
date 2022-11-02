@@ -26,6 +26,7 @@ in
     nixpkgs-fmt
     poetry
     ranger
+    traceroute
   ];
 
   home.shellAliases = {
@@ -88,5 +89,5 @@ in
   };
 
   home.file.".config/starship.toml".source = ./config/starship.toml;
-  home.file.".config/nvim".source = ./config/nvim;
+  home.file.".config/nvim".source = ./config/nvim; # astronvim
 }
