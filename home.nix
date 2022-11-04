@@ -27,6 +27,7 @@ in
     poetry
     ranger
     traceroute
+    docker-compose
   ];
 
   home.shellAliases = {
@@ -45,7 +46,13 @@ in
     enableSyntaxHighlighting = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "z" "docker" ];
+      plugins = [ "git" "z" "docker" "composer" ];
+    };
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "jessarcher/zsh-artisan"; }
+      ];
     };
     initExtra = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
@@ -87,6 +94,12 @@ in
     broot = {
       enable = true;
       enableZshIntegration = true;
+    };
+
+    git = {
+      enable = true;
+      userName = "Marco Burro";
+      userEmail = "marcoburro98@gmail.com";
     };
   };
 
