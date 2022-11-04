@@ -18,7 +18,7 @@ in
     bat
     bottom
     cachix
-    git
+    cheat
     htop
     httpie
     lazygit
@@ -78,6 +78,8 @@ in
 
     neovim = {
       enable = true;
+
+      # on stable neovim is ad 0.7.0. astronvim requires 0.8.0
       package = unstablePkgs.neovim-unwrapped;
       vimAlias = true;
     };
