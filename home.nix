@@ -15,10 +15,12 @@ in
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    asciinema
     bat
     bottom
     cachix
     cheat
+    docker-compose
     htop
     httpie
     lazygit
@@ -27,17 +29,17 @@ in
     poetry
     ranger
     traceroute
-    docker-compose
   ];
 
   home.shellAliases = {
     c = "code .";
     p = "poetry run";
     s = "ssh";
+    whatshell = "readlink /proc/$$/exe";
 
     # Since sudo doesn't preserve user PATH,
     # everything installed via nix isn't accessible. This fixes that.
-    sudo = "sudo env \"PATH=$PATH\"";
+    sudoo = "sudo env \"PATH=$PATH\"";
   };
 
   programs.zsh = {
@@ -67,13 +69,6 @@ in
       zstyle :bracketed-paste-magic paste-init pasteinit
       zstyle :bracketed-paste-magic paste-finish pastefinish
       ### Fix slowness of pastes
-    '';
-    profileExtra = ''
-      # Nix
-      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
-      # End Nix
     '';
   };
 

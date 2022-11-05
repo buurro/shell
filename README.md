@@ -4,6 +4,7 @@ My linux shell setup.
 
 ## Software needed
 
+- zsh
 - git (to clone this repo)
 - [nix](https://nixos.org/)
 - [Home Manager](https://github.com/nix-community/home-manager)
