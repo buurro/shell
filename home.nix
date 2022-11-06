@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  unstablePkgs = import <nixpkgs-unstable> { };
-in
-
 {
   home.username = "marco";
   home.homeDirectory = "/home/marco";
@@ -48,7 +44,7 @@ in
     enableSyntaxHighlighting = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "z" "docker" "composer" ];
+      plugins = [ "git" "z" "docker" "composer" "vagrant" ];
     };
     zplug = {
       enable = true;
@@ -87,9 +83,6 @@ in
 
     neovim = {
       enable = true;
-
-      # on stable neovim is ad 0.7.0. astronvim requires 0.8.0
-      package = unstablePkgs.neovim-unwrapped;
       vimAlias = true;
     };
 
@@ -106,5 +99,11 @@ in
   };
 
   home.file.".config/starship.toml".source = ./config/starship.toml;
-  home.file.".config/nvim".source = ./config/nvim; # astronvim
+  home.file.".config/nvim".source = pkgs.fetchFromGitHub
+    {
+      owner = "AstroNvim";
+      repo = "AstroNvim";
+      rev = "v2.6.1";
+      sha256 = "04kdsf5v5msdb9vygh3l2f92sakkrsh7n4nxjb8sads9xg1j4qkr";
+    };
 }
