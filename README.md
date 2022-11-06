@@ -7,7 +7,13 @@ My linux shell setup.
 - zsh
 - [nix](https://nixos.org/)
 
-## Usage
+## Automatic installation
+
+```bash
+curl https://shell.marco.ooo/install.sh | sh
+```
+
+## Manual installation
 
 Edit or create `~/.config/nix/nix.conf` and add the following line to enable the `nix` command and nix flakes.
 
