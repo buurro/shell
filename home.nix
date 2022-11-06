@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userInfo, ... }:
 
 {
   home.username = "marco";
@@ -31,7 +31,10 @@
     c = "code .";
     p = "poetry run";
     s = "ssh";
-    whatshell = "readlink /proc/$$/exe";
+
+    what-shell = "readlink /proc/$$/exe";
+    shell-switch = "home-manager switch --flake 'github:buurro/shell#marco'";
+    local-shell-switch = "home-manager switch --flake '.#marco'";
 
     # Since sudo doesn't preserve user PATH,
     # everything installed via nix isn't accessible. This fixes that.
