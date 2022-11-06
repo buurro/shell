@@ -1,41 +1,31 @@
-# Home
+# Shell
 
 My linux shell setup.
 
 ## Software needed
 
 - zsh
-- git (to clone this repo)
 - [nix](https://nixos.org/)
-- [Home Manager](https://github.com/nix-community/home-manager)
 
 ## Usage
 
-Add unstable nix channel
+Edit or create `~/.config/nix/nix.conf` and add the following line to enable the `nix` command and nix flakes.
 
-```bash
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
-nix-channel --update
+```
+experimental-features = nix-command flakes
 ```
 
-Delete and replace default configuration
+Build the setup and activate it
 
 ```bash
-rm ~/.config/nixpkgs/home.nix
-git clone --recursive git@github.com:buurro/home.git ~/.config/nixpkgs
+nix build --no-link github:buurro/shell#homeConfigurations.marco.activationPackage
+"$(nix path-info github:buurro/shell#homeConfigurations.marco.activationPackage)"/activate
 ```
 
-Apply home-manager config file
+This will also install `home-manager`. Now you can update using:
 
 ```bash
-home-manager switch -b backup
-```
-
-Set zsh as default shell
-
-```bash
-echo ~/.nix-profile/bin/zsh | sudo tee -a /etc/shells
-sudo usermod -s ~/.nix-profile/bin/zsh $USER
+home-manager switch --flake 'github:buurro/shell#marco'
 ```
 
 ### TODO:
