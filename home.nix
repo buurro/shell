@@ -16,14 +16,12 @@
     bottom
     cachix
     cheat
-    docker-compose
     htop
     httpie
     lazygit
     neofetch
     nixpkgs-fmt
     poetry
-    ranger
     traceroute
   ];
 
