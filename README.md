@@ -33,7 +33,3 @@ This will also install `home-manager`. Now you can update using:
 ```bash
 home-manager switch --flake 'github:buurro/shell#marco'
 ```
-
-### TODO:
-
-- make it macOS compatible (maybe use [nix-darwin](https://github.com/LnL7/nix-darwin))

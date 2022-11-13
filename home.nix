@@ -1,8 +1,8 @@
 { config, pkgs, userInfo, ... }:
 
 {
-  home.username = "marco";
-  home.homeDirectory = "/home/marco";
+  # home.username = "marco";
+  # home.homeDirectory = "/home/marco";
 
   home.stateVersion = "22.05";
 
@@ -21,8 +21,9 @@
     lazygit
     neofetch
     nixpkgs-fmt
+    rnix-lsp
     poetry
-    traceroute
+    wget
   ];
 
   home.shellAliases = {
@@ -34,6 +35,7 @@
     shell = "$(readlink /proc/$$/exe)";
     shell-switch = "home-manager switch --flake 'github:buurro/shell#marco'";
     local-shell-switch = "home-manager switch --flake '.#marco'";
+    local-mac-switch = "darwin-rebuild switch --flake .";
 
     # Since sudo doesn't preserve user PATH,
     # everything installed via nix isn't accessible. This fixes that.
@@ -47,12 +49,6 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "z" "docker" "composer" "vagrant" ];
-    };
-    zplug = {
-      enable = true;
-      plugins = [
-        { name = "jessarcher/zsh-artisan"; }
-      ];
     };
     initExtra = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
