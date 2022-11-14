@@ -25,6 +25,7 @@ in
       "discord"
       "firefox"
       "fork"
+      "google-chrome"
       "iina"
       "iterm2"
       "marta"
