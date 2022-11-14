@@ -6,7 +6,7 @@ set -e
 if [[ $OSTYPE == 'darwin'* ]]; then
     if ! command -v brew &> /dev/null; then
         echo "installing homebrew"
-        /bin/bash <(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
+        sudo NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     if ! command -v nix-env &> /dev/null; then
         echo "installing nix"
