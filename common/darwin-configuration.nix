@@ -55,6 +55,9 @@ in
     dock.autohide-delay = 0.01;
     dock.autohide-time-modifier = 0.01;
 
+    finder.AppleShowAllExtensions = true;
+    finder.ShowPathbar = true;
+
     screencapture.location = "~/Pictures/screenshots";
   };
 

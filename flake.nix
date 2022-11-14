@@ -13,20 +13,17 @@
     darwinConfigurations."smart-kettle" = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       modules = [
-        ./configuration.nix
+        ./common/darwin-configuration.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.marco = import ./home.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
+          home-manager.users.marco = import ./common/home.nix;
         }
       ];
     };
-    homeConfigurations.core = home-manager.lib.homeManagerConfiguration {
-      modules = [ ./home.nix ];
+    homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
+      modules = [ ./common/home.nix ];
     };
   };
 }

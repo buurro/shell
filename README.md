@@ -17,7 +17,7 @@ curl https://shell.marco.ooo/install.sh | sh
 
 Edit or create `~/.config/nix/nix.conf` and add the following line to enable the `nix` command and nix flakes.
 
-```
+```conf
 experimental-features = nix-command flakes
 ```
 

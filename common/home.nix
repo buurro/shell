@@ -4,6 +4,10 @@
   # home.username = "marco";
   # home.homeDirectory = "/home/marco";
 
+  nix.settings = {
+    experimental-features = [ "flakes" "nix-command" ];
+  };
+
   home.stateVersion = "22.05";
 
   # Let Home Manager install and manage itself.
