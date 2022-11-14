@@ -9,10 +9,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager }: {
-    darwinConfigurations."smart-kettle" = darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      modules = [
+  outputs = { self, darwin, nixpkgs, home-manager }:
+    let
+      mac-modules = [
         ./common/darwin-configuration.nix
         home-manager.darwinModules.home-manager
         {
@@ -21,21 +20,20 @@
           home-manager.users.marco = import ./common/home.nix;
         }
       ];
+    in
+    {
+      darwinConfigurations."smart-kettle" = darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = mac-modules;
+      };
+
+      darwinConfigurations."smart-toaster" = darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = mac-modules ++ [ ./hosts/smart-toaster/darwin-configuration.nix ];
+      };
+
+      homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
+        modules = [ ./common/home.nix ];
+      };
     };
-    darwinConfigurations."smart-toaster" = darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      modules = [
-        ./common/darwin-configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.marco = import ./common/home.nix;
-        }
-      ];
-    };
-    homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
-      modules = [ ./common/home.nix ];
-    };
-  };
 }
