@@ -10,6 +10,8 @@ My macOS + Linux shell setup
 
 - Give the Terminal app permission to manage applications in `System Settings > Privacy & Security > App Management`
 
+- Restart the machine
+
 For new devices:
 
 - Add host configuration in [flake.nix](./flake.nix)
