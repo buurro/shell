@@ -1,4 +1,4 @@
-SHELL_REPO="github:buurro/shell/main"
+SHELL_REPO="github:buurro/shell"
 SCREENSHOTS_PATH="$HOME/Pictures/screenshots";
 
 set -e
@@ -18,8 +18,12 @@ if [[ $OSTYPE == 'darwin'* ]]; then
         echo "creating screenshots directory"
         mkdir -p "$SCREENSHOTS_PATH"
     fi
-    FLAKE="$SHELL_REPO#darwinConfigurations.$(hostname -s).system"
     cd /tmp
-    nix --experimental-features 'nix-command flakes' build "$FLAKE"
-    ./result/sw/bin/darwin-rebuild switch --flake "$SHELL_REPO"
+    if ! command -v darwin-rebuild &> /dev/null; then
+        FLAKE="$SHELL_REPO#darwinConfigurations.$(hostname -s).system"
+        nix --experimental-features 'nix-command flakes' build "$FLAKE"
+        ./result/sw/bin/darwin-rebuild switch --flake "$SHELL_REPO"
+    else
+        darwin-rebuild switch --flake "$SHELL_REPO"
+    fi
 fi
