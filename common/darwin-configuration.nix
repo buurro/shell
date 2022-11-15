@@ -55,6 +55,8 @@ in
     dock.autohide = true;
     dock.autohide-delay = 0.01;
     dock.autohide-time-modifier = 0.01;
+    dock.show-recents = false;
+
 
     finder.AppleShowAllExtensions = true;
     finder.ShowPathbar = true;
