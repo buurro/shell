@@ -1,9 +1,6 @@
 { config, pkgs, userInfo, ... }:
 
 {
-  # home.username = "marco";
-  # home.homeDirectory = "/home/marco";
-
   nix.settings = {
     experimental-features = [ "flakes" "nix-command" ];
   };

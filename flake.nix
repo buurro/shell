@@ -20,6 +20,7 @@
           home-manager.users.marco = import ./common/home.nix;
         }
       ];
+      linux-pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
     {
       darwinConfigurations."smart-kettle" = darwin.lib.darwinSystem {
@@ -33,7 +34,11 @@
       };
 
       homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
-        modules = [ ./common/home.nix ];
+        pkgs = linux-pkgs;
+        modules = [
+          ./common/home.nix
+          ./common/linux-home.nix
+        ];
       };
     };
 }
