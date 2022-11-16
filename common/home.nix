@@ -17,6 +17,7 @@
     bottom
     cachix
     cheat
+    duf
     htop
     httpie
     lazygit
