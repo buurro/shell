@@ -33,6 +33,7 @@ in
       "postico"
       "raycast"
       "spotify"
+      "steermouse"
       "visual-studio-code"
     ];
   };
@@ -51,6 +52,7 @@ in
     NSGlobalDomain.KeyRepeat = 2;
     NSGlobalDomain.InitialKeyRepeat = 25;
     NSGlobalDomain.AppleKeyboardUIMode = 3; # navigate ui with keyboard
+    NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
 
     dock.autohide = true;
     dock.autohide-delay = 0.01;
