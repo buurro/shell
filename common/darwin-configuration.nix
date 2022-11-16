@@ -29,6 +29,7 @@ in
       "iina"
       "iterm2"
       "marta"
+      "monitorcontrol"
       "parallels"
       "postico"
       "raycast"
