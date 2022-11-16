@@ -44,6 +44,10 @@
     sudoo = "sudo env \"PATH=$PATH\"";
   };
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
