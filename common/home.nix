@@ -23,6 +23,7 @@
     lazygit
     neofetch
     nixpkgs-fmt
+    nodejs-19_x
     rnix-lsp
     poetry
     wget
