@@ -35,6 +35,7 @@ in
       "raycast"
       "spotify"
       "steermouse"
+      "syncthing"
       "visual-studio-code"
     ];
   };
