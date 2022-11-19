@@ -20,6 +20,7 @@
     duf
     htop
     httpie
+    iperf3
     lazygit
     neofetch
     nixpkgs-fmt
