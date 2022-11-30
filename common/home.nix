@@ -18,6 +18,7 @@
     cachix
     cheat
     duf
+    gh
     htop
     httpie
     iperf3
@@ -25,8 +26,8 @@
     neofetch
     nixpkgs-fmt
     nodejs-19_x
-    rnix-lsp
     poetry
+    rnix-lsp
     wget
   ];
 
