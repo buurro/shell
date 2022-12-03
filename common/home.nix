@@ -28,6 +28,7 @@
     nodejs-19_x
     poetry
     rnix-lsp
+    rustup
     wget
   ];
 
