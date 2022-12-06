@@ -68,6 +68,12 @@ in
     finder.ShowPathbar = true;
 
     screencapture.location = "~/Pictures/screenshots";
+
+    CustomSystemPreferences = {
+      NSGlobalDomain = {
+        NSWindowShouldDragOnGesture = true;
+      };
+    };
   };
 
   security.pam.enableSudoTouchIdAuth = true;
