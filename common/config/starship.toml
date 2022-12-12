@@ -121,7 +121,7 @@ symbol = " "
 
 [nix_shell]
 disabled = false
-format = "\\[[$symbol$state( \\($name\\))]($style)\\]"
+format = "\\[[$symbol($name)]($style)\\]"
 symbol = " "
 
 [nodejs]
