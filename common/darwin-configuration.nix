@@ -35,6 +35,7 @@ in
       "parallels"
       "postico"
       "raycast"
+      "slack"
       "spotify"
       "steermouse"
       "syncthing"
