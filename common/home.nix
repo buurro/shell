@@ -3,6 +3,15 @@
 {
   nix.settings = {
     experimental-features = [ "flakes" "nix-command" ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://cache.nixos.org/"
+      "https://nix-shell.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-shell.cachix.org-1:kat3KoRVbilxA6TkXEtTN9IfD4JhsQp1TPUHg652Mwc="
+    ];
   };
 
   home.stateVersion = "22.05";
