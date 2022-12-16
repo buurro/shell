@@ -48,7 +48,6 @@
     what-shell = "readlink /proc/$$/exe";
     shell = "$(readlink /proc/$$/exe)";
     shell-switch = "home-manager switch --flake 'github:buurro/shell#marco'";
-    local-shell-switch = "home-manager switch --flake '.#marco'";
     local-mac-switch = "darwin-rebuild switch --flake .";
 
     # Since sudo doesn't preserve user PATH,
