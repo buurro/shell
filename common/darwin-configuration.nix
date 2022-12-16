@@ -33,6 +33,7 @@ in
       "marta"
       "monitorcontrol"
       "parallels"
+      "postgres-unofficial"
       "postico"
       "raycast"
       "slack"
