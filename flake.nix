@@ -36,6 +36,7 @@
           };
 
           homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.${system};
             modules = [
               ./common/home.nix
               ./common/linux-home.nix
