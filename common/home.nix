@@ -39,6 +39,7 @@
     neofetch
     nixpkgs-fmt
     nodejs-19_x
+    nodePackages.pnpm
     poetry
     rnix-lsp
     wget
