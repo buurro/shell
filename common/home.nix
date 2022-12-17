@@ -38,11 +38,15 @@
     lazygit
     neofetch
     nixpkgs-fmt
-    nodejs-19_x
-    nodePackages.pnpm
     poetry
     rnix-lsp
     wget
+
+    nodejs-19_x
+    nodePackages.pnpm
+
+    rustc
+    cargo
   ];
 
   home.shellAliases = {
