@@ -1,10 +1,7 @@
 {
-  # description = "Marco's darwin system";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
     flake-utils.url = "github:numtide/flake-utils";
-    # rust-overlay.url = "github:oxalica/rust-overlay";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +17,6 @@
           ./common/darwin-configuration.nix
           home-manager.darwinModules.home-manager
           {
-            # nixpkgs.overlays = [ rust-overlay.overlays.default ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.marco = import ./common/home.nix;

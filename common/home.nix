@@ -45,8 +45,9 @@
     nodejs-19_x
     nodePackages.pnpm
 
-    rustc
     cargo
+    rustc
+    rustPlatform.rustcSrc
   ];
 
   home.shellAliases = {
@@ -65,6 +66,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     YSU_IGNORED_ALIASES = "(\"g\")";
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
   programs.zsh = {
