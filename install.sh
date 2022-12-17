@@ -26,4 +26,16 @@ if [[ $OSTYPE == 'darwin'* ]]; then
     else
         darwin-rebuild switch --flake "$SHELL_REPO"
     fi
+else
+    if ! command -v nix-env &> /dev/null; then
+        echo "installing nix"
+        sh <(curl -L https://nixos.org/nix/install) --daemon
+    fi
+    if ! command -v home-manager &> /dev/null; then
+        FLAKE="$SHELL_REPO#homeConfigurations.common.activationPackage"
+        nix --experimental-features 'nix-command flakes' build --no-link "$FLAKE"
+        "$(nix path-info $FLAKE)"/activate
+    else
+        home-manager switch --flake "$SHELL_REPO#common"
+    fi
 fi
