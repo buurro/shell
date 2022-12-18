@@ -48,7 +48,6 @@
     cargo
     rustc
     rustfmt
-    rustPlatform.rustcSrc
   ];
 
   home.shellAliases = {
