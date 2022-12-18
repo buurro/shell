@@ -47,6 +47,7 @@
 
     cargo
     rustc
+    rustfmt
     rustPlatform.rustcSrc
   ];
 
