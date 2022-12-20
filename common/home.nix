@@ -120,6 +120,7 @@
       enable = true;
       userName = "Marco Burro";
       userEmail = "marcoburro98@gmail.com";
+      difftastic.enable = true;
     };
   };
 
