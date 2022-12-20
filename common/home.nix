@@ -90,6 +90,11 @@
       zstyle :bracketed-paste-magic paste-init pasteinit
       zstyle :bracketed-paste-magic paste-finish pastefinish
       ### Fix slowness of pastes
+
+      # iterm2 integration
+      if [ -f $HOME/.iterm2_shell_integration.zsh ]; then
+        source $HOME/.iterm2_shell_integration.zsh
+      fi
     '';
   };
 
