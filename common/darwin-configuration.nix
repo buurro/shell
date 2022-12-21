@@ -40,6 +40,7 @@ in
       "spotify"
       "steermouse"
       "syncthing"
+      "tailscale"
       "visual-studio-code"
     ];
   };
