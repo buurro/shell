@@ -53,6 +53,7 @@
 
   home.shellAliases = {
     c = "code .";
+    lg = "lazygit";
     p = "poetry run";
     s = "ssh";
 
@@ -66,7 +67,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    YSU_IGNORED_ALIASES = "(\"g\")";
+    # YSU_IGNORED_ALIASES = "(\"g\")";
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
