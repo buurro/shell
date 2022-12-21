@@ -40,6 +40,7 @@
     nixpkgs-fmt
     poetry
     rnix-lsp
+    ruff
     wget
 
     nodejs-19_x
