@@ -35,6 +35,7 @@
     htop
     httpie
     iperf3
+    lazydocker
     lazygit
     neofetch
     nixpkgs-fmt
