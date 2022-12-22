@@ -98,6 +98,13 @@
       if [ -f $HOME/.iterm2_shell_integration.zsh ]; then
         source $HOME/.iterm2_shell_integration.zsh
       fi
+
+      run() {
+        _pkg=$1
+        shift
+        nix run "nixpkgs/22.11#$_pkg" -- $*
+        unset _pkg
+      }
     '';
   };
 
