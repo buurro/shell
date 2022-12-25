@@ -136,6 +136,9 @@
       userName = "Marco Burro";
       userEmail = "marcoburro98@gmail.com";
       difftastic.enable = true;
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
   };
 
