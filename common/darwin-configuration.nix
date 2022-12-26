@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 let
-  python-and-friends = pkgs.python310.withPackages (ps: with ps; [ pip ]);
+  python-and-friends = pkgs.python310.withPackages (
+    ps: with ps; [ pip black ]
+  );
 in
 {
   nixpkgs.config.allowUnfree = true;
