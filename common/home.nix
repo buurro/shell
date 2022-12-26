@@ -40,6 +40,7 @@
     neofetch
     nixpkgs-fmt
     poetry
+    ranger
     rnix-lsp
     ruff
     wget

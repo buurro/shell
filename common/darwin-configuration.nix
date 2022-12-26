@@ -38,7 +38,6 @@ in
       "raycast"
       "slack"
       "spotify"
-      "steermouse"
       "syncthing"
       "tailscale"
       "visual-studio-code"
