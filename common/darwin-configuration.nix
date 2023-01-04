@@ -37,6 +37,7 @@ in
       "parallels"
       "postgres-unofficial"
       "postico"
+      "raspberry-pi-imager"
       "raycast"
       "slack"
       "spotify"
