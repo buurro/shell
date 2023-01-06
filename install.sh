@@ -34,7 +34,7 @@ else
     if ! command -v home-manager &> /dev/null; then
         FLAKE="$SHELL_REPO#homeConfigurations.common.activationPackage"
         nix --experimental-features 'nix-command flakes' build --no-link "$FLAKE"
-        "$(nix path-info $FLAKE)"/activate
+        "$(nix --experimental-features 'nix-command flakes' path-info $FLAKE)"/activate
     else
         home-manager switch --flake "$SHELL_REPO#common"
     fi
