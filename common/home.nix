@@ -35,6 +35,8 @@
     htop
     httpie
     iperf3
+    kubectl
+    kubeseal
     lazydocker
     lazygit
     neofetch
