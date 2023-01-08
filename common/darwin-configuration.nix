@@ -32,7 +32,6 @@ in
       "google-chrome"
       "iina"
       "iterm2"
-      "lens"
       "marta"
       "monitorcontrol"
       "parallels"
