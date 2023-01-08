@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   python-and-friends = pkgs.python310.withPackages (
-    ps: with ps; [ pip black ]
+    ps: with ps; [ pip ]
   );
 in
 {
@@ -32,6 +32,7 @@ in
       "google-chrome"
       "iina"
       "iterm2"
+      "lens"
       "marta"
       "monitorcontrol"
       "parallels"
