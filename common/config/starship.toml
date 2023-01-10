@@ -135,6 +135,7 @@ format = "\\[[$symbol($version)(\\($switch_indicator$switch_name\\))]($style)\\]
 format = "\\[[$symbol$cloud(\\($project\\))]($style)\\]"
 
 [package]
+disabled = true
 format = "\\[[$symbol$version]($style)\\]"
 symbol = " "
 
@@ -169,6 +170,7 @@ format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [rust]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
