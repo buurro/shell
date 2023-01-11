@@ -125,6 +125,7 @@ format = "\\[[$symbol($name)]($style)\\]"
 symbol = " "
 
 [nodejs]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
