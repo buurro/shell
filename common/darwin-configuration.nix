@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   python-and-friends = pkgs.python310.withPackages (
-    ps: with ps; [ pip ]
+    ps: with ps; [ pip pipx ]
   );
 in
 {
@@ -38,6 +38,7 @@ in
       "parallels"
       "postgres-unofficial"
       "postico"
+      "private-internet-access"
       "raspberry-pi-imager"
       "raycast"
       "slack"
