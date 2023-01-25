@@ -43,6 +43,7 @@
     nixpkgs-fmt
     poetry
     ranger
+    rename
     rnix-lsp
     ruff
     wget
