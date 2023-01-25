@@ -33,6 +33,7 @@ in
       "google-chrome"
       "iina"
       "iterm2"
+      "jellyfin-media-player"
       "marta"
       "monitorcontrol"
       "parallels"
