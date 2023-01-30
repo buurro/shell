@@ -144,6 +144,13 @@
         init.defaultBranch = "main";
       };
     };
+
+    tmux = {
+      enable = true;
+      extraConfig = ''
+        set -g default-terminal "xterm-256color"
+      '';
+    };
   };
 
   home.file.".config/starship.toml".source = ./config/starship.toml;
