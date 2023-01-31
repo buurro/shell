@@ -23,6 +23,7 @@ in
       "Microsoft Excel" = 462058435;
       "Microsoft Remote Desktop" = 1295203466;
       "Telegram" = 747648890;
+      "WireGuard" = 1451685025;
     };
     casks = [
       "1password"
