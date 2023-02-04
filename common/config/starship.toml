@@ -200,6 +200,7 @@ format = "[$user]($style) "
 show_always = false
 
 [vagrant]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [vlang]
