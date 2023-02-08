@@ -46,6 +46,7 @@
     rename
     rnix-lsp
     ruff
+    terraform
     wget
 
     nodejs-19_x
