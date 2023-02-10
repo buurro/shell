@@ -22,6 +22,7 @@ in
       "1Password for Safari" = 1569813296;
       "Microsoft Excel" = 462058435;
       "Microsoft Remote Desktop" = 1295203466;
+      "Speedtest by Ookla" = 1153157709;
       "Telegram" = 747648890;
       "WireGuard" = 1451685025;
     };
