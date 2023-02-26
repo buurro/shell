@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   python-and-friends = pkgs.python310.withPackages (
-    ps: with ps; [ pip pipx ]
+    ps: with ps; [ pip pipx black ]
   );
 in
 {
