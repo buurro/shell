@@ -81,6 +81,10 @@
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
+  home.sessionPath = [
+    "/nix/var/nix/profiles/default/bin"
+  ];
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
