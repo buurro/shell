@@ -20,6 +20,7 @@ in
     enable = true;
     masApps = {
       "1Password for Safari" = 1569813296;
+      "Magnet" = 441258766;
       "Microsoft Excel" = 462058435;
       "Microsoft Remote Desktop" = 1295203466;
       "Speedtest by Ookla" = 1153157709;
