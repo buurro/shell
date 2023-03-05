@@ -39,6 +39,7 @@
     htop
     httpie
     iperf3
+    jq
     kubectl
     kubeseal
     lazydocker
