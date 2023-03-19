@@ -32,6 +32,7 @@ in
       "1password"
       "1password/tap/1password-cli"
       "appcleaner"
+      "audacity"
       "dbeaver-community"
       "discord"
       "firefox"
