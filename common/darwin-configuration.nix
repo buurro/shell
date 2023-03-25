@@ -44,7 +44,6 @@ in
       "marta"
       "monitorcontrol"
       "obsidian"
-      "parallels"
       "postgres-unofficial"
       "postico"
       "private-internet-access"
