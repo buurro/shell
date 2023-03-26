@@ -34,6 +34,7 @@
     bottom
     cachix
     cheat
+    cmctl
     duf
     gh
     htop
