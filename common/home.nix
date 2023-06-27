@@ -22,7 +22,7 @@
     ];
   };
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -57,7 +57,7 @@
     terraform
     wget
 
-    nodejs-19_x
+    nodejs-18_x
     nodePackages.pnpm
   ];
 
@@ -115,7 +115,7 @@
       run() {
         _pkg=$1
         shift
-        nix run "nixpkgs/22.11#$_pkg" -- $*
+        nix run "nixpkgs/23.05#$_pkg" -- $*
         unset _pkg
       }
     '';
@@ -167,7 +167,7 @@
     {
       owner = "AstroNvim";
       repo = "AstroNvim";
-      rev = "v2.6.1";
-      sha256 = "04kdsf5v5msdb9vygh3l2f92sakkrsh7n4nxjb8sads9xg1j4qkr";
+      rev = "v3.28.3";
+      sha256 = "0jzhiyjlnzwvfvqyxzskhy2paf4ys6vfbdyxfd2fm1dbzp6d4a7a";
     };
 }

@@ -7,6 +7,7 @@ in
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = [ "root" "marco" ];
+  users.users."marco".home = "/Users/marco";
 
   programs.zsh.enable = true;
   programs.zsh.promptInit = "";
