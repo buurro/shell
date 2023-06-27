@@ -6,6 +6,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+  nix.settings.trusted-users = [ "root" "marco" ];
 
   programs.zsh.enable = true;
   programs.zsh.promptInit = "";
