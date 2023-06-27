@@ -59,10 +59,6 @@
 
     nodejs-19_x
     nodePackages.pnpm
-
-    cargo
-    rustc
-    rustfmt
   ];
 
   home.shellAliases = {
