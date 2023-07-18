@@ -56,6 +56,7 @@
     ruff
     terraform
     wget
+    yt-dlp
 
     nodejs-18_x
     nodePackages.pnpm
