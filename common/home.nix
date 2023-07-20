@@ -54,6 +54,7 @@
     rename
     rnix-lsp
     ruff
+    sshfs
     terraform
     wget
     yt-dlp
