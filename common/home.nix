@@ -68,9 +68,6 @@
     p = "poetry run";
     s = "ssh";
 
-    what-shell = "readlink /proc/$$/exe";
-    shell = "$(readlink /proc/$$/exe)";
-
     # Since sudo doesn't preserve user PATH,
     # everything installed via nix isn't accessible. This fixes that.
     sudoo = "sudo env \"PATH=$PATH\"";
@@ -118,6 +115,10 @@
         shift
         nix run "nixpkgs/23.05#$_pkg" -- $*
         unset _pkg
+      }
+
+      shell() {
+        nix shell "nixpkgs/23.05#$1"
       }
     '';
   };
