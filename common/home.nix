@@ -9,12 +9,14 @@
       "https://nix-shell.cachix.org"
       "https://buurro.cachix.org"
       "https://nixpkgs-python.cachix.org"
+      "https://fossar.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-shell.cachix.org-1:kat3KoRVbilxA6TkXEtTN9IfD4JhsQp1TPUHg652Mwc="
       "buurro.cachix.org-1:1MX3Bpgo3DanuGkHjTscCkBvNKBa2Qk1BqvP0P+rqk0="
       "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
+      "fossar.cachix.org-1:Zv6FuqIboeHPWQS7ysLCJ7UT7xExb4OE8c4LyGb5AsE="
     ];
     trusted-users = [
       "root"
