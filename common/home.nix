@@ -33,6 +33,7 @@
   home.packages = with pkgs; [
     ansible
     ansible-lint
+    argocd
     asciinema
     bat
     bottom
