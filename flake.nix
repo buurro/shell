@@ -39,6 +39,13 @@
             modules = mac-modules ++ [ ./hosts/smart-toaster/darwin-configuration.nix ];
           };
 
+          nixosConfigurations."smart-blender" = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/smart-blender/configuration.nix
+            ];
+          };
+
           homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
             modules = [
