@@ -154,7 +154,7 @@
       enable = true;
       userName = "Marco Burro";
       userEmail = "marcoburro98@gmail.com";
-      difftastic.enable = true;
+      difftastic.enable = false;
       extraConfig = {
         init.defaultBranch = "main";
       };
