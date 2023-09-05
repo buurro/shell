@@ -150,7 +150,7 @@ in
       # https://github.com/koekeishiya/yabai/wiki/Commands#focus-display
       # https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
 
-      .blacklist []
+      # .blacklist []
 
       # Navigation
       ctrl + alt - a : yabai -m window --focus west
