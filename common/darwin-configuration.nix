@@ -96,6 +96,7 @@ in
   security.pam.enableSudoTouchIdAuth = true;
 
   services.karabiner-elements.enable = false;
+
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
@@ -154,76 +155,76 @@ in
       # .blacklist []
 
       # Navigation
-      ctrl + alt - a : yabai -m window --focus west
-      ctrl + alt - d : yabai -m window --focus east
-      ctrl + alt - s : yabai -m window --focus south
-      ctrl + alt - w : yabai -m window --focus north
+      alt + ctrl - a : yabai -m window --focus west
+      alt + ctrl - d : yabai -m window --focus east
+      alt + ctrl - s : yabai -m window --focus south
+      alt + ctrl - w : yabai -m window --focus north
 
       # Moving windows
-      ctrl + shift - a : yabai -m window --warp west
-      ctrl + shift - d : yabai -m window --warp east
-      ctrl + shift - s : yabai -m window --warp south
-      ctrl + shift - w : yabai -m window --warp north
+      alt + shift - a : yabai -m window --warp west
+      alt + shift - d : yabai -m window --warp east
+      alt + shift - s : yabai -m window --warp south
+      alt + shift - w : yabai -m window --warp north
 
       # Rotate layout
-      ctrl - l : yabai -m space --rotate 90
+      alt - l : yabai -m space --rotate 90
       # Balance the layout
-      ctrl - k : yabai -m space --balance
+      alt - k : yabai -m space --balance
 
       # Move focus container to display (use "space" instead of display to move to just per space instead)
-      # ctrl + shift - x : yabai -m window --display 1 --focus # main monitor
-      # ctrl + shift - z : yabai -m window --display 2 --focus # vertical
-      # ctrl + shift - c : yabai -m window --display 3 --focus # laptop
+      # alt + shift - x : yabai -m window --display 1 --focus # main monitor
+      # alt + shift - z : yabai -m window --display 2 --focus # vertical
+      # alt + shift - c : yabai -m window --display 3 --focus # laptop
 
       # Move focus container to space
-      ctrl + alt - 1 : yabai -m window --space 1 --focus
-      ctrl + alt - 2 : yabai -m window --space 2 --focus
-      ctrl + alt - 3 : yabai -m window --space 3 --focus
-      ctrl + alt - 4 : yabai -m window --space 4 --focus
-      ctrl + alt - 5 : yabai -m window --space 5 --focus
-      ctrl + alt - 6 : yabai -m window --space 6 --focus
-      ctrl + alt - 7 : yabai -m window --space 7 --focus
-      ctrl + alt - 8 : yabai -m window --space 8 --focus
-      ctrl + alt - 9 : yabai -m window --space 9 --focus
+      alt + ctrl - 1 : yabai -m window --space 1 --focus
+      alt + ctrl - 2 : yabai -m window --space 2 --focus
+      alt + ctrl - 3 : yabai -m window --space 3 --focus
+      alt + ctrl - 4 : yabai -m window --space 4 --focus
+      alt + ctrl - 5 : yabai -m window --space 5 --focus
+      alt + ctrl - 6 : yabai -m window --space 6 --focus
+      alt + ctrl - 7 : yabai -m window --space 7 --focus
+      alt + ctrl - 8 : yabai -m window --space 8 --focus
+      alt + ctrl - 9 : yabai -m window --space 9 --focus
 
 
       # Resize windows
-      ctrl - a : yabai -m window --resize left:-100:0 ; yabai -m window --resize right:-100:0
-      ctrl - s : yabai -m window --resize bottom:0:100 ; yabai -m window --resize top:0:100
-      ctrl - w : yabai -m window --resize top:0:-100 ; yabai -m window --resize bottom:0:-100
-      ctrl - d : yabai -m window --resize right:100:0 ; yabai -m window --resize left:100:0
+      alt - a : yabai -m window --resize left:-100:0 ; yabai -m window --resize right:-100:0
+      alt - s : yabai -m window --resize bottom:0:100 ; yabai -m window --resize top:0:100
+      alt - w : yabai -m window --resize top:0:-100 ; yabai -m window --resize bottom:0:-100
+      alt - d : yabai -m window --resize right:100:0 ; yabai -m window --resize left:100:0
 
 
       # Float / Unfloat window
-      ctrl - space : yabai -m window --toggle float
+      alt - space : yabai -m window --toggle float
 
       # Make fullscreen
-      ctrl - f         : yabai -m window --toggle zoom-fullscreen
+      alt - f         : yabai -m window --toggle zoom-fullscreen
       
       # Toggle padding on/off
-      ctrl - g         : yabai -m space --toggle padding --toggle gap
+      alt - g         : yabai -m space --toggle padding --toggle gap
       
       # Disable padding overall
-      ctrl - y         : yabai -m config top_padding 0 \ yabai -m config bottom_padding 0 \ yabai -m config left_padding 0 \ yabai -m config right_padding 0 \ yabai -m config window_gap 0
-      ctrl - u         : yabai -m config window_gap 12
+      alt - y         : yabai -m config top_padding 0 \ yabai -m config bottom_padding 0 \ yabai -m config left_padding 0 \ yabai -m config right_padding 0 \ yabai -m config window_gap 0
+      alt - u         : yabai -m config window_gap 12
       # Toggle floating/bsp
-      ctrl - h         : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+      alt - h         : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
       # Change desktop
-      ctrl - 1 : yabai -m space --focus 1
-      ctrl - 2 : yabai -m space --focus 2
-      ctrl - 3 : yabai -m space --focus 3
-      ctrl - 4 : yabai -m space --focus 4
-      ctrl - 5 : yabai -m space --focus 5
-      ctrl - 6 : yabai -m space --focus 6
-      ctrl - 7 : yabai -m space --focus 7
-      ctrl - 8 : yabai -m space --focus 8
-      ctrl - 9 : yabai -m space --focus 9
-      ctrl - 0 : yabai -m space --focus 10
+      alt - 1 : yabai -m space --focus 1
+      alt - 2 : yabai -m space --focus 2
+      alt - 3 : yabai -m space --focus 3
+      alt - 4 : yabai -m space --focus 4
+      alt - 5 : yabai -m space --focus 5
+      alt - 6 : yabai -m space --focus 6
+      alt - 7 : yabai -m space --focus 7
+      alt - 8 : yabai -m space --focus 8
+      alt - 9 : yabai -m space --focus 9
+      alt - 0 : yabai -m space --focus 10
 
       # Control Audio Output Device
-      # ctrl - e : SwitchAudioSource -s "FiiO K5 Pro"
-      # ctrl - r : SwitchAudioSource -s "MacBook Pro Speakers"
+      # alt - e : SwitchAudioSource -s "FiiO K5 Pro"
+      # alt - r : SwitchAudioSource -s "MacBook Pro Speakers"
     '';
   };
 
