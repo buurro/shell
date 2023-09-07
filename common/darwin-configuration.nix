@@ -95,6 +95,7 @@ in
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  services.karabiner-elements.enable = false;
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
