@@ -31,6 +31,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    _1password
     ansible
     ansible-lint
     argocd
