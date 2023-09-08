@@ -42,6 +42,7 @@
     cheat
     cmctl
     duf
+    file
     gh
     htop
     httpie
