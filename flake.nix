@@ -3,6 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -13,61 +14,67 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, flake-utils, vscode-server }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        mac-modules = [
-          ./common/darwin-configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.marco = import ./common/home.nix;
-          }
-        ];
-      in
-      {
-        packages = {
-          darwinConfigurations."smart-kettle" = darwin.lib.darwinSystem {
-            inherit system;
-            modules = mac-modules;
-          };
-
-          darwinConfigurations."smart-toaster" = darwin.lib.darwinSystem {
-            inherit system;
-            modules = mac-modules ++ [ ./hosts/smart-toaster/darwin-configuration.nix ];
-          };
-
-          nixosConfigurations."smart-blender" = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./hosts/smart-blender/configuration.nix
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.marco = import ./common/home.nix;
-
-                # Optionally, use home-manager.extraSpecialArgs to pass
-                # arguments to home.nix
-              }
-              vscode-server.nixosModules.default
-              ({ config, pkgs, ... }: {
-                services.vscode-server.enable = true;
-              })
-            ];
-          };
-
-          homeConfigurations.common = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.${system};
-            modules = [
-              ./common/home.nix
-              ./common/linux-home.nix
-            ];
-          };
+  outputs = { self, nixpkgs, darwin, home-manager, flake-utils, vscode-server, nixos-hardware }:
+    let
+      homeManagerConfig = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.marco = import ./common/home.nix;
+      };
+    in
+    {
+      darwinConfigurations = {
+        "smart-kettle" = darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          modules = [
+            ./common/darwin-configuration.nix
+            homeManagerConfig
+            home-manager.darwinModules.home-manager
+          ];
         };
-      }
-    );
+
+        "smart-toaster" = darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          modules = [
+            ./common/darwin-configuration.nix
+            ./hosts/smart-toaster/darwin-configuration.nix
+            homeManagerConfig
+            home-manager.darwinModules.home-manager
+          ];
+        };
+      };
+
+      nixosConfigurations = {
+        "smart-blender" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./common/nixos-configuration.nix
+            ./hosts/smart-blender/configuration.nix
+            vscode-server.nixosModules.default
+            home-manager.nixosModules.home-manager
+            homeManagerConfig
+          ];
+        };
+
+        "qraspi" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./common/nixos-configuration.nix
+            ./hosts/qraspi/configuration.nix
+            nixos-hardware.nixosModules.raspberry-pi-4
+            home-manager.nixosModules.home-manager
+            homeManagerConfig
+          ];
+        };
+      };
+
+      images = {
+        qraspi = (self.nixosConfigurations.qraspi.extendModules {
+          modules = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix" ];
+        }).config.system.build.sdImage;
+      };
+    };
 }

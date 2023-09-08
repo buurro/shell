@@ -1,32 +1,19 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   networking.hostName = "smart-blender";
   networking.firewall.allowedTCPPorts = [
     6443 # K3s
   ];
 
-  users.users.marco = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "marco";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
   environment.systemPackages = with pkgs; [
-    curl
-    git
-    htop
-    vim
-    wget
     k3s
   ];
 
-  programs.zsh.enable = true;
-
-  security.sudo.wheelNeedsPassword = false;
-
-  services.openssh.enable = true;
   services.vscode-server.enable = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -39,19 +26,12 @@
 
   # other stuff
 
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Rome";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -107,7 +87,5 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.05";
 }
