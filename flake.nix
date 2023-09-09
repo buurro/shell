@@ -15,9 +15,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, flake-utils, vscode-server, nixos-hardware }:
+  outputs =
+    { self
+    , nixpkgs
+    , darwin
+    , home-manager
+    , flake-utils
+    , vscode-server
+    , nixos-hardware
+    , nixos-generators
+    }:
     let
       homeManagerConfig = {
         home-manager.useGlobalPkgs = true;
@@ -75,6 +88,14 @@
         qraspi = (self.nixosConfigurations.qraspi.extendModules {
           modules = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix" ];
         }).config.system.build.sdImage;
+
+        vbox = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          format = "virtualbox";
+          modules = [
+            ./common/nixos-configuration.nix
+          ];
+        };
       };
     };
 }

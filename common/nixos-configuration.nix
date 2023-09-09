@@ -34,4 +34,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  system.stateVersion = lib.mkDefault "23.05";
 }
