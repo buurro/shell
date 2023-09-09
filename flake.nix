@@ -82,6 +82,17 @@
             homeManagerConfig
           ];
         };
+
+        "burro-hp" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./common/nixos-configuration.nix
+            ./hosts/burro-hp/configuration.nix
+            vscode-server.nixosModules.default
+            home-manager.nixosModules.home-manager
+            homeManagerConfig
+          ];
+        };
       };
 
       images = {
