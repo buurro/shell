@@ -38,6 +38,7 @@
     cmctl
     duf
     file
+    fluxcd
     gh
     htop
     httpie
@@ -49,6 +50,7 @@
     lazygit
     neofetch
     nixpkgs-fmt
+    nodejs-18_x
     poetry
     ranger
     rename
@@ -58,8 +60,6 @@
     terraform
     wget
     yt-dlp
-
-    nodejs-18_x
   ];
 
   home.shellAliases = {
