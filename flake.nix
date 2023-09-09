@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -24,29 +25,23 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-unstable
     , darwin
     , home-manager
     , flake-utils
     , vscode-server
     , nixos-hardware
     , nixos-generators
-    }:
-    let
-      homeManagerConfig = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.marco = import ./common/home.nix;
-      };
-    in
+    } @ inputs:
     {
       darwinConfigurations = {
         "smart-kettle" = darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
             ./common/darwin-configuration.nix
-            homeManagerConfig
             home-manager.darwinModules.home-manager
           ];
+          specialArgs = { inherit inputs; };
         };
 
         "smart-toaster" = darwin.lib.darwinSystem {
@@ -54,9 +49,9 @@
           modules = [
             ./common/darwin-configuration.nix
             ./hosts/smart-toaster/darwin-configuration.nix
-            homeManagerConfig
             home-manager.darwinModules.home-manager
           ];
+          specialArgs = { inherit inputs; };
         };
       };
 
@@ -68,8 +63,8 @@
             ./hosts/smart-blender/configuration.nix
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
-            homeManagerConfig
           ];
+          specialArgs = { inherit inputs; };
         };
 
         "qraspi" = nixpkgs.lib.nixosSystem {
@@ -79,8 +74,8 @@
             ./hosts/qraspi/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
             home-manager.nixosModules.home-manager
-            homeManagerConfig
           ];
+          specialArgs = { inherit inputs; };
         };
 
         "burro-hp" = nixpkgs.lib.nixosSystem {
@@ -90,8 +85,8 @@
             ./hosts/burro-hp/configuration.nix
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
-            homeManagerConfig
           ];
+          specialArgs = { inherit inputs; };
         };
       };
 
@@ -106,8 +101,8 @@
           modules = [
             ./common/nixos-configuration.nix
             home-manager.nixosModules.home-manager
-            homeManagerConfig
           ];
+          specialArgs = { inherit inputs; };
         };
 
         vm = nixos-generators.nixosGenerate {
@@ -116,8 +111,8 @@
           modules = [
             ./common/nixos-configuration.nix
             home-manager.nixosModules.home-manager
-            homeManagerConfig
           ];
+          specialArgs = { inherit inputs; };
         };
       };
     };

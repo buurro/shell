@@ -1,4 +1,4 @@
-{ config, pkgs, userInfo, ... }:
+{ config, pkgs, userInfo, inputs, ... }:
 
 {
   nix.settings = {
@@ -38,7 +38,6 @@
     cmctl
     duf
     file
-    fluxcd
     gh
     htop
     httpie
@@ -60,6 +59,8 @@
     terraform
     wget
     yt-dlp
+
+    inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.fluxcd
   ];
 
   home.shellAliases = {

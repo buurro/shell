@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   python-and-friends = pkgs.python311.withPackages (
     ps: with ps; [ pip pipx black ]
@@ -8,6 +8,15 @@ in
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = [ "root" "marco" ];
   users.users."marco".home = "/Users/marco";
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.marco = import "${inputs.self}/common/home.nix";
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+  };
 
   programs.zsh.enable = true;
   programs.zsh.promptInit = "";
