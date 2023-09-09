@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -105,6 +105,18 @@
           format = "virtualbox";
           modules = [
             ./common/nixos-configuration.nix
+            home-manager.nixosModules.home-manager
+            homeManagerConfig
+          ];
+        };
+
+        vm = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          format = "vm-nogui";
+          modules = [
+            ./common/nixos-configuration.nix
+            home-manager.nixosModules.home-manager
+            homeManagerConfig
           ];
         };
       };
