@@ -88,6 +88,7 @@
 
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
+  services.openssh.settings.X11Forwarding = true;
 
   services.vscode-server.enable = true;
 
