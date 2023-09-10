@@ -3,7 +3,7 @@
 {
   nix.settings = {
     experimental-features = [ "flakes" "nix-command" ];
-    trusted-substituters = [
+    substituters = [
       "https://cache.nixos.org"
       "https://cache.nixos.org/"
       "https://nix-shell.cachix.org"
