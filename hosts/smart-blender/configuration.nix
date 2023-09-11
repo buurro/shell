@@ -18,6 +18,8 @@
     chromium
   ];
 
+  programs.steam.enable = true;
+
   services.vscode-server.enable = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
