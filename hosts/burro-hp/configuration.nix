@@ -82,6 +82,8 @@
     polkitPolicyOwners = [ "marco" ];
   };
 
+  services.globalprotect.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
