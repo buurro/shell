@@ -67,7 +67,7 @@
     layout = "us";
     xkbVariant = "";
   };
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.openssh.settings.X11Forwarding = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -88,8 +88,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   system.stateVersion = "23.05";
 }
