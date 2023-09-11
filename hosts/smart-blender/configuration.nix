@@ -15,6 +15,7 @@
     lightly-qt
     ocs-url
     k3s
+    chromium
   ];
 
   services.vscode-server.enable = true;
