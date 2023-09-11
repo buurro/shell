@@ -76,6 +76,12 @@
     ];
   };
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "marco" ];
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
