@@ -76,8 +76,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    # YSU_IGNORED_ALIASES = "(\"g\")";
-    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
   home.sessionPath = [
@@ -90,7 +88,7 @@
     enableSyntaxHighlighting = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "gh" "z" "docker" "composer" "vagrant" "rust" "rsync" ];
+      plugins = [ "git" "gh" "z" "docker" "composer" "vagrant" "rsync" ];
     };
     initExtra = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
