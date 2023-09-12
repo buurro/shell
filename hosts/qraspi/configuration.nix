@@ -26,6 +26,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/mnt/sandisk" = {
+    device = "/dev/disk/by-uuid/e389b116-e8a1-481b-8b60-334ef44927a8";
+    fsType = "ext4";
+  };
+
   boot = {
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     loader = {
