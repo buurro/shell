@@ -121,6 +121,7 @@ in
       # Anki card preview
       yabai -m rule --add title="^Preview" manage=off
       yabai -m rule --add title="^Preferences" manage=off
+      yabai -m rule --add title="Preferences$" manage=off
       yabai -m rule --add title="^Settings" manage=off
       yabai -m rule --add app="^Steam$" manage=off
       yabai -m rule --add app="^CrossOver$" manage=off
