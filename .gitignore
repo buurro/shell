@@ -1,3 +1,4 @@
 .vagrant/
 Vagrantfile
 result
+*.qcow2
