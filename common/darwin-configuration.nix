@@ -132,6 +132,7 @@ in
       yabai -m rule --add app="^Numi$" manage=off
       yabai -m rule --add app="^Kawa$" manage=off
       yabai -m rule --add app="^Weather$" manage=off
+      yabai -m rule --add app="^Speedtest$" manage=off
 
 
       # Set all padding and gaps to 20pt (default: 0)
