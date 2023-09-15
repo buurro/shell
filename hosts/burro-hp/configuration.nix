@@ -68,6 +68,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
+    extraGroups = [ "docker" ];
     packages = with pkgs; [
       chromium
       firefox
@@ -75,6 +76,8 @@
       globalprotect-openconnect
     ];
   };
+
+  virtualisation.docker.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {
