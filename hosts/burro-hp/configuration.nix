@@ -74,6 +74,7 @@
       firefox
       kate
       globalprotect-openconnect
+      libreoffice-qt
     ];
   };
 
