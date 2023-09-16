@@ -2,11 +2,43 @@
 {
   networking.hostName = "qraspi";
 
-  console.enable = false;
+  networking.firewall.allowedTCPPorts = [
+    2049 # NFS
+  ];
+
   environment.systemPackages = with pkgs; [
     libraspberrypi
     raspberrypi-eeprom
   ];
+
+  fileSystems."/mnt/sandisk" = {
+    device = "/dev/disk/by-uuid/e389b116-e8a1-481b-8b60-334ef44927a8";
+    fsType = "ext4";
+  };
+
+  fileSystems."/export/sandisk" = {
+    device = "/mnt/sandisk";
+    options = [ "bind" ];
+  };
+
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /export smart-blender(rw,fsid=0,no_subtree_check)
+    /export/sandisk smart-blender(rw,nohide,insecure,no_subtree_check)
+  '';
+
+
+  # From here is stuff I copied
+
+  console.enable = false;
+
+  boot = {
+    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+    loader = {
+      generic-extlinux-compatible.enable = lib.mkDefault true;
+      grub.enable = lib.mkDefault false;
+    };
+  };
 
   hardware = {
     raspberry-pi."4".apply-overlays-dtmerge.enable = true;
@@ -26,18 +58,6 @@
     fsType = "ext4";
   };
 
-  fileSystems."/mnt/sandisk" = {
-    device = "/dev/disk/by-uuid/e389b116-e8a1-481b-8b60-334ef44927a8";
-    fsType = "ext4";
-  };
-
-  boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
-    loader = {
-      generic-extlinux-compatible.enable = lib.mkDefault true;
-      grub.enable = lib.mkDefault false;
-    };
-  };
-
   system.stateVersion = "23.05";
 }
+
