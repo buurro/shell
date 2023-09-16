@@ -6,9 +6,12 @@
   ];
 
   networking.hostName = "smart-blender";
+  networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
     6443 # K3s
     3389 # RDP
+    80
+    443
   ];
 
   environment.systemPackages = with pkgs; [
@@ -19,17 +22,18 @@
     mpv
   ];
 
+  services.k3s = {
+    enable = true;
+    role = "server";
+    extraFlags = toString [
+      "--disable=traefik"
+      #   "--kubelet-arg=v=4" # Optionally add additional args to k3s
+    ];
+  };
+
   programs.steam.enable = true;
-
   services.vscode-server.enable = true;
-
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  services.k3s.enable = false;
-  services.k3s.role = "server";
-  services.k3s.extraFlags = toString [
-    # "--kubelet-arg=v=4" # Optionally add additional args to k3s
-  ];
 
   # other stuff
 
