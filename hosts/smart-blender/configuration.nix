@@ -16,6 +16,7 @@
     ocs-url
     k3s
     chromium
+    mpv
   ];
 
   programs.steam.enable = true;
