@@ -41,6 +41,7 @@
     gh
     htop
     httpie
+    iftop
     iperf3
     jq
     kubectl
