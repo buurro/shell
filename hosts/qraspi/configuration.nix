@@ -23,8 +23,8 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /export smart-blender(rw,fsid=0,no_subtree_check)
-    /export/sandisk smart-blender(rw,nohide,insecure,no_subtree_check)
+    /export blender.marco.ooo(rw,fsid=0,no_subtree_check)
+    /export/sandisk blender.marco.ooo(rw,nohide,insecure,no_subtree_check)
   '';
 
 
