@@ -4,12 +4,15 @@
 
   networking.firewall.allowedTCPPorts = [
     2049 # NFS
+    9981 # TVHeadend
   ];
 
   environment.systemPackages = with pkgs; [
     libraspberrypi
     raspberrypi-eeprom
   ];
+
+  services.tvheadend.enable = true;
 
   fileSystems."/mnt/sandisk" = {
     device = "/dev/disk/by-uuid/e389b116-e8a1-481b-8b60-334ef44927a8";
