@@ -8,7 +8,7 @@
   networking.hostName = "smart-blender";
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
-    6443 # K3s
+    6443 # Kubernetes API Server
     3389 # RDP
     80
     443
@@ -27,9 +27,9 @@
     role = "server";
     extraFlags = toString [
       "--disable=traefik"
-      #   "--kubelet-arg=v=4" # Optionally add additional args to k3s
     ];
   };
+  systemd.services.k3s.path = [ pkgs.ipset ];
 
   programs.steam.enable = true;
   services.vscode-server.enable = true;
