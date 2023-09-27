@@ -10,19 +10,7 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  programs.zsh.enable = true;
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.marco = import "${inputs.self}/common/home.nix";
-    extraSpecialArgs = {
-      inherit inputs;
-    };
-  };
-
   users.users.marco = {
-    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [

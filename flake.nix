@@ -60,6 +60,7 @@
           system = "x86_64-linux";
           modules = [
             ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
             ./hosts/smart-blender/configuration.nix
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
@@ -71,6 +72,7 @@
           system = "aarch64-linux";
           modules = [
             ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
             ./hosts/qraspi/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
             home-manager.nixosModules.home-manager
@@ -82,6 +84,7 @@
           system = "x86_64-linux";
           modules = [
             ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
             ./hosts/burro-hp/configuration.nix
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
