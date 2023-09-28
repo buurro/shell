@@ -133,6 +133,7 @@ in
       yabai -m rule --add app="^Kawa$" manage=off
       yabai -m rule --add app="^Weather$" manage=off
       yabai -m rule --add app="^Speedtest$" manage=off
+      yabai -m rule --add app="^1Password" manage=off
 
 
       # Set all padding and gaps to 20pt (default: 0)
