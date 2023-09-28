@@ -113,7 +113,9 @@
           format = "vm-nogui";
           modules = [
             ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
             home-manager.nixosModules.home-manager
+            ({ config }: { users.users.marco.initialPassword = "marco"; })
           ];
           specialArgs = { inherit inputs; };
         };
