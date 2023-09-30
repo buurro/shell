@@ -57,6 +57,18 @@ in
     # jrePackage = unstablePkgs.jdk;
   };
 
+  fileSystems."/mnt/nas-fun" = {
+    device = "home-nas:/volume1/fun";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
+  fileSystems."/mnt/nas-od" = {
+    device = "home-nas:/volume1/od";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
   programs.steam.enable = true;
   services.vscode-server.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
