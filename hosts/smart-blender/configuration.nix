@@ -38,6 +38,7 @@ in
     mpv
     discord
     customUnifi
+    stepmania
   ];
 
   services.k3s = {
