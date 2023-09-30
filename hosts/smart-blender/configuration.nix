@@ -36,6 +36,7 @@ in
     k3s
     chromium
     mpv
+    discord
     customUnifi
   ];
 
