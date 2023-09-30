@@ -103,7 +103,6 @@
           format = "virtualbox";
           modules = [
             ./common/nixos-configuration.nix
-            home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
