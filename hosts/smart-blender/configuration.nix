@@ -1,18 +1,34 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+let
+  unstablePkgs = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
 
+  customUnifi = pkgs.unifi.overrideAttrs (oldAttrs: {
+    version = "7.4.162";
+    src = pkgs.fetchurl {
+      url = "https://dl.ubnt.com/unifi/7.4.162/unifi_sysvinit_all.deb";
+      sha256 = "069652f793498124468c985537a569f3fe1d8dd404be3fb69df6b2d18b153c4c";
+    };
+  });
+in
 {
   imports = [
     ./hardware-configuration.nix
   ];
 
   networking.hostName = "smart-blender";
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    6443 # Kubernetes API Server
-    3389 # RDP
-    80
-    443
-  ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      6443 # Kubernetes API Server
+      3389 # RDP
+      80
+      443
+      8443 # Unifi
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     lightly-qt
@@ -20,6 +36,7 @@
     k3s
     chromium
     mpv
+    customUnifi
   ];
 
   services.k3s = {
@@ -30,6 +47,13 @@
     ];
   };
   systemd.services.k3s.path = [ pkgs.ipset ];
+
+  services.unifi = {
+    enable = true;
+    openFirewall = true;
+    unifiPackage = customUnifi;
+    # jrePackage = unstablePkgs.jdk;
+  };
 
   programs.steam.enable = true;
   services.vscode-server.enable = true;
