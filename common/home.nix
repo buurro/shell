@@ -161,11 +161,11 @@
   };
 
   home.file.".config/starship.toml".source = ./config/starship.toml;
-  home.file.".config/nvim".source = pkgs.fetchFromGitHub
-    {
-      owner = "AstroNvim";
-      repo = "AstroNvim";
-      rev = "v3.28.3";
-      sha256 = "0jzhiyjlnzwvfvqyxzskhy2paf4ys6vfbdyxfd2fm1dbzp6d4a7a";
-    };
+  home.file.".config/nvim".source = pkgs.fetchFromGitHub {
+    owner = "AstroNvim";
+    repo = "AstroNvim";
+    rev = "v3.28.3";
+    sha256 = "0jzhiyjlnzwvfvqyxzskhy2paf4ys6vfbdyxfd2fm1dbzp6d4a7a";
+  };
+  home.file.".iterm2_shell_integration.zsh".source = ./config/iterm2_shell_integration.zsh;
 }
