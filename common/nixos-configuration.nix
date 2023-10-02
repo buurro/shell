@@ -6,6 +6,7 @@
     htop
     vim
     wget
+    borgbackup
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -21,6 +22,10 @@
     enable = true;
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
+  };
+
+  environment.shellAliases = {
+    backups_keygen = "ssh-keygen -t ed25519 -C \"`hostname`-backups\" -f ~/.ssh/backups_ed25519";
   };
 
   time.timeZone = lib.mkDefault "Europe/Rome";
