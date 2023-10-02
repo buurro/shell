@@ -71,6 +71,16 @@ in
 
   programs.steam.enable = true;
   services.vscode-server.enable = true;
+
+  services.borgbackup.jobs.downloads-marco = {
+    paths = "/home/marco/Downloads";
+    encryption.mode = "none";
+    environment.BORG_RSH = "ssh -o 'StrictHostKeyChecking=no' -i /home/marco/.ssh/backups_ed25519";
+    repo = "ssh://backups@qraspi//mnt/nas-backups/smart-blender/downloads-marco";
+    compression = "auto,zstd";
+    startAt = "daily";
+  };
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # other stuff

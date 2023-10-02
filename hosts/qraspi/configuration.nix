@@ -1,5 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 {
+  imports = [
+    ../../modules/backup-server.nix
+  ];
   networking.hostName = "qraspi";
 
   networking.firewall.allowedTCPPorts = [
