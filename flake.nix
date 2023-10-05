@@ -68,6 +68,19 @@
           specialArgs = { inherit inputs; };
         };
 
+        "smart-kettle" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
+            ./hosts/smart-kettle/configuration.nix
+            vscode-server.nixosModules.default
+            home-manager.nixosModules.home-manager
+            nixos-hardware.nixosModules.apple-t2
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "qraspi" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
