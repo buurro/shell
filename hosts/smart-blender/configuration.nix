@@ -39,6 +39,7 @@ in
     discord
     customUnifi
     stepmania
+    pavucontrol
   ];
 
   services.k3s = {
@@ -69,6 +70,13 @@ in
     options = [ "x-systemd.automount" "noauto" ];
   };
 
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "Meslo" ]; })
+    ];
+  };
+
   programs.steam.enable = true;
   services.vscode-server.enable = true;
 
@@ -81,7 +89,13 @@ in
     startAt = "daily";
   };
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "marco" ];
+  };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
 
   # other stuff
 
