@@ -1,5 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  networking.firewall.allowedTCPPorts = [
+    5201 # iperf3
+  ];
+
   environment.systemPackages = with pkgs; [
     curl
     git
@@ -7,6 +11,7 @@
     vim
     wget
     borgbackup
+    iperf3
   ];
 
   security.sudo.wheelNeedsPassword = false;
