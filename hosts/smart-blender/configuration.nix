@@ -80,11 +80,14 @@ in
   programs.steam.enable = true;
   services.vscode-server.enable = true;
 
-  services.borgbackup.jobs.downloads-marco = {
-    paths = "/home/marco/Downloads";
+  services.borgbackup.jobs.${config.networking.hostName} = {
+    paths = [
+      "/home/marco/Downloads"
+      "/home/marco/Documents/github"
+    ];
     encryption.mode = "none";
     environment.BORG_RSH = "ssh -o 'StrictHostKeyChecking=no' -i /home/marco/.ssh/backups_ed25519";
-    repo = "ssh://backups@qraspi//mnt/nas-backups/smart-blender/downloads-marco";
+    repo = "ssh://backups@qraspi//mnt/nas-backups/${config.networking.hostName}";
     compression = "auto,zstd";
     startAt = "daily";
   };
