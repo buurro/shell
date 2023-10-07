@@ -40,6 +40,9 @@ in
     customUnifi
     stepmania
     pavucontrol
+    unstablePkgs.osu-lazer-bin
+    obs-studio
+    unstablePkgs.vscode.fhs
   ];
 
   services.k3s = {
