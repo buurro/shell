@@ -47,6 +47,7 @@
     neofetch
     nixpkgs-fmt
     nodejs-18_x
+    ookla-speedtest
     poetry
     ranger
     rename
