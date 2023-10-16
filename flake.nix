@@ -116,6 +116,16 @@
           ];
           specialArgs = { inherit inputs; };
         };
+        "hyprvm" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
+            ./hosts/hyprvm/configuration.nix
+            home-manager.nixosModules.home-manager
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
       images = {
@@ -147,6 +157,19 @@
           ];
           specialArgs = { inherit inputs; };
         };
+        hyprvm-vbox = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          format = "virtualbox";
+          modules = [
+            ./common/nixos-configuration.nix
+            ./common/nixos-home-manager.nix
+            ./hosts/hyprvm/configuration.nix
+            home-manager.nixosModules.home-manager
+            ({ ... }: { users.users.marco.initialPassword = "marco"; })
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
       };
     };
 }
