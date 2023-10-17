@@ -157,9 +157,9 @@
           ];
           specialArgs = { inherit inputs; };
         };
-        hyprvm-vbox = nixos-generators.nixosGenerate {
+        hyprvm = nixos-generators.nixosGenerate {
           system = "x86_64-linux";
-          format = "virtualbox";
+          format = "vm";
           modules = [
             ./common/nixos-configuration.nix
             ./common/nixos-home-manager.nix
