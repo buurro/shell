@@ -48,6 +48,7 @@
   environment.systemPackages = with pkgs; [
     lightly-qt
     ocs-url
+    qemu
   ];
 
   # Select internationalisation properties.
