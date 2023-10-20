@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
   imports = [
-    ../../modules/backup-server.nix
+    "${inputs.self}/modules/backup-server.nix"
   ];
   networking.hostName = "qraspi";
 

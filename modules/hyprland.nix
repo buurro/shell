@@ -1,7 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }:
+let
+  unstablePkgs = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
+{
+  imports = [
+    ./desktop.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     kitty
-    waybar
     mako
     libnotify
     rofi-wayland
@@ -16,6 +26,15 @@
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
+
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  programs.waybar = {
+    enable = true;
+    package = unstablePkgs.waybar;
+  };
 }
