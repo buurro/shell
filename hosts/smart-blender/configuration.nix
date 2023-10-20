@@ -43,6 +43,7 @@ in
     pavucontrol
     unstablePkgs.osu-lazer-bin
     obs-studio
+    spotify
     unstablePkgs.vscode.fhs
   ];
 
