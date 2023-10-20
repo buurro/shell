@@ -52,6 +52,11 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
+  virtualisation.qemu.options = [
+    "-device virtio-vga-gl"
+    "-display sdl,gl=on,show-cursor=off"
+  ];
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
