@@ -6,7 +6,7 @@
   networking.hostName = "qraspi";
 
   networking.firewall.allowedTCPPorts = [
-    # 2049 # NFS
+    80
   ];
 
   environment.systemPackages = with pkgs; [
@@ -14,6 +14,60 @@
     raspberrypi-eeprom
     kmod
   ];
+
+  services.grafana = {
+    enable = true;
+    settings.server = {
+      domain = "grafana.qraspi.marco.ooo";
+      http_port = 9020;
+      http_addr = "127.0.0.1";
+    };
+  };
+
+  services.prometheus = {
+    enable = true;
+    port = 9021;
+    scrapeConfigs = [{
+      job_name = "${config.networking.hostName}";
+      static_configs = [
+        {
+          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
+        }
+      ];
+    }];
+    exporters = {
+      node = {
+        enable = true;
+        enabledCollectors = [ "systemd" ];
+        port = 9002;
+      };
+    };
+  };
+
+  services.loki = {
+    enable = true;
+    configFile = ./loki-local-config.yaml;
+  };
+
+  systemd.services.promtail = {
+    description = "Promtail service for Loki";
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      ExecStart = ''
+        ${pkgs.grafana-loki}/bin/promtail --config.file ${./promtail.yaml}
+      '';
+    };
+  };
+
+  services.nginx.enable = true;
+  services.nginx.recommendedProxySettings = true;
+  services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
+      proxyWebsockets = true;
+    };
+  };
 
   console.enable = true;
 
