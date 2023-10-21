@@ -18,6 +18,9 @@ in
   networking.hostName = "smart-kettle"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  # https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.systemd-udevd.restartIfChanged = false;
+
   environment.systemPackages = with pkgs; [
     chromium
     mpv
@@ -25,6 +28,7 @@ in
     pavucontrol
     obs-studio
     unstablePkgs.vscode.fhs
+    brightnessctl
   ];
 
   system.stateVersion = "23.05";
