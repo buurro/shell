@@ -209,6 +209,13 @@ in
     options = [ "bind" ];
   };
 
+  fileSystems."/media/movies" = {
+    depends = [ "/mnt/nas-fun" ];
+    device = "/mnt/nas-fun/media/movies";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
   users.users."nas" = {
     uid = 1024;
     isSystemUser = true;
