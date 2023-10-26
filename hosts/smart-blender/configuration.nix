@@ -23,8 +23,7 @@ in
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      6443 # Kubernetes API Server
-      3389 # RDP
+      # 6443 # Kubernetes API Server
       80
       443
       8443 # Unifi
@@ -48,13 +47,14 @@ in
   ];
 
   services.k3s = {
-    enable = true;
+    enable = false;
     role = "server";
     extraFlags = toString [
       "--disable=traefik"
     ];
   };
-  systemd.services.k3s.path = [ pkgs.ipset ];
+  # systemd.services.k3s.path = [ pkgs.ipset ];
+
 
   services.unifi = {
     enable = true;
