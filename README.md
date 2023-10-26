@@ -12,12 +12,16 @@ My macOS + Linux shell setup
 
 - Restart the machine
 
-For new devices:
+### Host: smart-blender
 
-- Add host configuration in [flake.nix](./flake.nix)
+### nginx https:
 
-### Run the installation script
+Create a token in the [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens) with the following permissions:
+ - Zone.Zone
+ - Zone.DNS
 
-```bash
-curl https://shell.marco.ooo/install.sh | bash
+Add the token to the file `/var/lib/secrets/cloudflare-blender-acme` :
+
+```
+CF_DNS_API_TOKEN=<token>
 ```

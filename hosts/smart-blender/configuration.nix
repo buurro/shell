@@ -56,6 +56,22 @@ in
   # systemd.services.k3s.path = [ pkgs.ipset ];
 
 
+  security.acme.acceptTerms = true;
+  security.acme.defaults = {
+    email = "marcoburro98@gmail.com";
+    # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+    group = "nginx";
+    dnsProvider = "cloudflare";
+    credentialsFile = "/var/lib/secrets/cloudflare-blender-acme";
+    dnsPropagationCheck = false;
+  };
+
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+  };
+
   services.unifi = {
     enable = true;
     openFirewall = true;
