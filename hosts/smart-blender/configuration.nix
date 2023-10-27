@@ -193,26 +193,6 @@ in
     options = [ "x-systemd.automount" "noauto" ];
   };
 
-  fileSystems."/mnt/nas-od" = {
-    device = "home-nas:/volume1/od";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
-  };
-
-  fileSystems."/media/anime" = {
-    depends = [ "/mnt/nas-fun" ];
-    device = "/mnt/nas-fun/media/anime";
-    fsType = "none";
-    options = [ "bind" ];
-  };
-
-  fileSystems."/media/movies" = {
-    depends = [ "/mnt/nas-fun" ];
-    device = "/mnt/nas-fun/media/movies";
-    fsType = "none";
-    options = [ "bind" ];
-  };
-
   users.users."nas" = {
     uid = 1024;
     isSystemUser = true;
