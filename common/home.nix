@@ -158,6 +158,7 @@
       extraConfig = ''
         set -g default-terminal "xterm-256color"
       '';
+      plugins = [ pkgs.tmuxPlugins.pain-control ];
     };
   };
 
