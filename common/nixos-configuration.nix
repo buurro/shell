@@ -1,4 +1,16 @@
 { config, pkgs, lib, inputs, ... }:
+let
+  resize = pkgs.writeScriptBin "resize" ''
+    if [ -e /dev/tty ]; then
+      old=$(stty -g)
+      stty raw -echo min 0 time 5
+      printf '\033[18t' > /dev/tty
+      IFS=';t' read -r _ rows cols _ < /dev/tty
+      stty "$old"
+      stty cols "$cols" rows "$rows"
+    fi
+  ''; # https://unix.stackexchange.com/questions/16578/resizable-serial-console-window
+in
 {
   imports = [
     "${inputs.self}/modules/backup.nix"
@@ -38,6 +50,20 @@
   };
 
   time.timeZone = lib.mkDefault "Europe/Rome";
+
+  virtualisation.vmVariant = {
+    virtualisation.graphics = false;
+    virtualisation.qemu.options = [
+      "-append 'console=ttyS0'"
+      "-serial mon:stdio"
+    ];
+    virtualisation.diskSize = 8000;
+    environment.systemPackages = [ resize ];
+    environment.loginShellInit = "${resize}/bin/resize";
+
+    users.users.marco.initialPassword = "marco";
+    security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+  };
 
   nix.settings = {
     experimental-features = lib.mkDefault "nix-command flakes";
