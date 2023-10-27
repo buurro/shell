@@ -170,6 +170,7 @@ in
   services.vscode-server.enable = true;
 
   backup = {
+    server = "qraspi";
     paths = [
       "/home/marco/Downloads"
       "/var/lib/jellyfin"

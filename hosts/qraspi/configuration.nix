@@ -12,7 +12,12 @@
     kmod
   ];
 
-  backup-server.enable = true;
+  backup-server = {
+    enable = true;
+    authorizedKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+x9F9RIvU+yRnPIo3ACcBvUv3CZfPmBVaVNVdMx4Zx smart-blender-backups"
+    ];
+  };
 
   services.grafana = {
     enable = true;

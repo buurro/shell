@@ -12,6 +12,11 @@ with lib;
       default = [ ];
       description = "Paths to backup";
     };
+    server = mkOption {
+      type = types.str;
+      default = "qraspi";
+      description = "Backup server";
+    };
   };
 
   options.backup-server = {
@@ -20,6 +25,11 @@ with lib;
       default = false;
       description = "Enable the backup server";
     };
+    authorizedKeys = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "SSH authorized keys";
+    };
   };
 
   config = mkMerge [
@@ -27,9 +37,7 @@ with lib;
       environment.systemPackages = [ pkgs.borgbackup ];
       users.users.backups = {
         isNormalUser = true;
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+x9F9RIvU+yRnPIo3ACcBvUv3CZfPmBVaVNVdMx4Zx smart-blender-backups"
-        ];
+        openssh.authorizedKeys.keys = config.backup-server.authorizedKeys;
       };
       fileSystems."/mnt/nas-backups" = {
         device = "home-nas:/volume1/backups";
@@ -44,7 +52,7 @@ with lib;
         paths = config.backup.paths;
         encryption.mode = "none";
         environment.BORG_RSH = config.environment.variables.BORG_RSH;
-        repo = "ssh://backups@qraspi//mnt/nas-backups/${config.networking.hostName}";
+        repo = "ssh://backups@${config.backup.server}//mnt/nas-backups/${config.networking.hostName}";
         compression = "auto,zstd";
         startAt = "daily";
       };
