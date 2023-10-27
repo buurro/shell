@@ -72,6 +72,10 @@ in
       speed-limit-up-enabled = true;
     };
   };
+  systemd.services.transmission = {
+    after = [ "mnt-nas\\x2dfun.mount" ];
+    requires = [ "mnt-nas\\x2dfun.mount" ];
+  };
 
   security.acme.acceptTerms = true;
   security.acme.defaults = {
