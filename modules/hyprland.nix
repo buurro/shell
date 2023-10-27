@@ -25,7 +25,7 @@ in
   };
 
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
 
   programs.hyprland = {
     enable = true;
