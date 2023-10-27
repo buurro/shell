@@ -169,16 +169,13 @@ in
 
   services.vscode-server.enable = true;
 
-  services.borgbackup.jobs.${config.networking.hostName} = {
+  backup = {
     paths = [
       "/home/marco/Downloads"
-      "/home/marco/Documents/github"
+      "/var/lib/jellyfin"
+      "/var/lib/unifi"
+      config.services.sonarr.dataDir
     ];
-    encryption.mode = "none";
-    environment.BORG_RSH = "ssh -o 'StrictHostKeyChecking=no' -i /home/marco/.ssh/backups_ed25519";
-    repo = "ssh://backups@qraspi//mnt/nas-backups/${config.networking.hostName}";
-    compression = "auto,zstd";
-    startAt = "daily";
   };
 
   programs = {

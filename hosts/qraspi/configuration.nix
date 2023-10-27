@@ -1,8 +1,5 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  imports = [
-    "${inputs.self}/modules/backup-server.nix"
-  ];
   networking.hostName = "qraspi";
 
   networking.firewall.allowedTCPPorts = [
@@ -14,6 +11,8 @@
     raspberrypi-eeprom
     kmod
   ];
+
+  backup-server.enable = true;
 
   services.grafana = {
     enable = true;

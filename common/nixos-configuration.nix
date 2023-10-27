@@ -1,5 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  imports = [
+    "${inputs.self}/modules/backup.nix"
+  ];
+
   networking.firewall.allowedTCPPorts = [
     5201 # iperf3
   ];
@@ -10,7 +14,6 @@
     htop
     vim
     wget
-    borgbackup
     iperf3
   ];
 
