@@ -104,7 +104,6 @@ in
     openFirewall = true;
     user = "nas";
     group = "users";
-    dataDir = "/mnt/nas-od/sonarr/config";
   };
   security.acme.certs."sonarr.pine.marco.ooo" = { };
   services.nginx.virtualHosts."sonarr.pine.marco.ooo" = {
