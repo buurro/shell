@@ -51,6 +51,7 @@
     poetry
     ranger
     rename
+    ripgrep
     rnix-lsp
     ruff
     sshfs
