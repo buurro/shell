@@ -58,6 +58,7 @@ in
       "-serial mon:stdio"
     ];
     virtualisation.diskSize = 8000;
+    virtualisation.memorySize = 2048;
     environment.systemPackages = [ resize ];
     environment.loginShellInit = "${resize}/bin/resize";
 
