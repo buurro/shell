@@ -67,6 +67,7 @@ in
   networking.vpn = {
     enable = true;
     wgConfigFile = "/var/lib/secrets/wg0.conf";
+    ip = "10.197.52.6/24";
     portForwards = {
       # note: this string becomes the service name
       "portforward-transmission" = {

@@ -14,6 +14,13 @@ in
         type = types.path;
         default = "/var/lib/secrets/wg0.conf";
       };
+      ip = mkOption {
+        type = types.str;
+      };
+      nameserver = mkOption {
+        type = types.str;
+        default = "1.1.1.1";
+      };
       portForwards = mkOption {
         type = types.attrsOf (types.submodule {
           options = {
@@ -50,11 +57,11 @@ in
               ${iproute2}/bin/ip netns add wg
               ${iproute2}/bin/ip netns exec wg ${iproute2}/bin/ip link set dev lo up
               mkdir -p /etc/netns/wg
-              echo "nameserver 1.1.1.1" > /etc/netns/wg/resolv.conf
+              echo "nameserver ${cfg.nameserver}" > /etc/netns/wg/resolv.conf
 
               ${iproute2}/bin/ip link add wg0 type wireguard
               ${iproute2}/bin/ip link set wg0 netns wg
-              ${iproute2}/bin/ip -n wg address add 10.197.52.6/24 dev wg0
+              ${iproute2}/bin/ip -n wg address add ${cfg.ip} dev wg0
               ${iproute2}/bin/ip netns exec wg ${wireguard-tools}/bin/wg setconf wg0 ${cfg.wgConfigFile}
               ${iproute2}/bin/ip -n wg link set wg0 up
               ${iproute2}/bin/ip -n wg route add default dev wg0
