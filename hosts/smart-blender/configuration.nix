@@ -16,6 +16,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    "${inputs.self}/modules/network-stuff.nix"
     "${inputs.self}/modules/hyprland.nix"
   ];
 
@@ -36,6 +37,9 @@ in
     k3s
     chromium
     mpv
+    dig
+    socat
+    traceroute
     discord
     customUnifi
     stepmania
@@ -60,6 +64,21 @@ in
   };
   # systemd.services.k3s.path = [ pkgs.ipset ];
 
+  networking.vpn = {
+    enable = true;
+    wgConfigFile = "/var/lib/secrets/wg0.conf";
+    portForwards = {
+      # note: this string becomes the service name
+      "portforward-transmission" = {
+        localPort = 9091;
+        namespacePort = 9091;
+      };
+    };
+    services = [
+      "transmission"
+    ];
+  };
+
   services.transmission = {
     enable = true;
     openRPCPort = true;
@@ -68,8 +87,11 @@ in
       incomplete-dir = "/mnt/nas-fun/downloads/incomplete";
       watch-dir = "/mnt/nas-fun/downloads/watch";
       watch-dir-enabled = true;
-      speed-limit-up = 100;
+      speed-limit-up = 500;
       speed-limit-up-enabled = true;
+      peer-port = 51414;
+      download-queue-size = 20;
+      rpc-whitelist = "*";
     };
   };
   systemd.services.transmission = {
