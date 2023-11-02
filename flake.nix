@@ -93,18 +93,6 @@
           specialArgs = { inherit inputs; };
         };
 
-        "wraspi" = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
-            ./hosts/wraspi/configuration.nix
-            nixos-hardware.nixosModules.raspberry-pi-4
-            home-manager.nixosModules.home-manager
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
         "burro-hp" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
