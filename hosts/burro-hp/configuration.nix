@@ -8,6 +8,7 @@
   networking.hostName = "burro-hp"; # Define your hostname.
 
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [ 3389 ];
 
   services.xserver = {
