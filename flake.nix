@@ -121,10 +121,6 @@
           modules = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix" ];
         }).config.system.build.sdImage;
 
-        wraspi = (self.nixosConfigurations.wraspi.extendModules {
-          modules = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix" ];
-        }).config.system.build.sdImage;
-
         vbox = nixos-generators.nixosGenerate {
           system = "x86_64-linux";
           format = "virtualbox";
