@@ -50,6 +50,7 @@ in
     obs-studio
     spotify
     unstablePkgs.vscode.fhs
+    unstablePkgs.prismlauncher
 
     # jellyfin hardware acceleration
     vaapiVdpau
