@@ -12,6 +12,7 @@ let
       sha256 = "069652f793498124468c985537a569f3fe1d8dd404be3fb69df6b2d18b153c4c";
     };
   });
+  secretsPath = "/var/lib/secrets";
 in
 {
   imports = [
@@ -67,7 +68,7 @@ in
 
   networking.vpn = {
     enable = true;
-    wgConfigFile = "/var/lib/secrets/wg0.conf";
+    wgConfigFile = "${secretsPath}/wg0.conf";
     ip = "10.197.52.6/24";
     portForwards = {
       # note: this string becomes the service name
@@ -107,7 +108,7 @@ in
     # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
     group = "nginx";
     dnsProvider = "cloudflare";
-    credentialsFile = "/var/lib/secrets/cloudflare-blender-acme";
+    credentialsFile = "${secretsPath}/cloudflare-blender-acme";
     dnsPropagationCheck = false;
   };
 
