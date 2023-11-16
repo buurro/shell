@@ -235,6 +235,7 @@ in
   };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
