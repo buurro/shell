@@ -51,6 +51,7 @@ in
     spotify
     unstablePkgs.vscode.fhs
     unstablePkgs.prismlauncher
+    unstablePkgs.jellyfin-media-player
 
     # jellyfin hardware acceleration
     vaapiVdpau
