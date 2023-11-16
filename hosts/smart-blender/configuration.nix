@@ -17,7 +17,8 @@ in
   imports = [
     ./hardware-configuration.nix
     "${inputs.self}/modules/network-stuff.nix"
-    "${inputs.self}/modules/hyprland.nix"
+    # "${inputs.self}/modules/hyprland.nix"
+    "${inputs.self}/modules/kde.nix"
   ];
 
   networking.hostName = "smart-blender";
