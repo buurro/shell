@@ -78,9 +78,14 @@ in
         localPort = 9091;
         namespacePort = 9091;
       };
+      "portforward-jellyfin" = {
+        localPort = 8096;
+        namespacePort = 8096;
+      };
     };
     services = [
       "transmission"
+      "jellyfin"
     ];
   };
 
