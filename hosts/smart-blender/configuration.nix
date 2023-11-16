@@ -204,6 +204,7 @@ in
       "/var/lib/jellyfin"
       "/var/lib/unifi"
       config.services.sonarr.dataDir
+      secretsPath
     ];
   };
 
