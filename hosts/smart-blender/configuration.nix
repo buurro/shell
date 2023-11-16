@@ -102,6 +102,8 @@ in
       peer-port = 51414;
       download-queue-size = 20;
       rpc-whitelist = "*";
+      ratio-limit-enabled = true;
+      ratio-limit = 5;
     };
   };
   systemd.services.transmission = {
