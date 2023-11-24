@@ -107,7 +107,7 @@ in
   services.karabiner-elements.enable = false;
 
   services.yabai = {
-    enable = true;
+    enable = false;
     enableScriptingAddition = true;
 
     extraConfig = ''
@@ -159,7 +159,7 @@ in
   };
 
   services.skhd = {
-    enable = true;
+    enable = false;
     skhdConfig = ''
       # https://github.com/koekeishiya/yabai/wiki/Commands#focus-display
       # https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
