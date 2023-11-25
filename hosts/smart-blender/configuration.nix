@@ -5,13 +5,6 @@ let
     config.allowUnfree = true;
   };
 
-  customUnifi = pkgs.unifi.overrideAttrs (oldAttrs: {
-    version = "7.4.162";
-    src = pkgs.fetchurl {
-      url = "https://dl.ubnt.com/unifi/7.4.162/unifi_sysvinit_all.deb";
-      sha256 = "069652f793498124468c985537a569f3fe1d8dd404be3fb69df6b2d18b153c4c";
-    };
-  });
   secretsPath = "/var/lib/secrets";
 in
 {
@@ -43,7 +36,6 @@ in
     socat
     traceroute
     discord
-    customUnifi
     stepmania
     pavucontrol
     unstablePkgs.osu-lazer-bin
@@ -170,7 +162,13 @@ in
   services.unifi = {
     enable = true;
     openFirewall = true;
-    unifiPackage = customUnifi;
+    unifiPackage = pkgs.unifi.overrideAttrs (oldAttrs: {
+      version = "7.4.162";
+      src = pkgs.fetchurl {
+        url = "https://dl.ubnt.com/unifi/7.4.162/unifi_sysvinit_all.deb";
+        sha256 = "069652f793498124468c985537a569f3fe1d8dd404be3fb69df6b2d18b153c4c";
+      };
+    });
   };
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
     listen = [
