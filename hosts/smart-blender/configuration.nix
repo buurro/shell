@@ -89,13 +89,13 @@ in
       incomplete-dir = "/mnt/nas-fun/downloads/incomplete";
       watch-dir = "/mnt/nas-fun/downloads/watch";
       watch-dir-enabled = true;
-      speed-limit-up = 500;
+      speed-limit-up = 1000;
       speed-limit-up-enabled = true;
       peer-port = 51414;
       download-queue-size = 20;
       rpc-whitelist = "*";
       ratio-limit-enabled = true;
-      ratio-limit = 5;
+      ratio-limit = 3;
     };
   };
   systemd.services.transmission = {
