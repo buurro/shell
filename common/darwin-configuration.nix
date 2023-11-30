@@ -1,8 +1,19 @@
 { config, pkgs, inputs, ... }:
 let
+  unstablePkgs = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+  };
+
   python-and-friends = pkgs.python311.withPackages (
     ps: with ps; [ pip pipx black ]
   );
+
+  spotify-volume-control = pkgs.fetchFromGitHub {
+    owner = "buurro";
+    repo = "spotify-volume-skhd";
+    rev = "main";
+    sha256 = "sha256-JCVo2WMkn9OgKAzjofvFotU/nPpwHh/bMiq0s7XmY2s=";
+  };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -159,7 +170,8 @@ in
   };
 
   services.skhd = {
-    enable = false;
+    enable = true;
+    package = unstablePkgs.skhd;
     skhdConfig = ''
       # https://github.com/koekeishiya/yabai/wiki/Commands#focus-display
       # https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
@@ -214,13 +226,13 @@ in
       alt - f         : yabai -m window --toggle zoom-fullscreen
       
       # Toggle padding on/off
-      alt - g         : yabai -m space --toggle padding --toggle gap
+      # alt - g         : yabai -m space --toggle padding --toggle gap
       
       # Disable padding overall
       alt - y         : yabai -m config top_padding 0 \ yabai -m config bottom_padding 0 \ yabai -m config left_padding 0 \ yabai -m config right_padding 0 \ yabai -m config window_gap 0
       alt - u         : yabai -m config window_gap 12
       # Toggle floating/bsp
-      alt - h         : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+      # alt - h         : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
       # Change desktop
       alt - 1 : yabai -m space --focus 1
@@ -237,6 +249,9 @@ in
       # Control Audio Output Device
       # alt - e : SwitchAudioSource -s "FiiO K5 Pro"
       # alt - r : SwitchAudioSource -s "MacBook Pro Speakers"
+
+      alt - g : ${spotify-volume-control}/spotify-volume-down
+      alt - h : ${spotify-volume-control}/spotify-volume-up
     '';
   };
 
