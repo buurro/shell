@@ -62,8 +62,13 @@ in
     environment.systemPackages = [ resize ];
     environment.loginShellInit = "${resize}/bin/resize";
 
+    services.xserver.enable = false;
+    services.xserver.displayManager.sddm.enable = false;
+    services.xserver.desktopManager.plasma5.enable = false;
+
     users.users.marco.initialPassword = "marco";
-    security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+    security.acme.defaults.server = "https://127.0.0.1";
+    security.acme.preliminarySelfsigned = true;
   };
 
   nix.settings = {
