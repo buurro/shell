@@ -112,6 +112,9 @@ in
     credentialsFile = "${secretsPath}/cloudflare-blender-acme";
     dnsPropagationCheck = false;
   };
+  security.acme.certs."pine.marco.ooo" = {
+    extraDomainNames = [ "*.pine.marco.ooo" ];
+  };
 
   services.nginx = {
     enable = true;
@@ -135,10 +138,9 @@ in
     user = "nas";
     group = "users";
   };
-  security.acme.certs."sonarr.pine.marco.ooo" = { };
   services.nginx.virtualHosts."sonarr.pine.marco.ooo" = {
     forceSSL = true;
-    useACMEHost = "sonarr.pine.marco.ooo";
+    useACMEHost = "pine.marco.ooo";
     locations."/" = {
       proxyPass = "http://localhost:8989";
       proxyWebsockets = true;
@@ -149,10 +151,9 @@ in
     enable = true;
     openFirewall = true;
   };
-  security.acme.certs."jellyfin.pine.marco.ooo" = { };
   services.nginx.virtualHosts."jellyfin.pine.marco.ooo" = {
     forceSSL = true;
-    useACMEHost = "jellyfin.pine.marco.ooo";
+    useACMEHost = "pine.marco.ooo";
     locations."/" = {
       proxyPass = "http://localhost:8096";
       proxyWebsockets = true;
