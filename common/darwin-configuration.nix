@@ -167,7 +167,7 @@ in
 
   services.skhd = {
     enable = true;
-    package = skhd;
+    package = pkgs.skhd;
     skhdConfig = ''
       # https://github.com/koekeishiya/yabai/wiki/Commands#focus-display
       # https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
