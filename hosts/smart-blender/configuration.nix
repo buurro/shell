@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 let
   unstablePkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
@@ -22,7 +22,6 @@ in
     allowedTCPPorts = [
       # 6443 # Kubernetes API Server
       # 3389 # RDP
-      # 8443 # Unifi
       80
       443
     ];
@@ -160,17 +159,21 @@ in
     };
   };
 
+
   services.unifi = {
     enable = true;
     openFirewall = true;
-    unifiPackage = pkgs.unifi.overrideAttrs (oldAttrs: {
+    unifiPackage = pkgs.unifi7.overrideAttrs (oldAttrs: {
       version = "7.4.162";
       src = pkgs.fetchurl {
         url = "https://dl.ubnt.com/unifi/7.4.162/unifi_sysvinit_all.deb";
         sha256 = "069652f793498124468c985537a569f3fe1d8dd404be3fb69df6b2d18b153c4c";
       };
     });
+    jrePackage = pkgs.jdk11;
+    mongodbPackage = pkgs.mongodb-4_4;
   };
+
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
     listen = [
       {
