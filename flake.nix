@@ -8,7 +8,6 @@
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
