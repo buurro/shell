@@ -34,6 +34,7 @@
     cmctl
     duf
     file
+    fluxcd
     gh
     htop
     httpie
@@ -45,8 +46,8 @@
     lazydocker
     lazygit
     neofetch
+    nix-tree
     nixpkgs-fmt
-    nodejs-18_x
     ookla-speedtest
     poetry
     ranger
@@ -57,8 +58,6 @@
     terraform
     wget
     yt-dlp
-
-    fluxcd
   ];
 
   home.shellAliases = {
