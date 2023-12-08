@@ -81,7 +81,7 @@ in
 
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [
+    fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "Meslo" ]; })
     ];
   };
