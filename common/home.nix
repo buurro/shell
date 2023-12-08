@@ -110,12 +110,12 @@
       run() {
         _pkg=$1
         shift
-        nix run "nixpkgs/23.05#$_pkg" -- $*
+        nix run "nixpkgs/${inputs.nixpkgs.rev}#$_pkg" -- $*
         unset _pkg
       }
 
       shell() {
-        nix shell "nixpkgs/23.05#$1"
+        nix shell "nixpkgs/${inputs.nixpkgs.rev}#$1"
       }
     '';
   };
