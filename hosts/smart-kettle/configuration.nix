@@ -1,10 +1,4 @@
 { config, pkgs, inputs, nixos-hardware, ... }:
-let
-  unstablePkgs = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -27,7 +21,7 @@ in
     discord
     pavucontrol
     obs-studio
-    unstablePkgs.vscode.fhs
+    vscode.fhs
     brightnessctl
   ];
 

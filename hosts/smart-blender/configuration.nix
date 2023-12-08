@@ -1,12 +1,4 @@
 { config, pkgs, inputs, lib, ... }:
-let
-  unstablePkgs = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
-
-  secretsPath = "/var/lib/secrets";
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -37,12 +29,12 @@ in
     discord
     stepmania
     pavucontrol
-    unstablePkgs.osu-lazer-bin
+    osu-lazer-bin
     obs-studio
     spotify
-    unstablePkgs.vscode.fhs
-    unstablePkgs.prismlauncher
-    unstablePkgs.jellyfin-media-player
+    vscode.fhs
+    prismlauncher
+    jellyfin-media-player
 
     # jellyfin hardware acceleration
     vaapiVdpau
@@ -61,7 +53,7 @@ in
 
   networking.vpn = {
     enable = true;
-    wgConfigFile = "${secretsPath}/wg0.conf";
+    wgConfigFile = "/var/lib/secrets/wg0.conf";
     ip = "10.197.52.6/24";
     portForwards = {
       # note: this string becomes the service name
@@ -108,7 +100,7 @@ in
     # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
     group = "nginx";
     dnsProvider = "cloudflare";
-    credentialsFile = "${secretsPath}/cloudflare-blender-acme";
+    credentialsFile = "/var/lib/secrets/cloudflare-blender-acme";
     dnsPropagationCheck = false;
   };
   security.acme.certs."pine.marco.ooo" = {
@@ -215,7 +207,7 @@ in
       "/var/lib/jellyfin"
       "/var/lib/unifi"
       config.services.sonarr.dataDir
-      secretsPath
+      "/var/lib/secrets"
     ];
   };
 

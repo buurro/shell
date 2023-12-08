@@ -58,7 +58,7 @@
     wget
     yt-dlp
 
-    inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.fluxcd
+    fluxcd
   ];
 
   home.shellAliases = {

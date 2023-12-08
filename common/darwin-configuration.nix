@@ -1,9 +1,5 @@
 { config, pkgs, inputs, ... }:
 let
-  unstablePkgs = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-  };
-
   python-and-friends = pkgs.python311.withPackages (
     ps: with ps; [ pip pipx black ]
   );
@@ -171,7 +167,7 @@ in
 
   services.skhd = {
     enable = true;
-    package = unstablePkgs.skhd;
+    package = skhd;
     skhdConfig = ''
       # https://github.com/koekeishiya/yabai/wiki/Commands#focus-display
       # https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc

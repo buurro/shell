@@ -1,10 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  unstablePkgs = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config.allowUnfree = true;
-  };
-in
 {
   imports = [
     ./desktop.nix
@@ -30,7 +24,7 @@ in
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    package = unstablePkgs.hyprland;
+    package = hyprland;
   };
 
   xdg.portal.enable = true;
@@ -38,6 +32,6 @@ in
 
   programs.waybar = {
     enable = true;
-    package = unstablePkgs.waybar;
+    package = waybar;
   };
 }
