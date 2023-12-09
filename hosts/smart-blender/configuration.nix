@@ -206,6 +206,7 @@
       "/home/marco/Downloads"
       "/var/lib/jellyfin"
       "/var/lib/unifi"
+      "/var/log/unifi"
       config.services.sonarr.dataDir
       "/var/lib/secrets"
     ];
