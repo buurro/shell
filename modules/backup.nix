@@ -52,7 +52,7 @@ with lib;
         paths = config.backup.paths;
         encryption.mode = "none";
         environment.BORG_RSH = config.environment.variables.BORG_RSH;
-        repo = "ssh://backups@${config.backup.server}//mnt/nas-backups/${config.networking.hostName}";
+        repo = "ssh://backups@${config.backup.server}/mnt/nas-backups/${config.networking.hostName}";
         compression = "auto,zstd";
         startAt = "daily";
       };
