@@ -55,7 +55,6 @@
     ripgrep
     rnix-lsp
     sshfs
-    terraform
     wget
     yt-dlp
   ];
