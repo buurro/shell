@@ -151,7 +151,6 @@
     };
   };
 
-
   services.unifi = {
     enable = true;
     openFirewall = true;
@@ -244,6 +243,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   system.stateVersion = "23.05";
 }
