@@ -51,6 +51,9 @@
   };
   # systemd.services.k3s.path = [ pkgs.ipset ];
 
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ "marco" ];
+
   networking.vpn = {
     enable = true;
     wgConfigFile = "/var/lib/secrets/wg0.conf";
