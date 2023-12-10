@@ -46,6 +46,7 @@
     lazydocker
     lazygit
     neofetch
+    nil
     nix-tree
     nixpkgs-fmt
     ookla-speedtest
