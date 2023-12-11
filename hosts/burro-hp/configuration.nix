@@ -36,6 +36,9 @@
     ];
   };
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "marco" ];
+
   virtualisation.docker.enable = true;
   services.globalprotect.enable = true;
   services.vscode-server.enable = true;
