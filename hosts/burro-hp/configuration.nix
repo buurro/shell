@@ -24,6 +24,13 @@
   services.xrdp.defaultWindowManager = "startplasma-x11";
   services.openssh.settings.X11Forwarding = true;
 
+  nix.settings.substituters = [
+    "https://nix-cache.ambercom.tech"
+  ];
+  nix.settings.trusted-public-keys = [
+    "nix-cache.ambercom.tech:XNEVMOX3/z3PJqILF58XWdVGv91SbJNqZDlcVk3kUtE="
+  ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
     extraGroups = [ "docker" ];
