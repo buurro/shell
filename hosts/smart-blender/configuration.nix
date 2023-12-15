@@ -157,15 +157,7 @@
   services.unifi = {
     enable = true;
     openFirewall = true;
-    unifiPackage = pkgs.unifi7.overrideAttrs (oldAttrs: {
-      version = "7.4.162";
-      src = pkgs.fetchurl {
-        url = "https://dl.ubnt.com/unifi/7.4.162/unifi_sysvinit_all.deb";
-        sha256 = "069652f793498124468c985537a569f3fe1d8dd404be3fb69df6b2d18b153c4c";
-      };
-    });
-    jrePackage = pkgs.jdk11;
-    mongodbPackage = pkgs.mongodb-4_4;
+    unifiPackage = pkgs.unifi7;
   };
 
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
@@ -199,6 +191,12 @@
       }
     '';
   };
+
+  # services.github-runners."roba" = {
+  #   url = "https://github.com/buurro/test-self-hosted-runner";
+  #   tokenFile = "/var/lib/secrets/github-runner-token";
+  #   extraPackages = [ pkgs.docker ];
+  # };
 
   services.vscode-server.enable = true;
 
