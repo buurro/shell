@@ -114,7 +114,11 @@
       }
 
       shell() {
-        nix shell "nixpkgs/${inputs.nixpkgs.rev}#$1"
+        _pkgs=()
+        for _pkg in "$@"; do
+          _pkgs+=("nixpkgs/${inputs.nixpkgs.rev}#$_pkg")
+        done
+        nix shell "''${_pkgs[@]}"
       }
     '';
   };
