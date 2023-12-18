@@ -192,12 +192,6 @@
     '';
   };
 
-  # services.github-runners."roba" = {
-  #   url = "https://github.com/buurro/test-self-hosted-runner";
-  #   tokenFile = "/var/lib/secrets/github-runner-token";
-  #   extraPackages = [ pkgs.docker ];
-  # };
-
   services.vscode-server.enable = true;
 
   backup = {
