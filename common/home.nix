@@ -45,6 +45,7 @@
     kubeseal
     lazydocker
     lazygit
+    mc
     neofetch
     nil
     nix-tree
