@@ -24,7 +24,6 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    package = hyprland;
   };
 
   xdg.portal.enable = true;
@@ -32,6 +31,5 @@
 
   programs.waybar = {
     enable = true;
-    package = waybar;
   };
 }
