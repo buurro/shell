@@ -10,10 +10,6 @@
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
-    # builders = [
-    #   "ssh://marco@blender.marco.ooo x86_64-linux /Users/marco/.ssh/id_rsa - - - - c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSU9nMkxKSUp2ajdpMEE1TFIxWGc0eG4vSWhwRWRaVTFOMnJEdGxmSVgxeTkgcm9vdEBuaXhvcwo="
-    # ];
-    # builders-use-substitutes = true;
   };
 
   home.stateVersion = "23.05";
