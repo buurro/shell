@@ -86,7 +86,7 @@ in
     trackpad.TrackpadThreeFingerDrag = true;
     trackpad.Clicking = true; # tap to click
 
-    NSGlobalDomain.KeyRepeat = 2;
+    NSGlobalDomain.KeyRepeat = 1;
     NSGlobalDomain.InitialKeyRepeat = 25;
     NSGlobalDomain.AppleKeyboardUIMode = 3; # navigate ui with keyboard
     NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
