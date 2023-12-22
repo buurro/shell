@@ -76,7 +76,16 @@ in
     trusted-users = [ "root" "@wheel" ];
   };
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:buurro/shell";
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
+
   nixpkgs.config.allowUnfree = true;
+
+  system.stateVersion = lib.mkDefault "23.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }
