@@ -40,6 +40,7 @@
     nix-tree
     nixpkgs-fmt
     nnn
+    nushell
     ookla-speedtest
     poetry
     ranger
