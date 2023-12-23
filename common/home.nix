@@ -39,6 +39,7 @@
     nil
     nix-tree
     nixpkgs-fmt
+    nnn
     ookla-speedtest
     poetry
     ranger
