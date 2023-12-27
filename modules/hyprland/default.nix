@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ./desktop.nix
+    ../desktop.nix
   ];
 
   environment.systemPackages = with pkgs; [
