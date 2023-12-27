@@ -153,6 +153,20 @@
     };
   };
 
+  services.komga = {
+    enable = true;
+    port = 8282;
+    openFirewall = true;
+  };
+  services.nginx.virtualHosts."komga.pine.marco.ooo" = {
+    forceSSL = true;
+    useACMEHost = "pine.marco.ooo";
+    locations."/" = {
+      proxyPass = "http://localhost:${toString config.services.komga.port}";
+      proxyWebsockets = true;
+    };
+  };
+
   services.unifi = {
     enable = true;
     openFirewall = true;
@@ -202,6 +216,7 @@
       "/var/log/unifi"
       config.services.sonarr.dataDir
       "/var/lib/secrets"
+      "/var/lib/komga"
     ];
   };
 
