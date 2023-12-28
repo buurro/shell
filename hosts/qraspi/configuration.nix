@@ -1,5 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  imports = [
+    "${inputs.self}/common/nixos-configuration.nix"
+    "${inputs.self}/common/nixos-home-manager.nix"
+  ];
   networking.hostName = "qraspi";
 
   networking.firewall.allowedTCPPorts = [

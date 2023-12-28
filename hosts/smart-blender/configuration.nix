@@ -2,6 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+    "${inputs.self}/common/nixos-configuration.nix"
+    "${inputs.self}/common/nixos-home-manager.nix"
     "${inputs.self}/modules/network-stuff.nix"
     "${inputs.self}/modules/hyprland/default.nix"
   ];

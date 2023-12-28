@@ -57,24 +57,8 @@
         "smart-blender" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
             ./hosts/smart-blender/configuration.nix
             vscode-server.nixosModules.default
-            home-manager.nixosModules.home-manager
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
-        "smart-kettle" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
-            ./hosts/smart-kettle/configuration.nix
-            vscode-server.nixosModules.default
-            home-manager.nixosModules.home-manager
-            nixos-hardware.nixosModules.apple-t2
           ];
           specialArgs = { inherit inputs; };
         };
@@ -82,11 +66,8 @@
         "qraspi" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
             ./hosts/qraspi/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
-            home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
@@ -94,21 +75,16 @@
         "burro-hp" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
             ./hosts/burro-hp/configuration.nix
             vscode-server.nixosModules.default
-            home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
+
         "hyprvm" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
             ./hosts/hyprvm/configuration.nix
-            home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
@@ -119,39 +95,15 @@
           modules = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix" ];
         }).config.system.build.sdImage;
 
-        vbox = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          format = "virtualbox";
-          modules = [
-            ./common/nixos-configuration.nix
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
         vm = nixos-generators.nixosGenerate {
           system = "x86_64-linux";
           format = "vm-nogui";
           modules = [
             ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
-            home-manager.nixosModules.home-manager
             ({ ... }: { users.users.marco.initialPassword = "marco"; })
           ];
           specialArgs = { inherit inputs; };
         };
-        hyprvm = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          format = "vm";
-          modules = [
-            ./common/nixos-configuration.nix
-            ./common/nixos-home-manager.nix
-            ./hosts/hyprvm/configuration.nix
-            home-manager.nixosModules.home-manager
-            ({ ... }: { users.users.marco.initialPassword = "marco"; })
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
       };
     };
 }

@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    "${inputs.self}/common/nixos-configuration.nix"
+    "${inputs.self}/common/nixos-home-manager.nix"
   ];
 
   networking.hostName = "burro-hp"; # Define your hostname.
