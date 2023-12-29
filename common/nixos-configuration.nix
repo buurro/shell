@@ -85,5 +85,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  system.stateVersion = lib.mkDefault "23.11";
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }
