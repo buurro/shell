@@ -97,6 +97,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "22.11";
