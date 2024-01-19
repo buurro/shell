@@ -13,15 +13,12 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      # 6443 # Kubernetes API Server
-      # 3389 # RDP
       80
       443
     ];
   };
 
   environment.systemPackages = with pkgs; [
-    k3s
     chromium
     mpv
     dig
@@ -42,15 +39,6 @@
     libvdpau-va-gl
     libva-utils
   ];
-
-  services.k3s = {
-    enable = false;
-    role = "server";
-    extraFlags = toString [
-      "--disable=traefik"
-    ];
-  };
-  # systemd.services.k3s.path = [ pkgs.ipset ];
 
   virtualisation.docker.enable = true;
   users.extraGroups.docker.members = [ "marco" ];
@@ -241,12 +229,6 @@
     uid = 1024;
     isSystemUser = true;
     group = "users";
-  };
-
-  users.users."vm" = {
-    isNormalUser = true;
-    shell = "${inputs.self.images.vm}/bin/run-nixos-vm";
-    openssh.authorizedKeys.keys = config.users.users.marco.openssh.authorizedKeys.keys;
   };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
