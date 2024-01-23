@@ -5,25 +5,14 @@
     ./hardware-configuration.nix
     "${inputs.self}/common/nixos-configuration.nix"
     "${inputs.self}/common/nixos-home-manager.nix"
+    "${inputs.self}/modules/kde.nix"
   ];
 
   networking.hostName = "burro-hp"; # Define your hostname.
 
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
-  networking.firewall.allowedTCPPorts = [ 3389 ];
 
-  services.xserver = {
-    enable = true;
-    displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
-
-    # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "";
-  };
-  services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startplasma-x11";
   services.openssh.settings.X11Forwarding = true;
 
   nix.settings.substituters = [
@@ -36,13 +25,6 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
     extraGroups = [ "docker" ];
-    packages = with pkgs; [
-      chromium
-      firefox
-      kate
-      globalprotect-openconnect
-      libreoffice-qt
-    ];
   };
 
   virtualisation.virtualbox.host.enable = true;
@@ -59,38 +41,16 @@
   };
 
   environment.systemPackages = with pkgs; [
+    chromium
+    firefox
+    globalprotect-openconnect
+    kate
+    libreoffice-qt
     lightly-qt
     ocs-url
     qemu
+    ruff
   ];
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "it_IT.UTF-8";
-    LC_IDENTIFICATION = "it_IT.UTF-8";
-    LC_MEASUREMENT = "it_IT.UTF-8";
-    LC_MONETARY = "it_IT.UTF-8";
-    LC_NAME = "it_IT.UTF-8";
-    LC_NUMERIC = "it_IT.UTF-8";
-    LC_PAPER = "it_IT.UTF-8";
-    LC_TELEPHONE = "it_IT.UTF-8";
-    LC_TIME = "it_IT.UTF-8";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
