@@ -1,7 +1,11 @@
 format = "$all$username$hostname $character"
 
+[character]
+success_symbol = '[❯](bold red)[❯](bold yellow)[❯](bold green)'
+error_symbol = '[❯❯❯](bold red)'
+
 [hostname]
-ssh_only = false
+ssh_only = true
 ssh_symbol = " "
 format = "[$ssh_symbol$hostname]($style)"
 
