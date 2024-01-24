@@ -1,4 +1,4 @@
-format = "$all$username$hostname $character"
+format = "$all($username$hostname )$character"
 
 [character]
 success_symbol = '[❯](bold red)[❯](bold yellow)[❯](bold green)'
