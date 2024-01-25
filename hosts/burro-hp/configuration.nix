@@ -52,6 +52,9 @@
     ruff
   ];
 
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "startplasma-x11";
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
