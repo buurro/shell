@@ -10,43 +10,57 @@ ssh_symbol = " "
 format = "[$ssh_symbol$hostname]($style)"
 
 [aws]
+disabled = true
 format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]"
 symbol = "  "
 
+[battery]
+disabled = true
+
 [buf]
+disabled = true
 symbol = " "
 
 [bun]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [c]
+disabled = true
 format = "\\[[$symbol($version(-$name))]($style)\\]"
 symbol = " "
 
 [cmake]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [cmd_duration]
 format = "\\[[⏱ $duration]($style)\\]"
 
 [cobol]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [conda]
+disabled = true
 format = "\\[[$symbol$environment]($style)\\]"
 symbol = " "
 
 [crystal]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [daml]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [dart]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [deno]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [directory]
@@ -55,24 +69,30 @@ truncate_to_repo = false
 truncation_length = 8
 
 [docker_context]
+disabled = true
 format = "\\[[$symbol$context]($style)\\]"
 symbol = " "
 
 [dotnet]
+disabled = true
 format = "\\[[$symbol($version)(🎯 $tfm)]($style)\\]"
 
 [elixir]
+disabled = true
 format = "\\[[$symbol($version \\(OTP $otp_version\\))]($style)\\]"
 symbol = " "
 
 [elm]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [erlang]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [gcloud]
+disabled = true
 format = "\\[[$symbol$account(@$domain)(\\($region\\))]($style)\\]"
 
 [git_branch]
@@ -83,43 +103,54 @@ symbol = " "
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [golang]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [haskell]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [helm]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [hg_branch]
+disabled = true
 format = "\\[[$symbol$branch]($style)\\]"
 symbol = " "
 
 [java]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [julia]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [kotlin]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [kubernetes]
+disabled = true
 format = "\\[[$symbol$context( \\($namespace\\))]($style)\\]"
 
 [lua]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [memory_usage]
+disabled = true
 format = "\\[$symbol[$ram( | $swap)]($style)\\]"
 symbol = " "
 
 [nim]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
@@ -134,9 +165,11 @@ format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [ocaml]
+disabled = true
 format = "\\[[$symbol($version)(\\($switch_indicator$switch_name\\))]($style)\\]"
 
 [openstack]
+disabled = true
 format = "\\[[$symbol$cloud(\\($project\\))]($style)\\]"
 
 [package]
@@ -145,6 +178,7 @@ format = "\\[[$symbol$version]($style)\\]"
 symbol = " "
 
 [perl]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [php]
@@ -152,9 +186,11 @@ format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [pulumi]
+disabled = true
 format = "\\[[$symbol$stack]($style)\\]"
 
 [purescript]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [python]
@@ -162,15 +198,19 @@ format = "\\[[${symbol}${pyenv_prefix}(${version})(\\($virtualenv\\))]($style)\\
 symbol = " "
 
 [raku]
+disabled = true
 format = "\\[[$symbol($version-$vm_version)]($style)\\]"
 
 [red]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [rlang]
+disabled = true
 symbol = "ﳒ "
 
 [ruby]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
@@ -180,10 +220,12 @@ format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [scala]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = " "
 
 [spack]
+disabled = true
 format = "\\[[$symbol$environment]($style)\\]"
 symbol = "🅢 "
 
@@ -191,9 +233,11 @@ symbol = "🅢 "
 format = "\\[[as $symbol]\\]"
 
 [swift]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [terraform]
+disabled = true
 format = "\\[[$symbol$workspace]($style)\\]"
 
 [time]
@@ -208,7 +252,9 @@ disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [vlang]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [zig]
+disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
