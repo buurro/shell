@@ -30,7 +30,10 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "marco" ];
 
+  virtualisation.vmware.host.enable = true;
+
   virtualisation.docker.enable = true;
+
   services.globalprotect.enable = true;
   services.vscode-server.enable = true;
 
@@ -52,7 +55,6 @@
     ruff
   ];
 
-  virtualisation.vmware.host.enable = true;
 
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
