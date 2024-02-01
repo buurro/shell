@@ -72,6 +72,15 @@
           specialArgs = { inherit inputs; };
         };
 
+        "smart-kettle" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/smart-kettle/configuration.nix
+            nixos-hardware.nixosModules.apple-t2
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "burro-hp" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [

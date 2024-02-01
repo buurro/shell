@@ -1,8 +1,9 @@
 { config, pkgs, inputs, nixos-hardware, ... }:
 {
   imports = [
+    "${inputs.self}/common/nixos-configuration.nix"
+    "${inputs.self}/common/nixos-home-manager.nix"
     ./hardware-configuration.nix
-    "${inputs.self}/modules/hyprland.nix"
   ];
 
   # Bootloader.
@@ -14,16 +15,6 @@
 
   # https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.systemd-udevd.restartIfChanged = false;
-
-  environment.systemPackages = with pkgs; [
-    chromium
-    mpv
-    discord
-    pavucontrol
-    obs-studio
-    vscode.fhs
-    brightnessctl
-  ];
 
   system.stateVersion = "23.05";
 }
