@@ -16,74 +16,76 @@ in
     "${inputs.self}/modules/backup.nix"
   ];
 
-  networking.firewall.allowedTCPPorts = [
-    5201 # iperf3
-  ];
+  options = { };
 
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-    htop
-    vim
-    wget
-    iperf3
-  ];
-
-  security.sudo.wheelNeedsPassword = false;
-
-  users.users.marco = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAvHXYgTNpt43B9fjWH9lHCiJCXlLTn/9JZXMhOvSdCi"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR/Dqd+UXeEQovChEHgDhIIaXcrpa+i2/KwECTbkp5q marco@smart-blender"
+  config = {
+    networking.firewall.allowedTCPPorts = [
+      5201 # iperf3
     ];
-  };
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-  };
 
-  environment.shellAliases = {
-    backups_keygen = "ssh-keygen -t ed25519 -C \"`hostname`-backups\" -f ~/.ssh/backups_ed25519";
-  };
-
-  time.timeZone = lib.mkDefault "Europe/Rome";
-
-  virtualisation.vmVariant = {
-    virtualisation.graphics = false;
-    virtualisation.qemu.options = [
-      "-append 'console=ttyS0'"
-      "-serial mon:stdio"
+    environment.systemPackages = with pkgs; [
+      curl
+      git
+      htop
+      vim
+      wget
+      iperf3
     ];
-    virtualisation.diskSize = 8000;
-    virtualisation.memorySize = 2048;
-    environment.systemPackages = [ resize ];
-    environment.loginShellInit = "${resize}/bin/resize";
 
-    services.xserver.enable = false;
-    services.xserver.displayManager.sddm.enable = false;
-    services.xserver.desktopManager.plasma5.enable = false;
+    security.sudo.wheelNeedsPassword = false;
 
-    users.users.marco.initialPassword = "marco";
-    security.acme.defaults.server = "https://127.0.0.1";
-    security.acme.preliminarySelfsigned = true;
+    users.users.marco = {
+      isNormalUser = true;
+      extraGroups = [ "networkmanager" "wheel" ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAvHXYgTNpt43B9fjWH9lHCiJCXlLTn/9JZXMhOvSdCi"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR/Dqd+UXeEQovChEHgDhIIaXcrpa+i2/KwECTbkp5q marco@smart-blender"
+      ];
+    };
+    services.openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+      settings.KbdInteractiveAuthentication = false;
+    };
+
+    environment.shellAliases = {
+      backups_keygen = "ssh-keygen -t ed25519 -C \"`hostname`-backups\" -f ~/.ssh/backups_ed25519";
+    };
+
+    time.timeZone = lib.mkDefault "Europe/Rome";
+
+    virtualisation.vmVariant = {
+      virtualisation.graphics = false;
+      virtualisation.qemu.options = [
+        "-append 'console=ttyS0'"
+        "-serial mon:stdio"
+      ];
+      virtualisation.diskSize = 8000;
+      virtualisation.memorySize = 2048;
+      environment.systemPackages = [ resize ];
+      environment.loginShellInit = "${resize}/bin/resize";
+
+      services.xserver.enable = false;
+      services.xserver.displayManager.sddm.enable = false;
+      services.xserver.desktopManager.plasma5.enable = false;
+
+      users.users.marco.initialPassword = "marco";
+      security.acme.defaults.server = "https://127.0.0.1";
+      security.acme.preliminarySelfsigned = true;
+    };
+
+    nix.settings = {
+      experimental-features = lib.mkDefault "nix-command flakes";
+      trusted-users = [ "root" "@wheel" ];
+    };
+
+    system.autoUpgrade = {
+      enable = true;
+      flake = "github:buurro/shell";
+      dates = "02:00";
+      randomizedDelaySec = "45min";
+    };
+
+    nixpkgs.config.allowUnfree = true;
   };
-
-  nix.settings = {
-    experimental-features = lib.mkDefault "nix-command flakes";
-    trusted-users = [ "root" "@wheel" ];
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:buurro/shell";
-    dates = "02:00";
-    randomizedDelaySec = "45min";
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  system.stateVersion = lib.mkDefault "23.11";
 }
