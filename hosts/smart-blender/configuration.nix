@@ -40,8 +40,10 @@
     libva-utils
   ];
 
-  virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "marco" ];
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   networking.vpn = {
     enable = true;
