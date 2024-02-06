@@ -160,7 +160,8 @@
   services.unifi = {
     enable = true;
     openFirewall = true;
-    unifiPackage = pkgs.unifi7;
+    unifiPackage = pkgs.unifi8;
+    # mongodbPackage = pkgs.mongodb;
   };
 
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
@@ -238,5 +239,5 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }
