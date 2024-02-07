@@ -204,6 +204,8 @@
     server = "qraspi";
     paths = [
       "/home/marco/Downloads"
+      "/home/marco/Documents/projects"
+      "/home/marco/.zsh_history"
       "/var/lib/jellyfin"
       "/var/lib/unifi"
       "/var/log/unifi"

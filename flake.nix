@@ -19,6 +19,12 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -30,6 +36,7 @@
     , vscode-server
     , nixos-hardware
     , nixos-generators
+    , disko
     } @ inputs:
     {
       darwinConfigurations = {
@@ -97,6 +104,16 @@
           ];
           specialArgs = { inherit inputs; };
         };
+
+        "ionos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/ionos/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
       };
 
       images = {
