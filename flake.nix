@@ -65,6 +65,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/smart-blender/configuration.nix
+            disko.nixosModules.disko
             vscode-server.nixosModules.default
           ];
           specialArgs = { inherit inputs; };

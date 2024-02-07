@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./disk-config.nix
     "${inputs.self}/common/nixos-configuration.nix"
     "${inputs.self}/common/nixos-home-manager.nix"
     "${inputs.self}/modules/network-stuff.nix"
@@ -206,6 +207,7 @@
       "/home/marco/Downloads"
       "/home/marco/Documents/projects"
       "/home/marco/.zsh_history"
+      "/home/marco/.ssh"
       "/var/lib/jellyfin"
       "/var/lib/unifi"
       "/var/log/unifi"
@@ -240,8 +242,9 @@
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
 
   system.stateVersion = "24.05";
 }
