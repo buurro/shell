@@ -54,7 +54,7 @@ in
             ExecStart = with pkgs; writers.writeBash "wg-up" ''
               set -e
 
-              ${iproute2}/bin/ip netns add wg
+              if ! test -f /var/run/netns/wg; then ${iproute2}/bin/ip netns add wg; fi
               ${iproute2}/bin/ip netns exec wg ${iproute2}/bin/ip link set dev lo up
               mkdir -p /etc/netns/wg
               echo "nameserver ${cfg.nameserver}" > /etc/netns/wg/resolv.conf
