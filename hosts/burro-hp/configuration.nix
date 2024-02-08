@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./disk-configuration.nix
     "${inputs.self}/common/nixos-configuration.nix"
     "${inputs.self}/common/nixos-home-manager.nix"
     "${inputs.self}/modules/kde.nix"
@@ -58,13 +59,13 @@
   services.xrdp.defaultWindowManager = "startplasma-x11";
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "24.05";
 }

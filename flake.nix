@@ -94,6 +94,7 @@
           modules = [
             ./hosts/burro-hp/configuration.nix
             vscode-server.nixosModules.default
+            disko.nixosModules.disko
           ];
           specialArgs = { inherit inputs; };
         };
