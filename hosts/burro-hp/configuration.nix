@@ -16,12 +16,13 @@
 
   services.openssh.settings.X11Forwarding = true;
 
-  nix.settings.substituters = [
+  nix.settings.extra-substituters = [
     "https://nix-cache.ambercom.tech"
   ];
-  nix.settings.trusted-public-keys = [
+  nix.settings.extra-trusted-public-keys = [
     "nix-cache.ambercom.tech:XNEVMOX3/z3PJqILF58XWdVGv91SbJNqZDlcVk3kUtE="
   ];
+  nix.settings.connect-timeout = 5;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
