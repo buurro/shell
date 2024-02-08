@@ -30,8 +30,6 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "marco" ];
 
-  virtualisation.vmware.host.enable = true;
-
   virtualisation.docker.enable = true;
 
   services.globalprotect.enable = true;
