@@ -207,6 +207,7 @@
       "/home/marco/Downloads"
       "/home/marco/Documents/projects"
       "/home/marco/.zsh_history"
+      "/home/marco/.z"
       "/home/marco/.ssh"
       "/var/lib/jellyfin"
       "/var/lib/unifi"
