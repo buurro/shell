@@ -1,35 +1,40 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
-  imports = [
-    ../desktop.nix
-  ];
-
-  environment.systemPackages = with pkgs; [
-    kitty
-    mako
-    libnotify
-    rofi-wayland
-  ];
-
-  fonts = {
-    fontDir.enable = true;
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
-    ];
+  options = {
+    modules.hyprland.enable = lib.mkEnableOption (lib.mdDoc "Hyprland");
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  config = lib.mkIf config.modules.hyprland.enable (lib.mkMerge [
+    (import ../desktop.nix { inherit pkgs; })
+    {
+      environment.systemPackages = with pkgs; [
+        kitty
+        mako
+        libnotify
+        rofi-wayland
+      ];
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+      fonts = {
+        fontDir.enable = true;
+        packages = with pkgs; [
+          (nerdfonts.override { fonts = [ "Meslo" ]; })
+        ];
+      };
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      services.xserver.enable = true;
+      services.xserver.displayManager.sddm.enable = true;
 
-  programs.waybar = {
-    enable = true;
-  };
+      programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+      };
+
+      xdg.portal.enable = true;
+      xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+      programs.waybar = {
+        enable = true;
+      };
+    }
+  ]);
 }

@@ -10,8 +10,6 @@ in
     ./hardware-configuration.nix
     ./disk-configuration.nix
     "${inputs.self}/common/nixos-configuration.nix"
-    "${inputs.self}/common/nixos-home-manager.nix"
-    "${inputs.self}/modules/kde.nix"
   ];
 
   networking.hostName = "burro-hp"; # Define your hostname.
@@ -60,7 +58,6 @@ in
     ruff
   ];
 
-
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
 
@@ -70,6 +67,9 @@ in
   boot.loader.grub.efiInstallAsRemovable = true;
 
   boot.loader.grub.theme = catppuccin.grub;
+
+  modules.kde.enable = true;
+  modules.home-manager.enable = true;
 
   services.xserver.displayManager.sddm = {
     settings = {

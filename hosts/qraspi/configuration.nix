@@ -2,9 +2,10 @@
 {
   imports = [
     "${inputs.self}/common/nixos-configuration.nix"
-    "${inputs.self}/common/nixos-home-manager.nix"
   ];
   networking.hostName = "qraspi";
+
+  modules.home-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
     libraspberrypi

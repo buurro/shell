@@ -66,7 +66,6 @@
           modules = [
             ./hosts/smart-blender/configuration.nix
             disko.nixosModules.disko
-            vscode-server.nixosModules.default
           ];
           specialArgs = { inherit inputs; };
         };
@@ -93,7 +92,6 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/burro-hp/configuration.nix
-            vscode-server.nixosModules.default
             disko.nixosModules.disko
           ];
           specialArgs = { inherit inputs; };
@@ -128,7 +126,10 @@
           format = "vm-nogui";
           modules = [
             ./common/nixos-configuration.nix
-            ({ ... }: { users.users.marco.initialPassword = "marco"; })
+            ({ ... }: {
+              modules.home-manager.enable = true;
+              users.users.marco.initialPassword = "marco";
+            })
           ];
           specialArgs = { inherit inputs; };
         };

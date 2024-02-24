@@ -4,9 +4,6 @@
     ./hardware-configuration.nix
     ./disk-config.nix
     "${inputs.self}/common/nixos-configuration.nix"
-    "${inputs.self}/common/nixos-home-manager.nix"
-    "${inputs.self}/modules/network-stuff.nix"
-    "${inputs.self}/modules/hyprland/default.nix"
   ];
 
   networking.hostName = "smart-blender";
@@ -238,6 +235,9 @@
     isSystemUser = true;
     group = "users";
   };
+
+  modules.hyprland.enable = true;
+  modules.home-manager.enable = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
   boot.supportedFilesystems = [ "ntfs" ];

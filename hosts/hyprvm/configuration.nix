@@ -2,11 +2,12 @@
 {
   imports = [
     "${inputs.self}/common/nixos-configuration.nix"
-    "${inputs.self}/common/nixos-home-manager.nix"
-    "${inputs.self}/modules/hyprland/default.nix"
   ];
 
   networking.hostName = "hyprvm";
+
+  modules.hyprland.enable = true;
+  modules.home-manager.enable = true;
 
   virtualisation.vmVariant = {
     virtualisation.qemu.options = [
