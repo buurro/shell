@@ -29,8 +29,9 @@ in
   programs.zsh.promptInit = "";
 
   environment.systemPackages = with pkgs; [
-    python-and-friends
+    _1password
     gnumake
+    python-and-friends
     vim
   ];
 
