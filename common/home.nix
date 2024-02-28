@@ -77,7 +77,7 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "gh" "z" "composer" "rsync" ];
+      plugins = [ "git" "gh" "composer" "rsync" ];
     };
     initExtra = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
@@ -168,6 +168,11 @@
         set -g default-terminal "xterm-256color"
       '';
       plugins = [ pkgs.tmuxPlugins.pain-control ];
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 
