@@ -54,6 +54,7 @@
   home.shellAliases = {
     c = "code .";
     lg = "lazygit";
+    mc = "mc --nosubshell";
     p = "poetry run";
     s = "ssh";
 
