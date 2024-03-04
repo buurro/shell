@@ -1,3 +1,18 @@
 {
-    "editor.formatOnSave": true,
+  "[jsonc]": {
+    "editor.detectIndentation": false,
+    "editor.indentSize": 2
+  },
+  "editor.formatOnSave": true,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nil",
+  "nix.serverSettings": {
+    "nil": {
+      "formatting": {
+        "command": [
+          "nixpkgs-fmt"
+        ]
+      }
+    }
+  },
 }
