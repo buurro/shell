@@ -164,6 +164,7 @@
 
     tmux = {
       enable = true;
+      mouse = true;
       extraConfig = ''
         set -g default-terminal "xterm-256color"
       '';
