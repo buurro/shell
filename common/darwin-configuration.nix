@@ -16,6 +16,10 @@ in
   nix.settings.trusted-users = [ "root" "marco" ];
   users.users."marco".home = "/Users/marco";
 
+  nix.linux-builder = {
+    enable = true;
+  };
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
