@@ -186,10 +186,14 @@
   };
   home.file.".iterm2_shell_integration.zsh".source = ./config/iterm2_shell_integration.zsh;
 
-  home.file.".local/share/mc/skins/catppuccin.ini".source = let src = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "mc";
-    rev = "f1c78f183764cd43e6dd4e325513ef5547a8f28f";
-    sha256 = "sha256-m6MO0Q35YYkTtVqG1v48U7pHcsuPmieDwU2U1ZzQcjo=";
-  }; in "${src}/catppuccin.ini";
+  home.file.".local/share/mc/skins/catppuccin.ini".source =
+    let
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "mc";
+        rev = "f1c78f183764cd43e6dd4e325513ef5547a8f28f";
+        sha256 = "sha256-m6MO0Q35YYkTtVqG1v48U7pHcsuPmieDwU2U1ZzQcjo=";
+      };
+    in
+    "${src}/catppuccin.ini";
 }
