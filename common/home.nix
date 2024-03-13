@@ -19,6 +19,7 @@
     cachix
     cheat
     cmctl
+    direnv
     duf
     file
     fluxcd
