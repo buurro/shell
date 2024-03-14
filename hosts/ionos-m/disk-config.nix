@@ -3,7 +3,7 @@
 {
   disko.devices = {
     disk.disk1 = {
-      device = lib.mkDefault "/dev/sda";
+      device = lib.mkDefault "/dev/vda";
       type = "disk";
       content = {
         type = "gpt";
@@ -38,6 +38,12 @@
       pool = {
         type = "lvm_vg";
         lvs = {
+          swap = {
+            size = "6G";
+            content = {
+              type = "swap";
+            };
+          };
           root = {
             size = "100%FREE";
             content = {

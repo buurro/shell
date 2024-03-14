@@ -5,6 +5,8 @@
     ../../common/nixos-configuration.nix
   ];
 
+  networking.hostName = "ionos-m";
+
   modules.home-manager.enable = true;
 
   boot.loader.grub = {

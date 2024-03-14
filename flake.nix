@@ -105,11 +105,11 @@
           specialArgs = { inherit inputs; };
         };
 
-        "ionos" = nixpkgs.lib.nixosSystem {
+        "ionos-m" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
-            ./hosts/ionos/configuration.nix
+            ./hosts/ionos-m/configuration.nix
           ];
           specialArgs = { inherit inputs; };
         };
