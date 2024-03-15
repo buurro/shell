@@ -11,8 +11,6 @@
 
   networking.firewall.allowedTCPPorts = [ 6443 ];
 
-  services.tailscale.enable = true;
-
   services.k3s.enable = true;
   services.k3s.role = "server";
 
