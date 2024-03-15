@@ -46,7 +46,6 @@
     ranger
     rename
     ripgrep
-    rnix-lsp
     sshfs
     wget
     yt-dlp
