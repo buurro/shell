@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     darwin = {
@@ -33,7 +32,6 @@
     , darwin
     , home-manager
     , flake-utils
-    , vscode-server
     , nixos-hardware
     , nixos-generators
     , disko

@@ -18,7 +18,6 @@ in
     "${inputs.self}/modules/hyprland/default.nix"
     "${inputs.self}/modules/kde.nix"
     "${inputs.self}/modules/nixos-home-manager.nix"
-    inputs.vscode-server.nixosModules.default
   ];
 
   options = { };

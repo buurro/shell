@@ -38,7 +38,8 @@ in
   virtualisation.docker.enable = true;
 
   services.globalprotect.enable = true;
-  services.vscode-server.enable = true;
+
+  programs.nix-ld.enable = true; # fixes vscode server
 
   programs._1password.enable = true;
   programs._1password-gui = {

@@ -196,7 +196,7 @@
     '';
   };
 
-  services.vscode-server.enable = true;
+  programs.nix-ld.enable = true; # fixes vscode server
 
   backup = {
     server = "qraspi";
