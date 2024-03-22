@@ -66,6 +66,7 @@ in
       "jellyfin-media-player"
       "marta"
       "monitorcontrol"
+      "mpv"
       "obsidian"
       "postgres-unofficial"
       "postico"
