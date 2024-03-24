@@ -1,5 +1,5 @@
 { config, pkgs, inputs, lib, ... }:
-{
+let authelia = import ../../modules/authelia/stuff.nix; in {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -76,7 +76,9 @@
       speed-limit-up-enabled = true;
       peer-port = 51414;
       download-queue-size = 20;
-      rpc-whitelist = "*";
+      rpc-whitelist-enabled = false;
+      rpc-bind-address = "0.0.0.0";
+      rpc-host-whitelist-enabled = false;
       ratio-limit-enabled = true;
       ratio-limit = 3;
     };
@@ -84,6 +86,15 @@
   systemd.services.transmission = {
     after = [ "mnt-nas\\x2dfun.mount" ];
     requires = [ "mnt-nas\\x2dfun.mount" ];
+  };
+  services.nginx.virtualHosts."torrent.pine.marco.ooo" = {
+    forceSSL = true;
+    useACMEHost = "pine.marco.ooo";
+    extraConfig = authelia.nginx.enableVhost;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:9091";
+      extraConfig = authelia.nginx.enableLocation;
+    };
   };
 
   security.acme.acceptTerms = true;
@@ -113,6 +124,24 @@
     locations."/" = {
       root = "${pkgs.nginx}/html";
     };
+  };
+
+  age.secrets."authelia.jwtSecretFile" = {
+    file = ../../secrets/authelia.jwtSecretFile.age;
+    owner = config.services.authelia.instances.main.user;
+    group = config.services.authelia.instances.main.group;
+  };
+  age.secrets."authelia.storageEncryptionKeyFile" = {
+    file = ../../secrets/authelia.storageEncryptionKeyFile.age;
+    owner = config.services.authelia.instances.main.user;
+    group = config.services.authelia.instances.main.group;
+  };
+
+  modules.authelia = {
+    enable = true;
+    domain = "pine.marco.ooo";
+    jwtSecretFile = config.age.secrets."authelia.jwtSecretFile".path;
+    storageEncryptionKeyFile = config.age.secrets."authelia.storageEncryptionKeyFile".path;
   };
 
   services.sonarr = {
@@ -198,6 +227,15 @@
 
   services.netdata = {
     enable = true;
+  };
+  services.nginx.virtualHosts."netdata.pine.marco.ooo" = {
+    forceSSL = true;
+    useACMEHost = "pine.marco.ooo";
+    extraConfig = authelia.nginx.enableVhost;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:19999";
+      extraConfig = authelia.nginx.enableLocation;
+    };
   };
 
   programs.nix-ld.enable = true; # fixes vscode server

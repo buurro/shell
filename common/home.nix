@@ -1,4 +1,4 @@
-{ config, pkgs, userInfo, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   nix.settings = {
@@ -49,6 +49,8 @@
     sshfs
     wget
     yt-dlp
+  ] ++ [
+    inputs.agenix.packages."${system}".default
   ];
 
   home.shellAliases = {

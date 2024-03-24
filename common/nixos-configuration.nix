@@ -18,6 +18,7 @@ in
     "${inputs.self}/modules/hyprland/default.nix"
     "${inputs.self}/modules/kde.nix"
     "${inputs.self}/modules/nixos-home-manager.nix"
+    "${inputs.self}/modules/authelia/default.nix"
   ];
 
   options = { };

@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -35,6 +39,7 @@
     , nixos-hardware
     , nixos-generators
     , disko
+    , agenix
     } @ inputs:
     {
       darwinConfigurations = {
@@ -64,6 +69,7 @@
           modules = [
             ./hosts/smart-blender/configuration.nix
             disko.nixosModules.disko
+            agenix.nixosModules.default
           ];
           specialArgs = { inherit inputs; };
         };
