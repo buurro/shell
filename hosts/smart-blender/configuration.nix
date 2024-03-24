@@ -196,6 +196,10 @@
     '';
   };
 
+  services.netdata = {
+    enable = true;
+  };
+
   programs.nix-ld.enable = true; # fixes vscode server
 
   backup = {
