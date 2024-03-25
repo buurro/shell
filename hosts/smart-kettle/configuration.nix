@@ -5,7 +5,6 @@
     ./hardware-configuration.nix
   ];
   networking.hostName = "smart-kettle"; # Define your hostname.
-  services.vscode-server.enable = true;
 
   modules.home-manager.enable = true;
 
