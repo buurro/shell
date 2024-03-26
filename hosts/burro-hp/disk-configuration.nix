@@ -22,19 +22,24 @@
                 mountpoint = "/boot";
               };
             };
-            root = {
-              end = "-17G";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
-            };
             swap = {
-              size = "100%";
+              size = "12G";
               content = {
                 type = "swap";
-                resumeDevice = true; # resume from hiberation from this device
+              };
+            };
+            root = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "root";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key";
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
+                };
               };
             };
           };
@@ -46,12 +51,18 @@
         content = {
           type = "gpt";
           partitions = {
-            nixStore = {
+            nix-store = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/nix/store";
+                type = "luks";
+                name = "store";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key";
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/nix/store";
+                };
               };
             };
           };
