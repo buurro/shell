@@ -57,6 +57,9 @@ in
     ocs-url
     qemu
     ruff
+    vscode.fhs
+    kitty
+    dbeaver
   ];
 
   services.xrdp.enable = true;
