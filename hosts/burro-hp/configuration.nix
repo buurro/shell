@@ -32,11 +32,6 @@ in
     extraGroups = [ "docker" ];
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "marco" ];
-
-  virtualisation.docker.enable = true;
-
   services.globalprotect.enable = true;
 
   programs.nix-ld.enable = true; # fixes vscode server
@@ -61,6 +56,9 @@ in
     kitty
     dbeaver
   ];
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
