@@ -66,7 +66,6 @@ in
       "marta"
       "monitorcontrol"
       "mpv"
-      "postgres-unofficial"
       "postico"
       "private-internet-access"
       "raspberry-pi-imager"
