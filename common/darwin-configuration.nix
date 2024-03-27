@@ -59,7 +59,6 @@ in
       "dbeaver-community"
       "discord"
       "firefox"
-      "fork"
       "google-chrome"
       "iina"
       "iterm2"
@@ -67,7 +66,6 @@ in
       "marta"
       "monitorcontrol"
       "mpv"
-      "obsidian"
       "postgres-unofficial"
       "postico"
       "private-internet-access"
@@ -75,7 +73,6 @@ in
       "raycast"
       "slack"
       "spotify"
-      "syncthing"
       "tailscale"
       "visual-studio-code"
     ];
