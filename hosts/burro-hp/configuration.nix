@@ -20,7 +20,7 @@ in
   services.openssh.settings.X11Forwarding = true;
 
   nix.settings.extra-substituters = [
-    "https://nix-cache.ambercom.tech"
+    "https://nix-cache.ambercom.tech?priority=50"
   ];
   nix.settings.extra-trusted-public-keys = [
     "nix-cache.ambercom.tech:XNEVMOX3/z3PJqILF58XWdVGv91SbJNqZDlcVk3kUtE="
