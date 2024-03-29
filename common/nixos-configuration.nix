@@ -56,6 +56,8 @@ in
 
     time.timeZone = lib.mkDefault "Europe/Rome";
 
+    programs.nix-ld.enable = lib.mkDefault true; # fixes vscode server and other stuff
+
     virtualisation.vmVariant = {
       virtualisation.graphics = false;
       virtualisation.qemu.options = [

@@ -238,8 +238,6 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     };
   };
 
-  programs.nix-ld.enable = true; # fixes vscode server
-
   backup = {
     server = "qraspi";
     paths = [

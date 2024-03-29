@@ -34,8 +34,6 @@ in
 
   services.globalprotect.enable = true;
 
-  programs.nix-ld.enable = true; # fixes vscode server
-
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
