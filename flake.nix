@@ -88,6 +88,7 @@
           modules = [
             ./hosts/smart-kettle/configuration.nix
             nixos-hardware.nixosModules.apple-t2
+            disko.nixosModules.disko
           ];
           specialArgs = { inherit inputs; };
         };

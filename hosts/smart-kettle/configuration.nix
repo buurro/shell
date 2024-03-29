@@ -3,6 +3,7 @@
   imports = [
     "${inputs.self}/common/nixos-configuration.nix"
     ./hardware-configuration.nix
+    ./disk-config.nix
   ];
   networking.hostName = "smart-kettle"; # Define your hostname.
 
