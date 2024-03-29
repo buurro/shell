@@ -139,5 +139,7 @@
           specialArgs = { inherit inputs; };
         };
       };
+
+      users = import ./users.nix;
     };
 }

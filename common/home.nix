@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
+let username = config.home.username;
+
+in
 {
   nix.settings = {
     experimental-features = [ "flakes" "nix-command" ];
@@ -156,8 +159,8 @@
 
     git = {
       enable = true;
-      userName = "Marco Burro";
-      userEmail = "marcoburro98@gmail.com";
+      userName = inputs.self.users."${username}".fullName;
+      userEmail = inputs.self.users."${username}".email;
       difftastic.enable = false;
       extraConfig = {
         init.defaultBranch = "main";

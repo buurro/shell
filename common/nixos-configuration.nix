@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, ... }:
 let
   resize = pkgs.writeScriptBin "resize" ''
     if [ -e /dev/tty ]; then
@@ -42,10 +42,7 @@ in
     users.users.marco = {
       isNormalUser = true;
       extraGroups = [ "networkmanager" "wheel" ];
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAvHXYgTNpt43B9fjWH9lHCiJCXlLTn/9JZXMhOvSdCi"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR/Dqd+UXeEQovChEHgDhIIaXcrpa+i2/KwECTbkp5q marco@smart-blender"
-      ];
+      openssh.authorizedKeys.keys = inputs.self.users.marco.ssh.publicKeys;
     };
     services.openssh = {
       enable = true;

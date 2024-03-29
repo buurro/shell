@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, ... }:
 let authelia = import ../../modules/authelia/stuff.nix; in {
   imports = [
     ./hardware-configuration.nix
@@ -99,7 +99,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
 
   security.acme.acceptTerms = true;
   security.acme.defaults = {
-    email = "marcoburro98@gmail.com";
+    email = inputs.self.users.marco.email;
     # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
     group = "nginx";
     dnsProvider = "cloudflare";

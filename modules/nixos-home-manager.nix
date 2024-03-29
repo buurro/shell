@@ -8,12 +8,13 @@
 
   config = lib.mkIf config.modules.home-manager.enable {
     programs.zsh.enable = true;
+
     users.users.marco.shell = pkgs.zsh;
+    home-manager.users.marco = import ../common/home.nix;
 
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.marco = import "${inputs.self}/common/home.nix";
       extraSpecialArgs = {
         inherit inputs;
       };
