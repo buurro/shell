@@ -16,7 +16,14 @@
 
   services.netdata.enable = true;
 
+  users.users.patrick = {
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" ];
+    openssh.authorizedKeys.keys = inputs.self.users.patrick.ssh.publicKeys;
+    shell = pkgs.zsh;
+  };
   modules.home-manager.enable = true;
+  home-manager.users.patrick = import ../../common/home.nix;
 
   # Other stuff
 
