@@ -6,16 +6,29 @@
     ./disk-config.nix
   ];
 
-  networking.hostName = "smart-kettle"; # Define your hostname.
+  networking.hostName = "smart-kettle";
+
+  networking.firewall.allowedTCPPorts = [
+    19999 # netdata
+  ];
+
+  services.tailscale.enable = true;
+
+  services.netdata.enable = true;
 
   modules.home-manager.enable = true;
 
-  # Bootloader.
+  # Other stuff
+
+  services.logind.lidSwitchExternalPower = "ignore"; # Don't suspend when closing the lid
+
+  system.autoUpgrade.enable = false; # Disable automatic upgrades from github:buurro/shell
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.systemd-udevd.restartIfChanged = false;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }
