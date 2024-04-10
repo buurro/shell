@@ -93,6 +93,7 @@
       "$mod, P, togglesplit,"
       "$mod SHIFT, P, swapsplit,"
       "$mod, space, exec, rofi -show run"
+      "$mod ALT, Q, exec, hyprctl dispatch exit"
       "$mod, H, movefocus, l"
       "$mod, L, movefocus, r"
       "$mod, K, movefocus, u"
@@ -125,7 +126,6 @@
       "$mod SHIFT, S, movetoworkspace, special:magic"
       "$mod, mouse_down, workspace, e+1"
       "$mod, mouse_up, workspace, e-1"
-      "$mod ALT, Q, exec, hyprctl dispatch exit"
     ];
     bindm = [
       "$mod, mouse:272, movewindow"
