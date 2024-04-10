@@ -5,6 +5,7 @@
       fontDir.enable = true;
       packages = with pkgs; [
         (nerdfonts.override { fonts = [ "Meslo" ]; })
+        noto-fonts-cjk-sans
       ];
     };
 
