@@ -18,6 +18,11 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
+  services.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+  };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
@@ -41,6 +46,9 @@
 
     windowrule = [
       "float,1Password"
+      "float,org.gnome.Nautilus"
+      "size 1300 900,org.gnome.Nautilus"
+      "move 100 100,org.gnome.Nautilus"
     ];
 
     animations = {
@@ -131,6 +139,9 @@
 
     bindl = [
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
     ];
 
     binde = [
