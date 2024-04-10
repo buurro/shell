@@ -13,12 +13,14 @@ let
 in
 {
   imports = [
-    "${inputs.self}/modules/backup.nix"
-    "${inputs.self}/modules/network-stuff.nix"
-    "${inputs.self}/modules/hyprland/default.nix"
-    "${inputs.self}/modules/kde.nix"
-    "${inputs.self}/modules/nixos-home-manager.nix"
-    "${inputs.self}/modules/authelia/default.nix"
+    inputs.catppuccin.nixosModules.catppuccin
+    ../modules/backup.nix
+    ../modules/network-stuff.nix
+    ../modules/desktop.nix
+    ../modules/kde.nix
+    ../modules/nixos-home-manager.nix
+    ../modules/authelia/default.nix
+    ../modules/hyprland
   ];
 
   options = { };

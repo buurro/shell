@@ -23,9 +23,10 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.marco = import "${inputs.self}/common/home.nix";
+    users.marco = import ./home;
     extraSpecialArgs = {
       inherit inputs;
+      hyprland = false;
     };
   };
 

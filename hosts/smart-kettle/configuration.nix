@@ -23,7 +23,7 @@
     shell = pkgs.zsh;
   };
   modules.home-manager.enable = true;
-  home-manager.users.patrick = import ../../common/home.nix;
+  home-manager.users.patrick = import ../../common/home;
 
   # Other stuff
 

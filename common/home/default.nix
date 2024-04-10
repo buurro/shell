@@ -1,9 +1,13 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, inputs, config, hyprland, ... }:
 
-let username = config.home.username;
-
+let
+  username = config.home.username;
 in
 {
+  imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+  ];
+
   nix.settings = {
     experimental-features = [ "flakes" "nix-command" ];
   };
@@ -55,6 +59,8 @@ in
   ] ++ [
     inputs.agenix.packages."${system}".default
   ];
+
+  catppuccin.flavour = "mocha";
 
   home.shellAliases = {
     c = "code .";
@@ -172,6 +178,7 @@ in
       mouse = true;
       extraConfig = ''
         set -g default-terminal "xterm-256color"
+        set -g escape-time 10
       '';
       plugins = [ pkgs.tmuxPlugins.pain-control ];
     };
@@ -201,4 +208,13 @@ in
       };
     in
     "${src}/catppuccin.ini";
+
+  programs.alacritty = {
+    enable = true;
+    catppuccin.enable = true;
+    settings = {
+      font.normal.family = "MesloLGSDZ Nerd Font";
+      env.TERM = "xterm-256color";
+    };
+  };
 }

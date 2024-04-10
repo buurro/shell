@@ -3,6 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    catppuccin.url = "github:catppuccin/nix";
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -40,6 +41,7 @@
     , nixos-generators
     , disko
     , agenix
+    , catppuccin
     } @ inputs:
     {
       darwinConfigurations = {

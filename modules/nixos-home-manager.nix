@@ -10,13 +10,14 @@
     programs.zsh.enable = true;
 
     users.users.marco.shell = pkgs.zsh;
-    home-manager.users.marco = import ../common/home.nix;
+    home-manager.users.marco = import ../common/home;
 
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
         inherit inputs;
+        hyprland = config.modules.hyprland.enable;
       };
     };
   };

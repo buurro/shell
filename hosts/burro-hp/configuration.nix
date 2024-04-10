@@ -1,6 +1,6 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
-  catppuccin = (import "${inputs.self}/packages/catppuccin.nix") {
+  catppuccin = (import ../../packages/catppuccin.nix) {
     inherit pkgs;
     variant = "macchiato";
   };
@@ -9,7 +9,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ./disk-configuration.nix
-    "${inputs.self}/common/nixos-configuration.nix"
+    ../../common/nixos-configuration.nix
   ];
 
   networking.hostName = "burro-hp"; # Define your hostname.
@@ -17,19 +17,21 @@ in
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
+  networking.wireless.userControlled.enable = true;
+
   services.openssh.settings.X11Forwarding = true;
 
-  nix.settings.extra-substituters = [
-    "https://nix-cache.ambercom.tech?priority=50"
-  ];
-  nix.settings.extra-trusted-public-keys = [
-    "nix-cache.ambercom.tech:XNEVMOX3/z3PJqILF58XWdVGv91SbJNqZDlcVk3kUtE="
-  ];
-  nix.settings.connect-timeout = 5;
+  # nix.settings.extra-substituters = [
+  #   "https://nix-cache.ambercom.tech?priority=50"
+  # ];
+  # nix.settings.extra-trusted-public-keys = [
+  #   "nix-cache.ambercom.tech:XNEVMOX3/z3PJqILF58XWdVGv91SbJNqZDlcVk3kUtE="
+  # ];
+  # nix.settings.connect-timeout = 5;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
-    extraGroups = [ "docker" ];
+    extraGroups = [ "docker" "input" ];
   };
 
   services.globalprotect.enable = true;
@@ -54,10 +56,8 @@ in
     kitty
     dbeaver
     podman-compose
+    spotify
   ];
-
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
 
   virtualisation.podman = {
     enable = true;
@@ -72,15 +72,23 @@ in
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  services.blueman.enable = true;
+
+  services.ddccontrol.enable = true;
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
 
-  boot.loader.grub.theme = catppuccin.grub;
+  boot.loader.grub.catppuccin.enable = true;
 
-  modules.kde.enable = true;
+  # modules.kde.enable = true;
   modules.home-manager.enable = true;
+  modules.hyprland.enable = true;
 
   services.xserver.displayManager.sddm = {
     settings = {
@@ -90,6 +98,8 @@ in
     };
     theme = toString catppuccin.sddm;
   };
+
+  system.autoUpgrade.enable = false;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
