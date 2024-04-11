@@ -38,7 +38,7 @@
         padding-left:8px;
         border: 2px none #33ccff;
       }
-      #mode, #clock, #backlight, #pulseaudio, #network, #battery {
+      #mode, #clock, #backlight, #pulseaudio, #network, #battery, #custom-spotify {
         padding-left: 10px;
         padding-right: 10px;
       }
@@ -61,6 +61,7 @@
     settings = [{
       "layer" = "top";
       "position" = "top";
+      "height" = 35;
       modules-left = [
         "tray"
       ];
@@ -68,6 +69,7 @@
         "clock"
       ];
       modules-right = [
+        "custom/spotify"
         "pulseaudio"
         "backlight"
         "network"
@@ -84,7 +86,7 @@
       };
       "clock" = {
         "interval" = 1;
-        "format" = "{:%H:%M  %A %d %b}";
+        "format" = "{:%d月%m日 %H:%M}";
       };
       "network" = {
         "format-disconnected" = "󰯡 Disconnected";
@@ -98,6 +100,13 @@
       "tray" = {
         "spacing" = 6;
         "icon-size" = 18;
+      };
+      "custom/spotify" = {
+        "format" = "{}";
+        "escape" = true;
+        "interval" = 5;
+        "exec" = "playerctl -f '{{artist}} - {{title}}' -p spotify metadata";
+        "exec-if" = "pgrep spotify";
       };
     }];
   };
