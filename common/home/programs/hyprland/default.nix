@@ -77,9 +77,7 @@
       };
       repeat_rate = 50;
       repeat_delay = 250;
-      kb_options = [
-        "caps:swapescape"
-      ];
+      kb_options = "caps:swapescape,compose:rctrl";
     };
 
     "$mod" = "SUPER";
