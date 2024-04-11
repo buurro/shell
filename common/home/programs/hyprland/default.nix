@@ -27,7 +27,7 @@
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "eDP-1,preferred,auto,1"
-      "desc:SOMEASUSMONITOR,3440x1440@85,auto,auto"
+      "desc:Ancor Communications Inc ROG PG348Q ##ASMpn+8P/tXd,3440x1440@85,auto,auto"
       "desc:LG Electronics LG ULTRAGEAR 101NTKFSV589,2560x1440@144,auto,auto"
     ];
 
