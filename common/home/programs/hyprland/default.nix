@@ -9,6 +9,9 @@
     playerctl
     gnome.nautilus
     mpv
+    grim
+    slurp
+    wl-clipboard
   ];
 
   xdg.portal.enable = true;
@@ -90,7 +93,10 @@
       "$mod, F, fullscreen,"
       "$mod, P, togglesplit,"
       "$mod SHIFT, P, swapsplit,"
+      "$mod, X, exec, grim - | wl-copy"
+      "$mod SHIFT, X, exec, grim -g \"$(slurp)\" - | wl-copy"
       "$mod, space, exec, rofi -show run"
+      "$mod, B, exec, pkill waybar || waybar"
       "$mod ALT, Q, exec, hyprctl dispatch exit"
       "$mod, H, movefocus, l"
       "$mod, L, movefocus, r"
