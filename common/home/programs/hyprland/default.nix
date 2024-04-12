@@ -1,11 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  imports = [
+    ./hyprlock.nix
+    inputs.hyprpaper.homeManagerModules.hyprpaper
+  ];
+
   home.packages = with pkgs; [
     alacritty
     mako
     libnotify
     rofi-wayland
-    hyprlock
+    hyprpaper
     playerctl
     gnome.nautilus
     mpv
@@ -26,6 +31,16 @@
     defaultTimeout = 5000;
   };
 
+  services.hyprpaper = {
+    enable = true;
+    preloads = [
+      "${../../assets/acrylic.jpg}"
+    ];
+    wallpapers = [
+      ",${../../assets/acrylic.jpg}"
+    ];
+  };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
@@ -42,9 +57,12 @@
       disable_hyprland_logo = true;
     };
 
+    general = {
+      gaps_out = 10;
+    };
+
     exec-once = [
       "waybar"
-      # "${pkgs.mpvpaper}/bin/mpvpaper '*' https://someurl"
     ];
 
     windowrule = [

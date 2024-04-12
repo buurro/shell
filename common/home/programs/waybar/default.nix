@@ -5,10 +5,11 @@
     enable = true;
     style = ''
       * {
+        color: rgb(217, 224, 238);
         font-family: "MesloLGSDZ Nerd Font";
         font-size: 12pt;
         font-weight: bold;
-        border-radius: 0px;
+        border-radius: 6px;
         transition-property: background-color;
         transition-duration: 0.5s;
       }
@@ -29,18 +30,18 @@
         background-color: transparent;
       }
       window > box {
-        margin-left: 5px;
-        margin-right: 5px;
         margin-top: 5px;
         background-color: transparent;
         /* background-color: #1e1e2a; */
-        padding: 3px;
-        padding-left:8px;
-        border: 2px none #33ccff;
       }
-      #mode, #clock, #backlight, #pulseaudio, #network, #battery, #custom-spotify {
+      #mode, #clock, #backlight, #pulseaudio, #network, #battery, #custom-spotify, #tray, #workspaces {
+        padding-top: 3px;
+        padding-bottom: 3px;
         padding-left: 10px;
         padding-right: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        background-color: #1e1e2a;
       }
       #clock {
         color: rgb(217, 224, 238);
@@ -57,12 +58,16 @@
       #network.disconnected {
         color: rgb(255, 255, 255);
       }
+      #workspaces button.active {
+        background-color: rgb(69, 71, 90);
+      }
     '';
     settings = [{
       "layer" = "top";
       "position" = "top";
       "height" = 35;
       modules-left = [
+        "hyprland/workspaces"
         "tray"
       ];
       modules-center = [
@@ -86,11 +91,11 @@
       };
       "clock" = {
         "interval" = 1;
-        "format" = "{:%d月%m日 %H:%M}";
+        "format" = "{:%d %b  %H:%M}";
       };
       "network" = {
         "format-disconnected" = "󰯡 Disconnected";
-        "format-ethernet" = "󰈀";
+        "format-ethernet" = "󰈀 ✓";
         "format-linked" = "󰖪 {essid} (No IP)";
         "format-wifi" = "󰖩 {essid}";
         "interval" = 1;
@@ -107,6 +112,9 @@
         "interval" = 5;
         "exec" = "playerctl -f '{{artist}} - {{title}}' -p spotify metadata";
         "exec-if" = "pgrep spotify";
+      };
+      "hyprland/workspaces" = {
+        "format" = "{icon}";
       };
     }];
   };

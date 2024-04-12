@@ -25,3 +25,7 @@ Add the token to the file `/var/lib/secrets/cloudflare-blender-acme` :
 ```
 CF_DNS_API_TOKEN=<token>
 ```
+
+## Credits
+
+Wallpaper: <https://github.com/D3Ext/aesthetic-wallpapers>
