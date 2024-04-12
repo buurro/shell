@@ -26,6 +26,11 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
+  gtk = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
   services.mako = {
     enable = true;
     defaultTimeout = 5000;
@@ -106,7 +111,7 @@
     bind = [
       "$mod, T, exec, alacritty"
       "$mod, Q, killactive,"
-      "$mod, E, exec, nautilus"
+      "$mod, E, exec, nautilus -w"
       "$mod SHIFT, F, togglefloating,"
       "$mod, F, fullscreen,"
       "$mod CTRL, F, fullscreen, 1"
