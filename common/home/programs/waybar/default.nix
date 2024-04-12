@@ -58,6 +58,13 @@
       #network.disconnected {
         color: rgb(255, 255, 255);
       }
+      #workspaces {
+        padding-left: 3px;
+        padding-right: 3px;
+      }
+      #workspaces button {
+        border-radius: 4px;
+      }
       #workspaces button.active {
         background-color: rgb(69, 71, 90);
       }
