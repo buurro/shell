@@ -132,6 +132,10 @@
         "format" = "{icon}  {capacity}%";
         "format-icons" = [ "" "" "" "" "" ];
       };
+      "backlight" = {
+        "format" = "{icon} {percent}%";
+        "format-icons" = [ "󰃞" "󰃟" "󰃠" ];
+      };
     }];
   };
 }
