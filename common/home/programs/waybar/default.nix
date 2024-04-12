@@ -89,6 +89,7 @@
         "pulseaudio"
         "backlight"
         "network"
+        "battery"
       ];
       "pulseaudio" = {
         "scroll-step" = 1;
@@ -126,6 +127,10 @@
       };
       "hyprland/workspaces" = {
         "format" = "{icon}";
+      };
+      "battery" = {
+        "format" = "{icon}  {capacity}%";
+        "format-icons" = [ "" "" "" "" "" ];
       };
     }];
   };
