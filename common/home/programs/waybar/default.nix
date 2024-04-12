@@ -7,9 +7,9 @@
       * {
         color: rgb(217, 224, 238);
         font-family: "MesloLGSDZ Nerd Font";
-        font-size: 12pt;
+        font-size: 10pt;
         font-weight: bold;
-        border-radius: 6px;
+        border-radius: 10px;
         transition-property: background-color;
         transition-duration: 0.5s;
       }
@@ -63,7 +63,11 @@
         padding-right: 3px;
       }
       #workspaces button {
-        border-radius: 4px;
+        border-radius: 7px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
       }
       #workspaces button.active {
         background-color: rgb(69, 71, 90);
@@ -72,7 +76,7 @@
     settings = [{
       "layer" = "top";
       "position" = "top";
-      "height" = 35;
+      # "height" = 35;
       modules-left = [
         "hyprland/workspaces"
         "tray"
@@ -111,7 +115,7 @@
       };
       "tray" = {
         "spacing" = 6;
-        "icon-size" = 18;
+        "icon-size" = 14;
       };
       "custom/spotify" = {
         "format" = "{}";
