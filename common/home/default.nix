@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, hyprland, ... }:
+{ pkgs, inputs, config, ... }:
 
 let
   username = config.home.username;
