@@ -72,7 +72,7 @@ in
       environment.loginShellInit = "${resize}/bin/resize";
 
       services.xserver.enable = false;
-      services.xserver.displayManager.sddm.enable = false;
+      services.displayManager.sddm.enable = false;
       services.xserver.desktopManager.plasma5.enable = false;
 
       users.users.marco.initialPassword = "marco";

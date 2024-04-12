@@ -6,7 +6,7 @@
 
   config = lib.mkIf config.modules.kde.enable {
     services.xserver.enable = lib.mkDefault true;
-    services.xserver.displayManager.sddm.enable = lib.mkDefault true;
+    services.displayManager.sddm.enable = lib.mkDefault true;
     services.desktopManager.plasma6.enable = lib.mkDefault true;
   };
 }
