@@ -69,9 +69,6 @@ in
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startplasma-x11";
-
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
@@ -86,7 +83,6 @@ in
 
   boot.loader.grub.catppuccin.enable = true;
 
-  # modules.kde.enable = true;
   modules.home-manager.enable = true;
   modules.hyprland.enable = true;
 

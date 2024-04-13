@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 {
-  config = lib.mkIf (config.modules.hyprland.enable || config.modules.kde.enable) {
+  config = lib.mkIf config.modules.hyprland.enable {
     fonts = {
       fontDir.enable = true;
       packages = with pkgs; [

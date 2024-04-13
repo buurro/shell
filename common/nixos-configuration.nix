@@ -17,7 +17,6 @@ in
     ../modules/backup.nix
     ../modules/network-stuff.nix
     ../modules/desktop.nix
-    ../modules/kde.nix
     ../modules/nixos-home-manager.nix
     ../modules/authelia/default.nix
     ../modules/hyprland
@@ -73,7 +72,6 @@ in
 
       services.xserver.enable = false;
       services.displayManager.sddm.enable = false;
-      services.xserver.desktopManager.plasma5.enable = false;
 
       users.users.marco.initialPassword = "marco";
       security.acme.defaults.server = "https://127.0.0.1";
