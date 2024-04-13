@@ -56,6 +56,7 @@
   };
 
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.xwayland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "desc:Ancor Communications Inc ROG PG348Q ##ASMpn+8P/tXd,3440x1440@85,auto,auto"

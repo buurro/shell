@@ -10,7 +10,6 @@
   config = lib.mkIf config.modules.hyprland.enable {
     programs.hyprland = {
       enable = true;
-      xwayland.enable = true;
     };
   };
 }
