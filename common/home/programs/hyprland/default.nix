@@ -2,6 +2,7 @@
 {
   imports = [
     ./hyprlock.nix
+    inputs.hyprland.homeManagerModules.default
     inputs.hyprpaper.homeManagerModules.hyprpaper
   ];
 
@@ -17,6 +18,8 @@
     slurp
     wl-clipboard
     pavucontrol
+    ddcutil
+    brillo
   ];
 
   xdg.portal.enable = true;
@@ -55,7 +58,6 @@
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      "eDP-1,preferred,auto,1"
       "desc:Ancor Communications Inc ROG PG348Q ##ASMpn+8P/tXd,3440x1440@85,auto,auto"
       "desc:LG Electronics LG ULTRAGEAR 101NTKFSV589,2560x1440@144,auto,auto"
     ];
@@ -79,8 +81,6 @@
     windowrule = [
       "float,1Password"
       "float,org.gnome.Nautilus"
-      "size 1300 900,org.gnome.Nautilus"
-      "move 100 100,org.gnome.Nautilus"
     ];
 
     animations = {
@@ -100,6 +100,7 @@
 
     decoration = {
       rounding = 0;
+      drop_shadow = false;
     };
 
     input = {

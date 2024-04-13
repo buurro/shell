@@ -34,7 +34,16 @@
         background-color: transparent;
         /* background-color: #1e1e2a; */
       }
-      #mode, #clock, #backlight, #pulseaudio, #network, #battery, #custom-spotify, #tray, #workspaces {
+      #mode,
+      #clock,
+      #backlight,
+      #pulseaudio,
+      #network,
+      #battery,
+      #custom-spotify,
+      #tray,
+      #bluetooth,
+      #workspaces {
         padding-top: 3px;
         padding-bottom: 3px;
         padding-left: 10px;
@@ -86,8 +95,8 @@
       ];
       modules-right = [
         "custom/spotify"
-        "pulseaudio"
         "backlight"
+        "pulseaudio"
         "network"
         "battery"
       ];

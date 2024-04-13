@@ -1,5 +1,8 @@
-{ config, lib, ... }:
+{ config, lib, inputs, ... }:
 {
+  imports = [
+    inputs.hyprland.nixosModules.default
+  ];
   options = {
     modules.hyprland.enable = lib.mkEnableOption (lib.mdDoc "Hyprland");
   };
