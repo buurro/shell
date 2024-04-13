@@ -9,7 +9,6 @@
     alacritty
     mako
     libnotify
-    rofi-wayland
     hyprpaper
     playerctl
     gnome.nautilus
@@ -29,6 +28,12 @@
 
   gtk = {
     enable = true;
+    catppuccin.enable = true;
+  };
+
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
     catppuccin.enable = true;
   };
 

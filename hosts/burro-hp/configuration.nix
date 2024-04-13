@@ -1,10 +1,4 @@
 { pkgs, ... }:
-let
-  catppuccin = (import ../../packages/catppuccin.nix) {
-    inherit pkgs;
-    variant = "macchiato";
-  };
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -85,15 +79,6 @@ in
 
   modules.home-manager.enable = true;
   modules.hyprland.enable = true;
-
-  services.xserver.displayManager.sddm = {
-    settings = {
-      General = {
-        InputMethod = "";
-      };
-    };
-    theme = toString catppuccin.sddm;
-  };
 
   system.autoUpgrade.enable = false;
 

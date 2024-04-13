@@ -1,4 +1,10 @@
 { pkgs, lib, config, ... }:
+let
+  catppuccin = (import ../packages/catppuccin.nix) {
+    inherit pkgs;
+    variant = "macchiato";
+  };
+in
 {
   config = lib.mkIf config.modules.hyprland.enable {
     fonts = {
@@ -33,7 +39,15 @@
     };
 
     services.xserver.enable = true;
-    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm = {
+      enable = true;
+      settings = {
+        General = {
+          InputMethod = "";
+        };
+      };
+      theme = toString catppuccin.sddm;
+    };
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
