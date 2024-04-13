@@ -17,6 +17,7 @@
     grim
     slurp
     wl-clipboard
+    pavucontrol
   ];
 
   xdg.portal.enable = true;

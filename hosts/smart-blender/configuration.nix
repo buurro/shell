@@ -24,7 +24,6 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     traceroute
     discord
     stepmania
-    pavucontrol
     osu-lazer-bin
     obs-studio
     spotify

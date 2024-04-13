@@ -98,16 +98,16 @@
         "format-icons" = {
           "default" = [ "" "" "" ];
         };
-        "on-click" = "pamixer -t";
+        "on-click" = "pavucontrol";
         "tooltip" = false;
       };
       "clock" = {
         "interval" = 1;
-        "format" = "{:%d %b  %H:%M}";
+        "format" = "{:%a %d %b  %H:%M}";
       };
       "network" = {
         "format-disconnected" = "󰯡 Disconnected";
-        "format-ethernet" = "󰈀 ✓";
+        "format-ethernet" = "󰈀 {ifname}";
         "format-linked" = "󰖪 {essid} (No IP)";
         "format-wifi" = "󰖩 {essid}";
         "interval" = 1;
