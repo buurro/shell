@@ -75,8 +75,6 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
 
-  boot.loader.grub.catppuccin.enable = true;
-
   modules.home-manager.enable = true;
   modules.hyprland.enable = true;
 

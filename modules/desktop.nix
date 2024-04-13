@@ -2,7 +2,7 @@
 let
   catppuccin = (import ../packages/catppuccin.nix) {
     inherit pkgs;
-    variant = "macchiato";
+    variant = "mocha";
   };
 in
 {
@@ -38,6 +38,8 @@ in
       variant = "";
     };
 
+    catppuccin.flavour = "mocha";
+
     services.xserver.enable = true;
     services.displayManager.sddm = {
       enable = true;
@@ -48,6 +50,8 @@ in
       };
       theme = toString catppuccin.sddm;
     };
+
+    boot.loader.grub.catppuccin.enable = true;
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
