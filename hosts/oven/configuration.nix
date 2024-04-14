@@ -27,6 +27,9 @@
   modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   system.stateVersion = "24.05";
