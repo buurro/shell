@@ -112,10 +112,15 @@
       natural_scroll = true;
       touchpad = {
         natural_scroll = true;
+        scroll_factor = 0.2;
       };
       repeat_rate = 50;
       repeat_delay = 250;
       kb_options = "caps:swapescape,compose:rctrl";
+
+    gestures = {
+      workspace_swipe = true;
+      workspace_swipe_fingers = 4;
     };
 
     "$mod" = "SUPER";
