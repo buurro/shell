@@ -128,6 +128,15 @@
           specialArgs = { inherit inputs; };
         };
 
+        "oven" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/oven/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "ionos-m" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
