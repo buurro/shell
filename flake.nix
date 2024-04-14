@@ -137,6 +137,13 @@
           specialArgs = { inherit inputs; };
         };
 
+        "hyprvm" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/hyprvm/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
       images = {

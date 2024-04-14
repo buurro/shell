@@ -51,7 +51,12 @@ in
       theme = toString catppuccin.sddm;
     };
 
-    boot.loader.grub.catppuccin.enable = true;
+    boot.loader.grub = {
+      enable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      catppuccin.enable = true;
+    };
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
