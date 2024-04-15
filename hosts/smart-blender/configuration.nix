@@ -22,7 +22,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     dig
     socat
     traceroute
-    webcord
+    discord
     stepmania
     osu-lazer-bin
     obs-studio
