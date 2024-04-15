@@ -30,6 +30,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     vscode.fhs
     prismlauncher
     jellyfin-media-player
+    remmina
 
     # jellyfin hardware acceleration
     vaapiVdpau
