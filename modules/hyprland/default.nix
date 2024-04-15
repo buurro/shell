@@ -1,4 +1,4 @@
-{ config, lib, inputs, ... }:
+{ config, lib, inputs, pkgs, ... }:
 {
   imports = [
     inputs.hyprland.nixosModules.default
@@ -8,6 +8,12 @@
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
+    xdg.portal = {
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
+
     programs.hyprland = {
       enable = true;
     };
