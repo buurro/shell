@@ -55,11 +55,11 @@
     beforeSleepCmd = "${lib.getExe pkgs.hyprlock}";
     listeners = [
       {
-        timeout = 120;
+        timeout = 180;
         onTimeout = "${lib.getExe pkgs.hyprlock}";
       }
       {
-        timeout = 300;
+        timeout = 240;
         onTimeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
         onResume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
