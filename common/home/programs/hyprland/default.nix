@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 {
   imports = [
     ./hyprlock.nix
@@ -118,6 +118,13 @@
       repeat_delay = 250;
       kb_options = "caps:swapescape,compose:rctrl";
     };
+
+    device = let cfg = config.wayland.windowManager.hyprland.settings; in [
+      {
+        name = "at-translated-set-2-keyboard"; # oven kb
+        kb_options = "${cfg.input.kb_options},altwin:swap_alt_win";
+      }
+    ];
 
     gestures = {
       workspace_swipe = true;
