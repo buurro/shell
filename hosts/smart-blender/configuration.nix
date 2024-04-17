@@ -23,6 +23,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     socat
     traceroute
     discord
+    vesktop
     stepmania
     osu-lazer-bin
     obs-studio
