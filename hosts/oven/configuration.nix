@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     chromium
+    discord
     mpv
     spotify
     vscode.fhs
