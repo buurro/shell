@@ -51,6 +51,8 @@
     dbeaver
     podman-compose
     spotify
+    discord
+    vesktop
   ];
 
   virtualisation.podman = {
