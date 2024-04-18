@@ -48,12 +48,13 @@
     ruff
     vscode.fhs
     kitty
-    dbeaver
     podman-compose
     spotify
     discord
     vesktop
   ];
+
+  services.flatpak.enable = true;
 
   virtualisation.podman = {
     enable = true;
