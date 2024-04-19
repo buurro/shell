@@ -133,7 +133,24 @@
 
     "$mod" = "SUPER";
 
-    bind = [
+    bind = let
+      brain = pkgs.writeShellScriptBin "brain" ''
+          # Path to the log file
+          LOG_FILE="''${HOME}/brain.log"
+
+          # Function to log input
+          log_input() {
+              echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" >> "$LOG_FILE"
+          }
+
+          # Run Rofi and log input
+          rofi -dmenu -p "log this -> " | while IFS= read -r input; do
+              if [[ -n $input ]]; then
+                  log_input "$input"
+              fi
+          done
+      '';
+    in [
       "$mod, T, exec, alacritty"
       "$mod, Q, killactive,"
       "$mod, E, exec, nautilus -w"
@@ -145,6 +162,7 @@
       "$mod, X, exec, grim - | wl-copy"
       "$mod SHIFT, X, exec, grim -g \"$(slurp)\" - | wl-copy"
       "$mod, space, exec, rofi -show run"
+      "$mod, I, exec, ${brain}/bin/brain"
       "$mod, B, exec, pkill waybar || waybar"
       "$mod ALT, Q, exec, hyprctl dispatch exit"
       "$mod, H, movefocus, l"
