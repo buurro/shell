@@ -32,6 +32,7 @@ in
     file
     fluxcd
     gh
+    gnumake
     htop
     httpie
     iftop
