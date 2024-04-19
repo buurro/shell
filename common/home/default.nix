@@ -55,6 +55,7 @@ in
     rename
     ripgrep
     sshfs
+    unzip
     wget
     yt-dlp
   ] ++ [
