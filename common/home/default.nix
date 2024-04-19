@@ -165,6 +165,7 @@ in
     tmux = {
       enable = true;
       mouse = true;
+      prefix = "C-n";
       extraConfig = ''
         set -g default-terminal "xterm-256color"
         set -g escape-time 10
