@@ -29,6 +29,7 @@ in
     cmctl
     direnv
     duf
+    fd
     file
     fluxcd
     gh
