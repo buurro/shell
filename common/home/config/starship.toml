@@ -65,7 +65,7 @@ disabled = true
 format = "\\[[$symbol($version)]($style)\\]"
 
 [directory]
-read_only = " "
+read_only = " 󰌾"
 truncate_to_repo = false
 truncation_length = 8
 
