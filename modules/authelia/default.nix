@@ -5,7 +5,7 @@ in
 {
   options = with lib; {
     modules.authelia = {
-      enable = mkEnableOption (mdDoc "Authelia");
+      enable = mkEnableOption "Authelia";
       domain = mkOption {
         type = types.str;
       };

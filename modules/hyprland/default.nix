@@ -4,7 +4,7 @@
     inputs.hyprland.nixosModules.default
   ];
   options = {
-    modules.hyprland.enable = lib.mkEnableOption (lib.mdDoc "Hyprland");
+    modules.hyprland.enable = lib.mkEnableOption "Hyprland";
   };
 
   config = lib.mkIf config.modules.hyprland.enable {

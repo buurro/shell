@@ -3,7 +3,7 @@
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   options = {
-    modules.home-manager.enable = lib.mkEnableOption (lib.mdDoc "Home Manager");
+    modules.home-manager.enable = lib.mkEnableOption "Home Manager";
   };
 
   config = lib.mkIf config.modules.home-manager.enable {
