@@ -66,7 +66,6 @@ in
       "jellyfin-media-player"
       "marta"
       "monitorcontrol"
-      "mpv"
       "postico"
       "private-internet-access"
       "raspberry-pi-imager"
