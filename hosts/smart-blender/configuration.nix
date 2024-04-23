@@ -188,7 +188,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
   };
 
   services.unifi = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     unifiPackage = pkgs.unifi8;
     # mongodbPackage = pkgs.mongodb;
