@@ -147,7 +147,6 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
 
   services.sonarr = {
     enable = true;
-    openFirewall = true;
     user = "nas";
     group = "users";
   };
