@@ -115,6 +115,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    clientMaxBodySize = "200m";
   };
 
   security.acme.certs."blender.marco.ooo" = { };
@@ -187,10 +188,10 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
   };
 
   services.unifi = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     unifiPackage = pkgs.unifi8;
-    # mongodbPackage = pkgs.mongodb;
+    # mongodbPackage = pkgs.mongodb-4_4;
   };
 
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
