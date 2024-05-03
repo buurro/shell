@@ -169,7 +169,7 @@ in
       mouse = true;
       prefix = "C-n";
       extraConfig = ''
-        set -g default-terminal "xterm-256color"
+        set-option -ga terminal-overrides ",xterm-256color:Tc"
         set -g escape-time 10
       '';
       plugins = [ pkgs.tmuxPlugins.pain-control ];
