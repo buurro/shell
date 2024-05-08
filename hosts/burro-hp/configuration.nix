@@ -83,6 +83,8 @@
 
   system.autoUpgrade.enable = false;
 
+  powerManagement.cpuFreqGovernor = "performance";
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.config.allowUnfree = true;
