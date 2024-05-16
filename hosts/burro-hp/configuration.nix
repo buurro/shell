@@ -25,7 +25,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
-    extraGroups = [ "docker" "input" ];
+    extraGroups = [ "input" ];
   };
 
   services.globalprotect.enable = true;
@@ -56,15 +56,10 @@
 
   services.flatpak.enable = true;
 
-  virtualisation.podman = {
+  virtualisation.docker = {
     enable = true;
-
-    # Create a `docker` alias for podman, to use it as a drop-in replacement
-    dockerCompat = true;
-
-    # Required for containers under podman-compose to be able to talk to each other.
-    defaultNetwork.settings.dns_enabled = true;
   };
+  users.extraGroups.docker.members = [ "marco" ];
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
