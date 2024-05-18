@@ -265,7 +265,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
   };
 
   fileSystems."/mnt/nas-fun" = {
-    device = "home-nas:/volume1/fun";
+    device = "10.23.5.60:/volume1/fun";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
