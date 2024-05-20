@@ -3,7 +3,6 @@
   imports = [
     ./hyprlock.nix
     inputs.hyprland.homeManagerModules.default
-    inputs.hyprpaper.homeManagerModules.hyprpaper
   ];
 
   home.packages = with pkgs; [
@@ -51,12 +50,14 @@
 
   services.hyprpaper = {
     enable = true;
-    preloads = [
-      "${../../assets/acrylic.jpg}"
-    ];
-    wallpapers = [
-      ",${../../assets/acrylic.jpg}"
-    ];
+    settings = {
+      preloads = [
+        "${../../assets/acrylic.jpg}"
+      ];
+      wallpapers = [
+        ",${../../assets/acrylic.jpg}"
+      ];
+    };
   };
 
   wayland.windowManager.hyprland.enable = true;
@@ -133,8 +134,9 @@
 
     "$mod" = "SUPER";
 
-    bind = let
-      brain = pkgs.writeShellScriptBin "brain" ''
+    bind =
+      let
+        brain = pkgs.writeShellScriptBin "brain" ''
           # Path to the log file
           LOG_FILE="''${HOME}/brain.log"
 
@@ -149,55 +151,56 @@
                   log_input "$input"
               fi
           done
-      '';
-    in [
-      "$mod, T, exec, alacritty"
-      "$mod, Q, killactive,"
-      "$mod, E, exec, nautilus -w"
-      "$mod SHIFT, F, togglefloating,"
-      "$mod, F, fullscreen,"
-      "$mod CTRL, F, fullscreen, 1"
-      "$mod, P, togglesplit,"
-      "$mod SHIFT, P, swapsplit,"
-      "$mod, X, exec, grim - | wl-copy"
-      "$mod SHIFT, X, exec, grim -g \"$(slurp)\" - | wl-copy"
-      "$mod, space, exec, rofi -show run"
-      "$mod, I, exec, ${brain}/bin/brain"
-      "$mod, B, exec, pkill waybar || waybar"
-      "$mod ALT, Q, exec, hyprctl dispatch exit"
-      "$mod, H, movefocus, l"
-      "$mod, L, movefocus, r"
-      "$mod, K, movefocus, u"
-      "$mod, J, movefocus, d"
-      "$mod SHIFT, H, movewindow, l"
-      "$mod SHIFT, L, movewindow, r"
-      "$mod SHIFT, K, movewindow, u"
-      "$mod SHIFT, J, movewindow, d"
-      "$mod, 1, workspace, 1"
-      "$mod, 2, workspace, 2"
-      "$mod, 3, workspace, 3"
-      "$mod, 4, workspace, 4"
-      "$mod, 5, workspace, 5"
-      "$mod, 6, workspace, 6"
-      "$mod, 7, workspace, 7"
-      "$mod, 8, workspace, 8"
-      "$mod, 9, workspace, 9"
-      "$mod, 0, workspace, 10"
-      "$mod SHIFT, 1, movetoworkspace, 1"
-      "$mod SHIFT, 2, movetoworkspace, 2"
-      "$mod SHIFT, 3, movetoworkspace, 3"
-      "$mod SHIFT, 4, movetoworkspace, 4"
-      "$mod SHIFT, 5, movetoworkspace, 5"
-      "$mod SHIFT, 6, movetoworkspace, 6"
-      "$mod SHIFT, 7, movetoworkspace, 7"
-      "$mod SHIFT, 8, movetoworkspace, 8"
-      "$mod SHIFT, 9, movetoworkspace, 9"
-      "$mod SHIFT, 0, movetoworkspace, 10"
-      "$mod, S, togglespecialworkspace, magic"
-      "$mod SHIFT, S, movetoworkspace, special:magic"
-      "$mod, mouse_down, workspace, e+1"
-      "$mod, mouse_up, workspace, e-1"
-    ];
+        '';
+      in
+      [
+        "$mod, T, exec, alacritty"
+        "$mod, Q, killactive,"
+        "$mod, E, exec, nautilus -w"
+        "$mod SHIFT, F, togglefloating,"
+        "$mod, F, fullscreen,"
+        "$mod CTRL, F, fullscreen, 1"
+        "$mod, P, togglesplit,"
+        "$mod SHIFT, P, swapsplit,"
+        "$mod, X, exec, grim - | wl-copy"
+        "$mod SHIFT, X, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "$mod, space, exec, rofi -show run"
+        "$mod, I, exec, ${brain}/bin/brain"
+        "$mod, B, exec, pkill waybar || waybar"
+        "$mod ALT, Q, exec, hyprctl dispatch exit"
+        "$mod, H, movefocus, l"
+        "$mod, L, movefocus, r"
+        "$mod, K, movefocus, u"
+        "$mod, J, movefocus, d"
+        "$mod SHIFT, H, movewindow, l"
+        "$mod SHIFT, L, movewindow, r"
+        "$mod SHIFT, K, movewindow, u"
+        "$mod SHIFT, J, movewindow, d"
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod, 0, workspace, 10"
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
+        "$mod SHIFT, 6, movetoworkspace, 6"
+        "$mod SHIFT, 7, movetoworkspace, 7"
+        "$mod SHIFT, 8, movetoworkspace, 8"
+        "$mod SHIFT, 9, movetoworkspace, 9"
+        "$mod SHIFT, 0, movetoworkspace, 10"
+        "$mod, S, togglespecialworkspace, magic"
+        "$mod SHIFT, S, movetoworkspace, special:magic"
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
+      ];
     bindm = [
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
