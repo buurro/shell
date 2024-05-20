@@ -106,6 +106,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     dnsProvider = "cloudflare";
     credentialsFile = "/var/lib/secrets/cloudflare-blender-acme";
     dnsPropagationCheck = false;
+    dnsResolver = "1.1.1.1:53";
   };
   security.acme.certs."pine.marco.ooo" = {
     extraDomainNames = [ "*.pine.marco.ooo" ];
@@ -116,16 +117,6 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     clientMaxBodySize = "200m";
-  };
-
-  security.acme.certs."blender.marco.ooo" = { };
-  services.nginx.virtualHosts."blender.marco.ooo" = {
-    forceSSL = true;
-    useACMEHost = "blender.marco.ooo";
-    default = true;
-    locations."/" = {
-      root = "${pkgs.nginx}/html";
-    };
   };
 
   age.secrets."authelia.jwtSecretFile" = {
@@ -279,6 +270,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
   modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
+  powerManagement.cpuFreqGovernor = "performance";
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
