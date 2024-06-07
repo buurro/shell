@@ -64,7 +64,7 @@ in
     inputs.agenix.packages."${system}".default
   ];
 
-  catppuccin.flavour = "mocha";
+  catppuccin.flavor = "mocha";
 
   home.shellAliases = {
     c = "code .";

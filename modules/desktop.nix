@@ -38,7 +38,7 @@ in
       variant = "";
     };
 
-    catppuccin.flavour = "mocha";
+    catppuccin.flavor = "mocha";
 
     services.xserver.enable = true;
     services.displayManager.sddm = {

@@ -37,7 +37,7 @@
     enable = true;
     package = pkgs.rofi-wayland;
     catppuccin.enable = true;
-    catppuccin.flavour = "latte";
+    catppuccin.flavor = "latte";
   };
 
   services.mako = {
@@ -45,7 +45,7 @@
     margin = "16";
     defaultTimeout = 5000;
     catppuccin.enable = true;
-    catppuccin.flavour = "latte";
+    catppuccin.flavor = "latte";
   };
 
   services.hyprpaper = {

@@ -105,11 +105,11 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     group = "nginx";
     dnsProvider = "cloudflare";
     credentialsFile = "/var/lib/secrets/cloudflare-blender-acme";
-    dnsPropagationCheck = false;
-    dnsResolver = "1.1.1.1:53";
+    # dnsPropagationCheck = false;
+    # dnsResolver = "1.1.1.1:53";
   };
   security.acme.certs."pine.marco.ooo" = {
-    extraDomainNames = [ "*.pine.marco.ooo" ];
+    domain = "*.pine.marco.ooo";
   };
 
   services.nginx = {
