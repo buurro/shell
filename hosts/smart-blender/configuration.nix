@@ -267,7 +267,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     group = "users";
   };
 
-  modules.hyprland.enable = true;
+  # modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";
