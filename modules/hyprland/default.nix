@@ -9,6 +9,7 @@
 
   config = lib.mkIf config.modules.hyprland.enable {
     xdg.portal = {
+      enable = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
       ];
