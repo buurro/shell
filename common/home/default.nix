@@ -168,6 +168,7 @@ in
       enable = true;
       mouse = true;
       prefix = "C-n";
+      terminal = "screen-256color";
       extraConfig = ''
         set-option -ga terminal-overrides ",xterm-256color:Tc"
         set -g escape-time 10
