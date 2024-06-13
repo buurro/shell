@@ -60,6 +60,7 @@
     enable = true;
   };
   users.extraGroups.docker.members = [ "marco" ];
+  # virtualisation.virtualbox.host.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
