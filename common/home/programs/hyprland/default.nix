@@ -30,7 +30,6 @@
 
   gtk = {
     enable = true;
-    catppuccin.enable = true;
   };
 
   programs.rofi = {
