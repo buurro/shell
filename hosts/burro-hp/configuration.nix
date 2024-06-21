@@ -52,6 +52,7 @@
     spotify
     discord
     vesktop
+    dbeaver-bin
   ];
 
   services.flatpak.enable = true;
