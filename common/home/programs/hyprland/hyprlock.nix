@@ -30,12 +30,12 @@
         blur_size = 12;
       }];
 
-      input-fields = [{
+      input-field = [{
         size.width = 250;
         placeholder_text = "";
       }];
 
-      labels = [
+      label = [
         {
           text = "¯\\_(ツ)_/¯";
           font_size = 64;
@@ -55,12 +55,12 @@
       listener = [
         {
           timeout = 180;
-          onTimeout = "${lib.getExe pkgs.hyprlock}";
+          on-timeout = "${lib.getExe pkgs.hyprlock}";
         }
         {
           timeout = 240;
-          onTimeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          onResume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         }
       ];
     };
