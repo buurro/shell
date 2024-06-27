@@ -53,6 +53,7 @@
     discord
     vesktop
     dbeaver-bin
+    postgresql_16
   ];
 
   services.flatpak.enable = true;
