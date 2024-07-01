@@ -54,7 +54,7 @@
       };
       listener = [
         {
-          timeout = 180;
+          timeout = 300;
           on-timeout = "${lib.getExe pkgs.hyprlock}";
         }
         {
