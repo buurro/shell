@@ -42,7 +42,6 @@ in
     kubectl
     kubeseal
     lazydocker
-    lazygit
     mc
     neofetch
     nil
@@ -158,9 +157,16 @@ in
       enable = true;
       userName = inputs.self.users."${username}".fullName;
       userEmail = inputs.self.users."${username}".email;
-      difftastic.enable = false;
+      difftastic.enable = true;
       extraConfig = {
         init.defaultBranch = "main";
+      };
+    };
+
+    lazygit = {
+      enable = true;
+      settings = {
+        git.paging.externalDiffCommand = "difft --color=always --display=inline";
       };
     };
 
