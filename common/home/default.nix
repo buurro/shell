@@ -32,6 +32,7 @@ in
     fd
     file
     fluxcd
+    fx
     gh
     gnumake
     htop
@@ -56,6 +57,7 @@ in
     rename
     ripgrep
     sshfs
+    tabview
     unzip
     wget
     yt-dlp
