@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 {
 
   programs.hyprlock = {
@@ -10,22 +10,7 @@
       };
 
       background = [{
-        path = # doesn't seem to work with jpg
-          let
-            wallpaper = pkgs.stdenv.mkDerivation {
-              name = "wallpaper";
-              src = ../../assets;
-              nativeBuildInputs = [ pkgs.imagemagick ];
-              buildPhase = ''
-                convert $src/acrylic.jpg out.png
-              '';
-              installPhase = ''
-                mkdir -p $out
-                cp out.png $out
-              '';
-            };
-          in
-          "${wallpaper}/out.png";
+        path = "${../../assets/cafe-at-night_00_3840x2160.png}";
         blur_passes = 4;
         blur_size = 12;
       }];
@@ -39,7 +24,7 @@
         {
           text = "¯\\_(ツ)_/¯";
           font_size = 64;
-          color = "rgb(30, 30, 46)";
+          color = "rgb(200, 200, 200)";
         }
       ];
     };

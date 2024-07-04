@@ -50,11 +50,11 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preloads = [
-        "${../../assets/acrylic.jpg}"
+      preload = [
+        "${../../assets/cafe-at-night_00_3840x2160.png}"
       ];
-      wallpapers = [
-        ",${../../assets/acrylic.jpg}"
+      wallpaper = [
+        ",${../../assets/cafe-at-night_00_3840x2160.png}"
       ];
     };
   };
@@ -63,8 +63,10 @@
   wayland.windowManager.hyprland.xwayland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
+      "eDP-1,preferred,0x0,1"
+      "HDMI-A-1,preferred,auto,1,mirror,eDP-1"
       "desc:Ancor Communications Inc ROG PG348Q ##ASMpn+8P/tXd,3440x1440@85,auto,auto"
-      "desc:LG Electronics LG ULTRAGEAR 101NTKFSV589,2560x1440@144,auto,auto"
+      "desc:LG Electronics LG ULTRAGEAR 101NTKFSV589,2560x1440@60,auto,auto"
     ];
 
     env = [
