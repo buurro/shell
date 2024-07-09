@@ -43,7 +43,7 @@
           on-timeout = "${lib.getExe pkgs.hyprlock}";
         }
         {
-          timeout = 240;
+          timeout = 600;
           on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
           on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         }
