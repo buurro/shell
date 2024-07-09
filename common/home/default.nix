@@ -167,9 +167,6 @@ in
 
     lazygit = {
       enable = true;
-      settings = {
-        git.paging.externalDiffCommand = "difft --color=always --display=inline";
-      };
     };
 
     tmux = {
