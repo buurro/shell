@@ -23,7 +23,7 @@
 
   xdg.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-wlr ];
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
   ];
