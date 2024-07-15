@@ -29,6 +29,7 @@
   };
 
   services.globalprotect.enable = true;
+  services.upower.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {
