@@ -139,7 +139,11 @@
       };
       "battery" = {
         "format" = "{icon}  {capacity}%";
-        "format-icons" = [ "" "" "" "" "" ];
+        "format-icons" = {
+          "default" = [ "" "" "" "" "" ];
+          "plugged" = "";
+          "charging" = "";
+        };
       };
       "backlight" = {
         "format" = "{icon} {percent}%";
