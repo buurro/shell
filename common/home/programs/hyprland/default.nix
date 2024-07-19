@@ -11,7 +11,7 @@
     libnotify
     hyprpaper
     playerctl
-    gnome.nautilus
+    nautilus
     mpv
     grim
     slurp
