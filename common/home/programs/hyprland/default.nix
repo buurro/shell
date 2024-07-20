@@ -1,4 +1,7 @@
 { pkgs, inputs, config, ... }:
+let
+  cursorSize = 20;
+in
 {
   imports = [
     ./hyprlock.nix
@@ -27,6 +30,14 @@
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
   ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = cursorSize;
+  };
 
   gtk = {
     enable = true;
@@ -74,7 +85,7 @@
     ];
 
     env = [
-      "XCURSOR_SIZE,24"
+      "XCURSOR_SIZE,${toString cursorSize}"
     ];
 
     misc = {
