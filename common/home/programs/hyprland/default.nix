@@ -171,6 +171,7 @@ in
       in
       [
         "$mod, T, exec, alacritty"
+        "$mod, N, exec, chromium"
         "$mod, Q, killactive,"
         "$mod, E, exec, nautilus -w"
         "$mod SHIFT, F, togglefloating,"
