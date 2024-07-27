@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, inputs, config, lib, ... }:
 
 let
   username = config.home.username;
@@ -203,10 +203,10 @@ in
 
   programs.alacritty = {
     enable = true;
-    catppuccin.enable = true;
+    catppuccin.enable = false; # I changed indexed_colors.16 to black
     settings = {
       font.normal.family = "MesloLGSDZ Nerd Font";
       env.TERM = "xterm-256color";
-    };
+    } // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
   };
 }
