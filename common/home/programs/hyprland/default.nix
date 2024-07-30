@@ -95,6 +95,7 @@ in
 
     general = {
       gaps_out = 10;
+      "col.active_border" = "rgba(8839efee) rgba(7287fdee) 45deg";
     };
 
     exec-once = [
@@ -122,7 +123,7 @@ in
     dwindle.preserve_split = true;
 
     decoration = {
-      rounding = 0;
+      rounding = 12;
       drop_shadow = false;
     };
 
