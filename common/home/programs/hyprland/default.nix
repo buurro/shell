@@ -123,7 +123,7 @@ in
     dwindle.preserve_split = true;
 
     decoration = {
-      rounding = 12;
+      rounding = 0;
       drop_shadow = false;
     };
 
