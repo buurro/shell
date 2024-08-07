@@ -143,6 +143,10 @@ in
         name = "at-translated-set-2-keyboard"; # oven kb
         kb_options = "${cfg.input.kb_options},altwin:swap_alt_win";
       }
+      {
+        name = "logitech-usb-keyboard";
+        kb_options = "${cfg.input.kb_options},altwin:swap_alt_win";
+      }
     ];
 
     gestures = {
