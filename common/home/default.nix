@@ -44,7 +44,6 @@ in
     kubeseal
     lazydocker
     mc
-    neofetch
     nil
     nix-tree
     nixpkgs-fmt
