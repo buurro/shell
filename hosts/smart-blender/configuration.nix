@@ -178,26 +178,11 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     };
   };
 
-  services.unifi =
-    let
-      mongoPkgs = import inputs.nixpkgs {
-        system = pkgs.system;
-        config = { allowUnfree = true; };
-        overlays = [
-          (final: prev: {
-            scons = pkgs.scons.override {
-              python3 = pkgs.python311;
-            };
-          })
-        ];
-      };
-    in
-    {
-      enable = true;
-      openFirewall = true;
-      unifiPackage = pkgs.unifi8;
-      mongodbPackage = mongoPkgs.mongodb-5_0;
-    };
+  services.unifi = {
+    enable = true;
+    openFirewall = true;
+    unifiPackage = pkgs.unifi8;
+  };
 
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
     listen = [
