@@ -180,6 +180,12 @@ in
       plugins = [ pkgs.tmuxPlugins.pain-control ];
     };
 
+    zellij = {
+      enable = true;
+      # enableZshIntegration = true;
+      catppuccin.enable = true;
+    };
+
     zoxide = {
       enable = true;
       enableZshIntegration = true;
