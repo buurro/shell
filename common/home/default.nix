@@ -58,6 +58,7 @@ in
     sshfs
     tabview
     unzip
+    uv
     wget
     yt-dlp
   ] ++ [
