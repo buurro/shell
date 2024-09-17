@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 let
-  python-and-friends = pkgs.python311.withPackages (
-    ps: with ps; [ pip pipx black ]
+  python-and-friends = pkgs.python312.withPackages (
+    ps: with ps; [ pip pipx ]
   );
 
   spotify-volume-control = pkgs.fetchFromGitHub {
