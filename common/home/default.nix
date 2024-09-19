@@ -48,6 +48,7 @@ in
     nix-tree
     nixpkgs-fmt
     nnn
+    nodejs
     nushell
     ookla-speedtest
     opentofu
