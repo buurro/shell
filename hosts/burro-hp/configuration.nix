@@ -41,6 +41,7 @@
     chromium
     firefox
     globalprotect-openconnect
+    insomnia
     kate
     libreoffice-qt
     lightly-qt
