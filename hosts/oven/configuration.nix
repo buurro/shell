@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ../../common/nixos-configuration.nix
     ./hardware-configuration.nix
     ./disk-config.nix
+    "${inputs.nixos-hardware}/common/gpu/nvidia/ampere"
   ];
 
   networking.hostName = "oven";

@@ -3,7 +3,7 @@
 {
   disko.devices = {
     disk.disk1 = {
-      device = "/dev/nvme0n1";
+      device = "/dev/sda";
       type = "disk";
       content = {
         type = "gpt";
@@ -39,7 +39,7 @@
         type = "lvm_vg";
         lvs = {
           swap = {
-            size = "12G";
+            size = "2G";
             content = {
               type = "swap";
             };
