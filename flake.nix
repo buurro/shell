@@ -57,15 +57,6 @@
     } @ inputs:
     {
       darwinConfigurations = {
-        "smart-kettle" = darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          modules = [
-            ./common/darwin-configuration.nix
-            home-manager.darwinModules.home-manager
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
         "smart-toaster" = darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
@@ -93,16 +84,6 @@
           modules = [
             ./hosts/qraspi/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
-        "smart-kettle" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/smart-kettle/configuration.nix
-            nixos-hardware.nixosModules.apple-t2
-            disko.nixosModules.disko
           ];
           specialArgs = { inherit inputs; };
         };
