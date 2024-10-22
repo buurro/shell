@@ -122,6 +122,17 @@
           ];
           specialArgs = { inherit inputs; };
         };
+
+        "live" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            {
+              users.users.root.openssh.authorizedKeys.keys = self.users.marco.ssh.publicKeys;
+            }
+          ];
+          # specialArgs = { inherit inputs; };
+        };
       };
 
       images = {
@@ -141,6 +152,8 @@
           ];
           specialArgs = { inherit inputs; };
         };
+
+        live = self.nixosConfigurations.live.config.system.build.isoImage;
       };
 
       users = import ./users.nix;
