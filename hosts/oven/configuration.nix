@@ -30,12 +30,11 @@
   modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
-  powerManagement.cpuFreqGovernor = "performance";
+  services.qemuGuest.enable = true;
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  powerManagement.cpuFreqGovernor = "performance";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
