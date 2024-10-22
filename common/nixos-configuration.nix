@@ -14,6 +14,7 @@ in
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
+    ./nixos-minimal-configuration.nix
     ../modules/backup.nix
     ../modules/network-stuff.nix
     ../modules/desktop.nix
@@ -30,33 +31,12 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
-      curl
-      gcc
-      git
-      htop
-      vim
-      wget
       iperf3
     ];
-
-    security.sudo.wheelNeedsPassword = false;
-
-    users.users.marco = {
-      isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
-      openssh.authorizedKeys.keys = inputs.self.users.marco.ssh.publicKeys;
-    };
-    services.openssh = {
-      enable = true;
-      settings.PasswordAuthentication = false;
-      settings.KbdInteractiveAuthentication = false;
-    };
 
     environment.shellAliases = {
       backups_keygen = "ssh-keygen -t ed25519 -C \"`hostname`-backups\" -f ~/.ssh/backups_ed25519";
     };
-
-    time.timeZone = lib.mkDefault "Europe/Rome";
 
     programs.nix-ld.enable = lib.mkDefault true; # fixes vscode server and other stuff
 
@@ -77,11 +57,6 @@ in
       users.users.marco.initialPassword = "marco";
       security.acme.defaults.server = "https://127.0.0.1";
       security.acme.preliminarySelfsigned = true;
-    };
-
-    nix.settings = {
-      experimental-features = lib.mkDefault "nix-command flakes";
-      trusted-users = [ "root" "@wheel" ];
     };
 
     system.autoUpgrade = {

@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-2305.url = "github:nixos/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     catppuccin.url = "github:catppuccin/nix";
@@ -45,6 +46,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-2305
     , darwin
     , home-manager
     , flake-utils
@@ -104,6 +106,19 @@
             ./hosts/oven/configuration.nix
           ];
           specialArgs = { inherit inputs; };
+        };
+
+        "unifi" = nixpkgs-2305.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/unifi/configuration.nix
+            disko.nixosModules.disko
+          ];
+
+          specialArgs = {
+            inherit inputs;
+            nixpkgs = nixpkgs-2305;
+          };
         };
 
         "ionos-m" = nixpkgs.lib.nixosSystem {
