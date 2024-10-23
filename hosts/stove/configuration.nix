@@ -27,7 +27,6 @@
     };
   };
 
-  modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
   services.qemuGuest.enable = true;
@@ -35,6 +34,12 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+    catppuccin.enable = true;
+  };
 
   system.stateVersion = "24.11";
 }
