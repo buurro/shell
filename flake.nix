@@ -108,6 +108,15 @@
           specialArgs = { inherit inputs; };
         };
 
+        "stove" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/stove/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "unifi" = nixpkgs-2405.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
