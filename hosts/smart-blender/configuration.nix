@@ -8,6 +8,8 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
 
   networking.hostName = "smart-blender";
 
+  networking.enableIPv6 = false;
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
@@ -182,6 +184,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     enable = true;
     openFirewall = true;
     unifiPackage = pkgs.unifi8;
+    mongodbPackage = pkgs.mongodb-6_0;
   };
 
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {

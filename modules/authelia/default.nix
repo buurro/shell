@@ -26,7 +26,7 @@ in
       services.authelia.instances."main" = {
         enable = true;
         settings = {
-          server.port = 9095;
+          server.address = "tcp://:9095/";
           access_control.default_policy = "two_factor";
 
           authentication_backend.file.path = "/var/lib/authelia-main/users_database.yml";
