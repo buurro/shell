@@ -227,6 +227,8 @@ in
     };
   };
 
+  services.qemuGuest.enable = true;
+
   backup = {
     server = "qraspi";
     paths = [
