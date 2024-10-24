@@ -1,5 +1,12 @@
 { config, pkgs, inputs, ... }:
-let authelia = import ../../modules/authelia/stuff.nix; in {
+let
+  authelia = import ../../modules/authelia/stuff.nix;
+  mongoPkgs = import inputs.nixpkgs-mongodb {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
+{
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -184,7 +191,7 @@ let authelia = import ../../modules/authelia/stuff.nix; in {
     enable = true;
     openFirewall = true;
     unifiPackage = pkgs.unifi8;
-    mongodbPackage = pkgs.mongodb-6_0;
+    mongodbPackage = mongoPkgs.mongodb-6_0;
   };
 
   services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
