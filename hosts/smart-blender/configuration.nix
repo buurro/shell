@@ -26,21 +26,9 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    chromium
-    mpv
     dig
     socat
     traceroute
-    discord
-    vesktop
-    stepmania
-    osu-lazer-bin
-    obs-studio
-    spotify
-    vscode.fhs
-    prismlauncher
-    jellyfin-media-player
-    remmina
 
     # jellyfin hardware acceleration
     vaapiVdpau
