@@ -13,6 +13,7 @@
     chromium
     discord
     mpv
+    nvtopPackages.nvidia
     spotify
     vscode.fhs
     jellyfin-media-player
