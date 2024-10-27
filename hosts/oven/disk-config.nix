@@ -39,7 +39,7 @@
         type = "lvm_vg";
         lvs = {
           swap = {
-            size = "2G";
+            size = "8G";
             content = {
               type = "swap";
             };
