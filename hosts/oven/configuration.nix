@@ -27,6 +27,13 @@
     };
   };
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+    host = "[::]";
+    openFirewall = true;
+  };
+
   modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
