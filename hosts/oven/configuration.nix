@@ -56,6 +56,7 @@
   modules.home-manager.enable = true;
 
   services.qemuGuest.enable = true;
+  fileSystems."/".autoResize = true;
 
   powerManagement.cpuFreqGovernor = "performance";
 
