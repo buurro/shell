@@ -251,7 +251,6 @@ in
       enable = true;
       polkitPolicyOwners = [ "marco" ];
     };
-    steam.enable = true;
   };
 
   fileSystems."/mnt/nas-fun" = {
