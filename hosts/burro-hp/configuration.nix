@@ -28,7 +28,7 @@
     extraGroups = [ "input" ];
   };
 
-  services.globalprotect.enable = true;
+  # services.globalprotect.enable = true;
   services.upower.enable = true;
 
   programs._1password.enable = true;
@@ -40,7 +40,8 @@
   environment.systemPackages = with pkgs; [
     chromium
     firefox
-    globalprotect-openconnect
+    # globalprotect-openconnect
+    gpclient
     insomnia
     kate
     libreoffice-qt
