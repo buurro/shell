@@ -20,6 +20,18 @@
     ];
   };
 
+  networking.firewall.allowedTCPPorts = [
+    3001
+  ];
+  networking.firewall.allowedUDPPorts = [
+    53
+  ];
+
+  services.adguardhome = {
+    enable = true;
+    openFirewall = true;
+  };
+
   console.enable = true;
 
   boot = {
