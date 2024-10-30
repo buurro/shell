@@ -148,6 +148,20 @@ in
     };
   };
 
+  services.radarr = {
+    enable = true;
+    user = "nas";
+    group = "users";
+  };
+  services.nginx.virtualHosts."radarr.pine.marco.ooo" = {
+    forceSSL = true;
+    useACMEHost = "pine.marco.ooo";
+    locations."/" = {
+      proxyPass = "http://localhost:7878";
+      proxyWebsockets = true;
+    };
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
@@ -157,6 +171,18 @@ in
     useACMEHost = "pine.marco.ooo";
     locations."/" = {
       proxyPass = "http://localhost:8096";
+      proxyWebsockets = true;
+    };
+  };
+
+  services.jellyseerr = {
+    enable = true;
+  };
+  services.nginx.virtualHosts."jellyseerr.pine.marco.ooo" = {
+    forceSSL = true;
+    useACMEHost = "pine.marco.ooo";
+    locations."/" = {
+      proxyPass = "http://localhost:${toString config.services.jellyseerr.port}";
       proxyWebsockets = true;
     };
   };
