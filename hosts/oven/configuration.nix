@@ -60,6 +60,8 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   system.stateVersion = "24.11";
