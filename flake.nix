@@ -51,11 +51,11 @@
     } @ inputs:
     {
       darwinConfigurations = {
-        "smart-toaster" = darwin.lib.darwinSystem {
+        "toaster" = darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
             ./common/darwin-configuration.nix
-            ./hosts/smart-toaster/darwin-configuration.nix
+            ./hosts/toaster/darwin-configuration.nix
             home-manager.darwinModules.home-manager
           ];
           specialArgs = { inherit inputs; };
@@ -63,10 +63,10 @@
       };
 
       nixosConfigurations = {
-        "smart-blender" = nixpkgs.lib.nixosSystem {
+        "blender" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/smart-blender/configuration.nix
+            ./hosts/blender/configuration.nix
             disko.nixosModules.disko
             agenix.nixosModules.default
           ];
