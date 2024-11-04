@@ -126,6 +126,16 @@
           specialArgs = { inherit inputs; };
         };
 
+        "mixer" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            agenix.nixosModules.default
+            ./hosts/mixer/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "live" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
