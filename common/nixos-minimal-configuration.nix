@@ -33,6 +33,13 @@
       trusted-users = [ "root" "@wheel" ];
     };
 
+    system.autoUpgrade = {
+      enable = lib.mkDefault true;
+      flake = "github:buurro/shell";
+      dates = "02:00";
+      randomizedDelaySec = "45min";
+    };
+
     nixpkgs.config.allowUnfree = true;
   };
 }
