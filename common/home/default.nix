@@ -74,6 +74,7 @@ in
     mc = "mc --nosubshell";
     p = "poetry run";
     s = "ssh";
+    devv = "nix develop -c zellij options --default-shell zsh";
 
     # Since sudo doesn't preserve user PATH,
     # everything installed via nix isn't accessible. This fixes that.
