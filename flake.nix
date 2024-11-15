@@ -78,6 +78,7 @@
           modules = [
             ./hosts/qraspi/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
+            agenix.nixosModules.default
           ];
           specialArgs = { inherit inputs; };
         };
