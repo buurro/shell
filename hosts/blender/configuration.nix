@@ -70,7 +70,7 @@ in
   };
 
   services.k3s = {
-    enable = true;
+    enable = false;
     role = "server";
     extraFlags = toString [
       "--disable=traefik"
@@ -256,7 +256,7 @@ in
   };
 
   services.netdata = {
-    enable = true;
+    enable = false;
   };
   services.nginx.virtualHosts."netdata.pine.marco.ooo" = {
     forceSSL = true;
@@ -265,6 +265,18 @@ in
     locations."/" = {
       proxyPass = "http://127.0.0.1:19999";
       extraConfig = authelia.nginx.enableLocation;
+    };
+  };
+
+  services.minio = {
+    enable = false;
+  };
+  services.nginx.virtualHosts."minio.pine.marco.ooo" = {
+    forceSSL = true;
+    useACMEHost = "pine.marco.ooo";
+    locations."/" = {
+      proxyPass = "http://localhost${config.services.minio.consoleAddress}";
+      proxyWebsockets = true;
     };
   };
 
