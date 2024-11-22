@@ -44,6 +44,7 @@
     853
   ];
   networking.firewall.allowedUDPPorts = [
+    853
     53
   ];
 
