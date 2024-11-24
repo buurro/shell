@@ -128,7 +128,7 @@ in
         for _pkg in "$@"; do
           _pkgs+=("nixpkgs/${inputs.nixpkgs.rev}#$_pkg")
         done
-        NIXPKGS_ALLOW_UNFREE=1 nix shell --impure "''${_pkgs[@]}"
+        nix shell "''${_pkgs[@]}"
       }
     '';
   };
