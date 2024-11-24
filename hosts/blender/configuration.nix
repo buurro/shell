@@ -295,7 +295,7 @@ in
   };
 
   fileSystems."/mnt/nas-fun" = {
-    device = "10.23.5.60:/volume1/fun";
+    device = "home-nas.lan:/volume1/fun";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
