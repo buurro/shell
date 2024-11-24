@@ -268,18 +268,6 @@ in
     };
   };
 
-  services.minio = {
-    enable = false;
-  };
-  services.nginx.virtualHosts."minio.pine.marco.ooo" = {
-    forceSSL = true;
-    useACMEHost = "pine.marco.ooo";
-    locations."/" = {
-      proxyPass = "http://localhost${config.services.minio.consoleAddress}";
-      proxyWebsockets = true;
-    };
-  };
-
   services.qemuGuest.enable = true;
 
   backup = {
