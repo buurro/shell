@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "nvme" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
