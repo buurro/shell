@@ -15,6 +15,9 @@
 
   services.openssh.settings.X11Forwarding = true;
 
+  networking.hosts = {
+    "127.0.0.1" = [ "localhost.example.com" ];
+  };
   # nix.settings.extra-substituters = [
   #   "https://nix-cache.ambercom.tech?priority=50"
   # ];
@@ -25,7 +28,10 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marco = {
-    extraGroups = [ "input" ];
+    extraGroups = [
+      "input"
+      "libvirtd" # virt-manager
+    ];
   };
 
   # services.globalprotect.enable = true;
@@ -40,7 +46,6 @@
   environment.systemPackages = with pkgs; [
     chromium
     firefox
-    # globalprotect-openconnect
     gpclient
     insomnia
     kate
@@ -51,7 +56,6 @@
     ruff
     vscode.fhs
     kitty
-    podman-compose
     spotify
     discord
     vesktop
@@ -66,6 +70,10 @@
   };
   users.extraGroups.docker.members = [ "marco" ];
   # virtualisation.virtualbox.host.enable = true;
+
+  # https://nixos.wiki/wiki/Virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
