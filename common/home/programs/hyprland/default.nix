@@ -132,7 +132,6 @@ in
 
     decoration = {
       rounding = 0;
-      drop_shadow = false;
     };
 
     input = {
