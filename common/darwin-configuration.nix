@@ -30,7 +30,7 @@ in
   programs.zsh.promptInit = "";
 
   environment.systemPackages = with pkgs; [
-    _1password
+    _1password-cli
     gnumake
     python-and-friends
     vim
