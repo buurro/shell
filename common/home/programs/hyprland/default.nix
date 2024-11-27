@@ -87,15 +87,7 @@ in
 
     env = [
       "XCURSOR_SIZE,${toString cursorSize}"
-      "LIBVA_DRIVER_NAME,nvidia"
-      "XDG_SESSION_TYPE,wayland"
-      "GBM_BACKEND,nvidia-drm"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
-
-    cursor = {
-      no_hardware_cursors = true;
-    };
 
     misc = {
       disable_hyprland_logo = true;
