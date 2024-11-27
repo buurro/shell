@@ -7,6 +7,13 @@
 
   networking.hostName = "mixer";
 
+
+  age.secrets."mixer-vpn-conf" = {
+    file = ../../secrets/mixer-vpn-conf.age;
+  };
+
+  networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."mixer-vpn-conf".path;
+
   nix.gc = {
     automatic = true;
     options = "--delete-old";
