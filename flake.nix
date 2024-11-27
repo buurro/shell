@@ -32,7 +32,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.45.0";
+      url = "github:hyprwm/Hyprland/v0.45.2";
     };
   };
   outputs =

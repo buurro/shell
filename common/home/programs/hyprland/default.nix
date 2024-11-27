@@ -1,11 +1,13 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, config, lib, ... }:
 let
   cursorSize = 20;
+  waybar = lib.getExe config.programs.waybar.package;
+  rofi = lib.getExe config.programs.rofi.package;
 in
 {
   imports = [
     ./hyprlock.nix
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
@@ -99,7 +101,7 @@ in
     };
 
     exec-once = [
-      "waybar"
+      "${waybar}"
     ];
 
     windowrule = [
@@ -175,20 +177,20 @@ in
         '';
       in
       [
-        "$mod, T, exec, alacritty"
-        "$mod, N, exec, chromium"
+        "$mod, T, exec, ${lib.getExe pkgs.alacritty}"
+        "$mod, N, exec, ${lib.getExe pkgs.chromium}"
         "$mod, Q, killactive,"
-        "$mod, E, exec, nautilus -w"
+        "$mod, E, exec, ${lib.getExe pkgs.nautilus} -w"
         "$mod SHIFT, F, togglefloating,"
         "$mod, F, fullscreen,"
         "$mod CTRL, F, fullscreen, 1"
         "$mod, P, togglesplit,"
         "$mod SHIFT, P, swapsplit,"
-        "$mod, X, exec, grim - | wl-copy"
-        "$mod SHIFT, X, exec, grim -g \"$(slurp)\" - | wl-copy"
-        "$mod, space, exec, rofi -show run"
+        "$mod, X, exec, ${lib.getExe pkgs.grim} - | wl-copy"
+        "$mod SHIFT, X, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | wl-copy"
+        "$mod, space, exec, ${rofi} -show run"
         "$mod, I, exec, ${brain}/bin/brain"
-        "$mod, B, exec, pkill waybar || waybar"
+        "$mod, B, exec, pkill waybar || ${waybar}"
         "$mod ALT, Q, exec, hyprctl dispatch exit"
         "$mod, H, movefocus, l"
         "$mod, L, movefocus, r"
