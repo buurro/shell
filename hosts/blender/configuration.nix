@@ -181,6 +181,11 @@ in
     enable = true;
     openFirewall = true;
   };
+  hardware.enableRedistributableFirmware = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   services.nginx.virtualHosts."jellyfin.pine.marco.ooo" = {
     forceSSL = true;
     useACMEHost = "pine.marco.ooo";

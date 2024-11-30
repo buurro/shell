@@ -1,4 +1,4 @@
-{ config, inputs, ... }: {
+{ config, inputs, pkgs, ... }: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
@@ -10,6 +10,13 @@
   age.secrets."mixer-vpn-conf".file = ../../secrets/mixer-vpn-conf.age;
 
   networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."mixer-vpn-conf".path;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableRedistributableFirmware = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   nix.gc = {
     automatic = true;
