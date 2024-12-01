@@ -9,6 +9,12 @@
 
   services.tailscale.enable = true;
 
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+    dataDir = "/mnt/persist/var/lib/jellyfin";
+  };
+
   fileSystems."/mnt/persist" = {
     device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1-part1";
     fsType = "ext4";
