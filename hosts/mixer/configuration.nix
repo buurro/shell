@@ -10,6 +10,15 @@
   age.secrets."mixer-vpn-conf".file = ../../secrets/mixer-vpn-conf.age;
 
   networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."mixer-vpn-conf".path;
+  fileSystems."/mnt/persist" = {
+    device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1-part1";
+    fsType = "ext4";
+  };
+
+  fileSystems."/etc/ssh" = {
+    device = "/mnt/persist/etc/ssh";
+    options = [ "bind" ];
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableRedistributableFirmware = true;

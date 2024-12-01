@@ -1,9 +1,9 @@
 # Example to create a bios compatible gpt partition
-{ lib, ... }:
+{ ... }:
 {
   disko.devices = {
     disk.disk1 = {
-      device = "/dev/sda";
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
       type = "disk";
       content = {
         type = "gpt";
