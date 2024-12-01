@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 {
 
   options = { };
@@ -15,11 +15,32 @@
 
     security.sudo.wheelNeedsPassword = false;
 
-    users.users.marco = {
-      isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
-      openssh.authorizedKeys.keys = inputs.self.users.marco.ssh.publicKeys;
+    ids.uids = {
+      jellyfin = 186;
     };
+    ids.gids = {
+      jellyfin = 186;
+    };
+
+    users.users = {
+      marco = {
+        isNormalUser = true;
+        extraGroups = [ "networkmanager" "wheel" ];
+        openssh.authorizedKeys.keys = inputs.self.users.marco.ssh.publicKeys;
+      };
+      jellyfin = lib.mkIf config.services.jellyfin.enable {
+        name = "jellyfin";
+        group = "jellyfin";
+        uid = config.ids.uids.jellyfin;
+      };
+    };
+    users.groups = {
+      jellyfin = lib.mkIf config.services.jellyfin.enable {
+        name = "jellyfin";
+        gid = config.ids.gids.jellyfin;
+      };
+    };
+
     services.openssh = {
       enable = true;
       settings.PasswordAuthentication = false;
