@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
@@ -7,9 +7,8 @@
 
   networking.hostName = "mixer";
 
-  age.secrets."mixer-vpn-conf".file = ../../secrets/mixer-vpn-conf.age;
+  services.tailscale.enable = true;
 
-  networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."mixer-vpn-conf".path;
   fileSystems."/mnt/persist" = {
     device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1-part1";
     fsType = "ext4";
