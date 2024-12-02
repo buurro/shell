@@ -68,6 +68,7 @@
 
   virtualisation.docker = {
     enable = true;
+    liveRestore = false;
   };
   users.extraGroups.docker.members = [ "marco" ];
   # virtualisation.virtualbox.host.enable = true;
