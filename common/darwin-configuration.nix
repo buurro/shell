@@ -75,7 +75,7 @@ in
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
+      nerd-fonts.meslo-lg
     ];
   };
 
