@@ -6,7 +6,7 @@ let
   };
 in
 {
-  config = lib.mkIf config.modules.hyprland.enable {
+  config = lib.mkIf (config.modules.hyprland.enable || config.services.desktopManager.plasma6.enable) {
     fonts = {
       fontDir.enable = true;
       packages = with pkgs; [
@@ -40,8 +40,8 @@ in
 
     catppuccin.flavor = "mocha";
 
-    services.xserver.enable = true;
-    services.displayManager.sddm = {
+    services.xserver.enable = lib.mkIf (config.modules.hyprland.enable) true;
+    services.displayManager.sddm = lib.mkIf (config.modules.hyprland.enable) {
       enable = true;
       settings = {
         General = {

@@ -44,6 +44,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    alacritty
     chromium
     firefox
     gpclient
@@ -88,7 +89,10 @@
   boot.loader.grub.efiInstallAsRemovable = true;
 
   modules.home-manager.enable = true;
-  modules.hyprland.enable = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   system.autoUpgrade.enable = false;
 
