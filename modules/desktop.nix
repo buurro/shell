@@ -10,7 +10,7 @@ in
     fonts = {
       fontDir.enable = true;
       packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "Meslo" ]; })
+        nerd-fonts.meslo-lg
         noto-fonts-cjk-sans
       ];
     };
