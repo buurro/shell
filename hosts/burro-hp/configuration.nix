@@ -11,6 +11,8 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
+  networking.enableIPv6 = false;
+
   networking.wireless.userControlled.enable = true;
 
   services.openssh.settings.X11Forwarding = true;
