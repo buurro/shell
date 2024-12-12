@@ -4,7 +4,9 @@
     ../../common/nixos-configuration.nix
     ./hardware-configuration.nix
     ./disk-config.nix
-    "${inputs.nixos-hardware}/common/gpu/nvidia/ampere"
+
+    # broken
+    # "${inputs.nixos-hardware}/common/gpu/nvidia/ampere"
   ];
 
   networking.hostName = "oven";
