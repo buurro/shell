@@ -64,6 +64,7 @@
     vesktop
     dbeaver-bin
     postgresql_16
+    wl-clipboard
   ];
 
   services.flatpak.enable = true;
