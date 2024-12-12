@@ -13,7 +13,7 @@ in
     "${inputs.self}/common/nixos-configuration.nix"
   ];
 
-          networking.hostName = "blender";
+  networking.hostName = "blender";
 
   networking.enableIPv6 = false;
 
