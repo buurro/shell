@@ -1,0 +1,25 @@
+name: Flake format
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - run: nix fmt
+      - run: |
+          if [[ $(git status --porcelain) ]]; then
+            echo "Code formatting issues detected!"
+            git diff
+            exit 1
+          else
+            echo "No formatting issues found."
+          fi

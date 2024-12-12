@@ -154,5 +154,7 @@
       };
 
       users = import ./users.nix;
-    };
+    } // flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+    });
 }
