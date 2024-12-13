@@ -178,8 +178,8 @@ in
   };
 
   services.jellyfin = {
-    enable = true;
-    openFirewall = true;
+    enable = false;
+    # openFirewall = true;
   };
   hardware.enableRedistributableFirmware = true;
   hardware.graphics = {

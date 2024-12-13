@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, inputs, pkgs, ... }: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
@@ -7,12 +7,68 @@
 
   networking.hostName = "mixer";
 
-  services.tailscale.enable = true;
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+  environment.systemPackages = with pkgs; [
+    # jellyfin hardware acceleration
+    vaapiVdpau
+    libvdpau-va-gl
+    libva-utils
+  ];
+
+  age.secrets."somefile.zip" = {
+    file = ../../secrets/somefile.zip.age;
+  };
+
+  security.acme.acceptTerms = true;
+  security.acme.defaults = {
+    email = inputs.self.users.marco.email;
+    # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+    group = "nginx";
+    dnsProvider = "cloudflare";
+    credentialsFile = config.age.secrets."somefile.zip".path;
+  };
+
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    clientMaxBodySize = "200m";
+  };
+
+  # hardware acceleration stuff
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableRedistributableFirmware = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   services.jellyfin = {
     enable = true;
-    openFirewall = true;
-    dataDir = "/mnt/persist/var/lib/jellyfin";
+    # dataDir = "/mnt/persist/var/lib/jellyfin";
+  };
+  security.acme.certs."jellyfin.somefile.zip" = {
+    domain = "jellyfin.somefile.zip";
+  };
+  services.nginx.virtualHosts."jellyfin.somefile.zip" = {
+    forceSSL = true;
+    useACMEHost = "jellyfin.somefile.zip";
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:8096";
+      proxyWebsockets = true;
+    };
+  };
+
+  services.tailscale.enable = true;
+
+  fileSystems."/etc/ssh" = {
+    device = "/mnt/persist/etc/ssh";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/var/lib/jellyfin" = {
+    device = "/mnt/persist/var/lib/jellyfin";
+    options = [ "bind" ];
   };
 
   fileSystems."/mnt/persist" = {
@@ -20,16 +76,10 @@
     fsType = "ext4";
   };
 
-  fileSystems."/etc/ssh" = {
-    device = "/mnt/persist/etc/ssh";
-    options = [ "bind" ];
-  };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  hardware.enableRedistributableFirmware = true;
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  fileSystems."/mnt/nas-fun" = {
+    device = "dmz-nas.lan:/volume1/fun";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
   };
 
   nix.gc = {
