@@ -36,11 +36,6 @@ in
     dig
     socat
     traceroute
-
-    # jellyfin hardware acceleration
-    vaapiVdpau
-    libvdpau-va-gl
-    libva-utils
   ];
 
   virtualisation.podman = {
@@ -58,14 +53,9 @@ in
         localPort = 9091;
         namespacePort = 9091;
       };
-      "portforward-jellyfin" = {
-        localPort = 8096;
-        namespacePort = 8096;
-      };
     };
     services = [
       "transmission"
-      "jellyfin"
     ];
   };
 
@@ -177,24 +167,6 @@ in
     };
   };
 
-  services.jellyfin = {
-    enable = false;
-    # openFirewall = true;
-  };
-  hardware.enableRedistributableFirmware = true;
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-  services.nginx.virtualHosts."jellyfin.pine.marco.ooo" = {
-    forceSSL = true;
-    useACMEHost = "pine.marco.ooo";
-    locations."/" = {
-      proxyPass = "http://localhost:8096";
-      proxyWebsockets = true;
-    };
-  };
-
   services.jellyseerr = {
     enable = true;
   };
@@ -282,7 +254,6 @@ in
       "/home/marco/.zsh_history"
       "/home/marco/.local/share/zoxide"
       "/home/marco/.ssh"
-      "/var/lib/jellyfin"
       "/var/lib/unifi"
       "/var/log/unifi"
       config.services.sonarr.dataDir
