@@ -35,6 +35,12 @@
     recommendedTlsSettings = true;
     clientMaxBodySize = "200m";
   };
+  services.nginx.virtualHosts."default" = {
+    default = true;
+    root = pkgs.writeTextDir "index.html" ''
+      hello
+    '';
+  };
 
   # hardware acceleration stuff
   boot.kernelPackages = pkgs.linuxPackages_latest;
