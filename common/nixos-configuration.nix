@@ -32,6 +32,7 @@ in
 
     environment.systemPackages = with pkgs; [
       iperf3
+      traceroute
     ];
 
     environment.shellAliases = {

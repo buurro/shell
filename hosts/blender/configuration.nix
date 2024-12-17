@@ -35,7 +35,6 @@ in
   environment.systemPackages = with pkgs; [
     dig
     socat
-    traceroute
   ];
 
   virtualisation.podman = {

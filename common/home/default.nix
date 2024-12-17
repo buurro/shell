@@ -58,7 +58,6 @@ in
     ripgrep
     sshfs
     tabview
-    traceroute
     unzip
     uv
     wget
