@@ -47,6 +47,8 @@
       settings.KbdInteractiveAuthentication = false;
     };
 
+    environment.etc.hosts.mode = "0644";
+
     time.timeZone = lib.mkDefault "Europe/Rome";
 
     nix.settings = {
