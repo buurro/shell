@@ -67,8 +67,6 @@
     wl-clipboard
   ];
 
-  services.flatpak.enable = true;
-
   virtualisation.docker = {
     enable = true;
     liveRestore = false;
@@ -82,8 +80,6 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  services.blueman.enable = true;
 
   services.ddccontrol.enable = true;
 
