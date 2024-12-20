@@ -36,7 +36,9 @@
     clientMaxBodySize = "200m";
   };
   services.nginx.virtualHosts."default" = {
+    serverName = "_";
     default = true;
+    rejectSSL = true;
     root = pkgs.writeTextDir "index.html" ''
       hello
     '';
