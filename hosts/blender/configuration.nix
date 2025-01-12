@@ -180,14 +180,14 @@ in
 
   services.komga = {
     enable = true;
-    port = 8282;
+    settings.server.port = 8282;
     openFirewall = true;
   };
   services.nginx.virtualHosts."komga.pine.marco.ooo" = {
     forceSSL = true;
     useACMEHost = "pine.marco.ooo";
     locations."/" = {
-      proxyPass = "http://localhost:${toString config.services.komga.port}";
+      proxyPass = "http://localhost:${toString config.services.komga.settings.server.port}";
       proxyWebsockets = true;
     };
   };

@@ -67,6 +67,8 @@ in
   ];
 
   catppuccin.flavor = "mocha";
+  catppuccin.fzf.enable = true;
+  catppuccin.zellij.enable = true;
 
   home.shellAliases = {
     c = "code .";
@@ -139,7 +141,6 @@ in
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      catppuccin.enable = true;
     };
 
     lsd = {
@@ -186,7 +187,6 @@ in
     zellij = {
       enable = true;
       # enableZshIntegration = true;
-      catppuccin.enable = true;
     };
 
     zoxide = {
@@ -211,7 +211,6 @@ in
 
   programs.alacritty = {
     enable = true;
-    catppuccin.enable = false; # I changed indexed_colors.16 to black
     settings = {
       font.normal.family = "MesloLGSDZ Nerd Font";
       env.TERM = "xterm-256color";
