@@ -12,6 +12,13 @@ let
   };
 in
 {
+
+  nix.distributedBuilds = true;
+  nix.buildMachines = [{
+    hostName = "blender";
+    systems = [ "x86_64-linux" "aarch64-linux" ];
+    sshUser = "marco";
+  }];
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = [ "root" "marco" ];
   users.users."marco".home = "/Users/marco";
