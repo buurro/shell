@@ -55,10 +55,10 @@ in
       enable = true;
       efiSupport = true;
       efiInstallAsRemovable = true;
-      catppuccin.enable = true;
     };
+    catppuccin.grub.enable = true;
 
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
