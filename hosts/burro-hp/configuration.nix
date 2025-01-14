@@ -98,6 +98,8 @@
     };
   };
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
