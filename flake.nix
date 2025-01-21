@@ -105,6 +105,7 @@
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
+            agenix.nixosModules.default
             ./hosts/ionos-m/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -116,6 +117,16 @@
             disko.nixosModules.disko
             agenix.nixosModules.default
             ./hosts/mixer/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "k8s-lab" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            agenix.nixosModules.default
+            ./hosts/k8s-lab/configuration.nix
           ];
           specialArgs = { inherit inputs; };
         };
