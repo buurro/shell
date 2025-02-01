@@ -37,9 +37,27 @@
         name = "ncc-1";
         tokenFile = config.age.secrets."github-runner-ncc-1".path;
         url = "https://github.com/buurro/prenotazioni-ncc";
-        extraPackages = with pkgs; [ openssh curlFull jq ];
+        extraPackages = with pkgs; [
+          openssh
+          curlFull
+          jq
+          docker
+        ];
       };
     };
+
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [
+    "github-runner"
+    "marco"
+  ];
+  virtualisation.docker.autoPrune = {
+    enable = true;
+    dates = "monthly";
+    flags = [
+      "--all"
+    ];
+  };
 
   nix.gc = {
     automatic = true;
