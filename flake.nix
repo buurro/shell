@@ -135,6 +135,16 @@
           specialArgs = { inherit inputs; };
         };
 
+        "github-runner" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            agenix.nixosModules.default
+            ./hosts/github-runner/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "live" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
