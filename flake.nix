@@ -9,6 +9,7 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -52,6 +53,7 @@
     , agenix
     , catppuccin
     , hyprland
+    , nixos-wsl
     } @ inputs:
     {
       darwinConfigurations = {
@@ -101,6 +103,20 @@
           modules = [
             disko.nixosModules.disko
             ./hosts/oven/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "stove" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-wsl.nixosModules.default
+            ./common/nixos-configuration.nix
+            ({
+              networking.hostName = "stove";
+              wsl.enable = true;
+              system.stateVersion = "25.05";
+            })
           ];
           specialArgs = { inherit inputs; };
         };
