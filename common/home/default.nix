@@ -186,6 +186,14 @@ in
 
     zellij = {
       enable = true;
+      settings = {
+        keybinds = {
+          "shared_except \"move\" \"locked\"" = {
+            unbind = { _args = [ "Ctrl h" ]; };
+            "bind \"Ctrl m\"" = { SwitchToMode = "Move"; };
+          };
+        };
+      };
       # enableZshIntegration = true;
     };
 
