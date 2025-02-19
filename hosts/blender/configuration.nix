@@ -1,10 +1,6 @@
 { config, pkgs, inputs, ... }:
 let
   authelia = import ../../modules/authelia/stuff.nix;
-  mongoPkgs = import inputs.nixpkgs-mongodb {
-    system = pkgs.system;
-    config.allowUnfree = true;
-  };
 in
 {
   imports = [
@@ -192,45 +188,6 @@ in
     };
   };
 
-  services.unifi = {
-    enable = true;
-    openFirewall = true;
-    unifiPackage = pkgs.unifi8;
-    mongodbPackage = mongoPkgs.mongodb-6_0;
-  };
-
-  services.nginx.virtualHosts."unifi.pine.marco.ooo" = {
-    listen = [
-      {
-        addr = "0.0.0.0";
-        port = 80;
-        ssl = false;
-      }
-      {
-        addr = "0.0.0.0";
-        port = 443;
-        ssl = true;
-      }
-    ];
-    extraConfig = ''
-      location /wss/ {
-        proxy_pass https://localhost:8443;
-        proxy_http_version 1.1;
-        proxy_buffering off;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "Upgrade";
-        proxy_read_timeout 86400;
-      }
-
-      location / {
-        proxy_pass https://localhost:8443/; # The Unifi Controller Port
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
-      }
-    '';
-  };
-
   services.netdata = {
     enable = false;
   };
@@ -253,8 +210,6 @@ in
       "/home/marco/.zsh_history"
       "/home/marco/.local/share/zoxide"
       "/home/marco/.ssh"
-      "/var/lib/unifi"
-      "/var/log/unifi"
       config.services.sonarr.dataDir
       "/var/lib/secrets"
       "/var/lib/komga"

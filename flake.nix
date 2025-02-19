@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-mongodb.url = "github:nixos/nixpkgs/1997e4aa514312c1af7e2bda7fad1644e778ff26";
     flake-utils.url = "github:numtide/flake-utils";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
@@ -42,7 +41,6 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-mongodb
     , darwin
     , home-manager
     , flake-utils
