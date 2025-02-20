@@ -28,6 +28,7 @@ in
     cheat
     cmctl
     direnv
+    dig
     duf
     fd
     file
