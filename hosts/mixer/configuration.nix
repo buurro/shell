@@ -85,7 +85,7 @@
   };
 
   fileSystems."/mnt/nas-fun" = {
-    device = "dmz-nas.lan:/volume1/fun";
+    device = "dmz-nas.dmz:/volume1/fun";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
