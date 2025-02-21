@@ -42,6 +42,7 @@ in
     iperf3
     jq
     kubectl
+    kubernetes-helm
     kubeseal
     lazydocker
     mc
