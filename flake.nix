@@ -85,6 +85,16 @@
           specialArgs = { inherit inputs; };
         };
 
+        "wraspi" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/wraspi/configuration.nix
+            nixos-hardware.nixosModules.raspberry-pi-4
+            agenix.nixosModules.default
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "burro-hp" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -155,9 +165,20 @@
         };
       };
 
+      nixosModules = {
+        sdImage = ({ lib, ... }: {
+          imports = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" ];
+          boot.supportedFilesystems.zfs = lib.mkForce false;
+        });
+      };
+
       images = {
         qraspi = (self.nixosConfigurations.qraspi.extendModules {
-          modules = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix" ];
+          modules = [ self.nixosModules.sdImage ];
+        }).config.system.build.sdImage;
+
+        wraspi = (self.nixosConfigurations.wraspi.extendModules {
+          modules = [ self.nixosModules.sdImage ];
         }).config.system.build.sdImage;
 
         vm = nixos-generators.nixosGenerate {
