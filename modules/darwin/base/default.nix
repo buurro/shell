@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 let
   python-and-friends = pkgs.python312.withPackages (
     ps: with ps; [ pip pipx ]
@@ -26,7 +26,7 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.marco = import ./home;
+    users.marco = import ../../home-manager/base/default.nix;
     extraSpecialArgs = {
       inherit inputs;
       hyprland = false;
@@ -113,7 +113,7 @@ in
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

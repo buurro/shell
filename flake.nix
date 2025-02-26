@@ -56,8 +56,8 @@
         "toaster" = darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
-            ./modules/darwin/base/default.nix
-            ./hosts/toaster/darwin-configuration.nix
+            ./hosts/toaster/configuration.nix
+            self.darwinModules.default
             home-manager.darwinModules.home-manager
           ];
           specialArgs = { inherit inputs; };
@@ -69,7 +69,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/blender/configuration.nix
-            self.nixosModules.baseDefault
+            self.nixosModules.default
             disko.nixosModules.disko
             agenix.nixosModules.default
           ];
@@ -80,7 +80,7 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/qraspi/configuration.nix
-            self.nixosModules.baseDefault
+            self.nixosModules.default
             nixos-hardware.nixosModules.raspberry-pi-4
             agenix.nixosModules.default
           ];
@@ -91,7 +91,7 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/wraspi/configuration.nix
-            self.nixosModules.baseDefault
+            self.nixosModules.default
             nixos-hardware.nixosModules.raspberry-pi-4
             agenix.nixosModules.default
           ];
@@ -102,7 +102,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/burro-hp/configuration.nix
-            self.nixosModules.baseDefault
+            self.nixosModules.default
             disko.nixosModules.disko
           ];
           specialArgs = { inherit inputs; };
@@ -112,7 +112,7 @@
         #   system = "x86_64-linux";
         #   modules = [
         #     disko.nixosModules.disko
-        #     self.nixosModules.baseDefault
+        #     self.nixosModules.default
         #     ./hosts/oven/configuration.nix
         #   ];
         #   specialArgs = { inherit inputs; };
@@ -123,7 +123,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
-            self.nixosModules.baseDefault
+            self.nixosModules.default
             ./hosts/ionos-m/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -134,7 +134,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
-            self.nixosModules.baseMinimal
+            self.nixosModules.minimal
             ./hosts/mixer/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -145,7 +145,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
-            self.nixosModules.baseMinimal
+            self.nixosModules.minimal
             ./hosts/k8s-lab/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -156,7 +156,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
-            self.nixosModules.baseMinimal
+            self.nixosModules.minimal
             ./hosts/github-runner/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -175,12 +175,16 @@
       };
 
       nixosModules = {
-        baseDefault = ./modules/nixos/base/default.nix;
-        baseMinimal = ./modules/nixos/base/minimal.nix;
+        default = ./modules/nixos/base/default.nix;
+        minimal = ./modules/nixos/base/minimal.nix;
         sdImage = ({ lib, ... }: {
           imports = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" ];
           boot.supportedFilesystems.zfs = lib.mkForce false;
         });
+      };
+
+      darwinModules = {
+        default = ./modules/darwin/base/default.nix;
       };
 
       images = {
@@ -196,7 +200,7 @@
           system = "x86_64-linux";
           format = "vm-nogui";
           modules = [
-            self.nixosModules.baseDefault
+            self.nixosModules.default
             ({ ... }: {
               modules.home-manager.enable = true;
               users.users.marco.initialPassword = "marco";
