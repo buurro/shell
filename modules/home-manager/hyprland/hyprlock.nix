@@ -10,7 +10,7 @@
       };
 
       background = [{
-        path = "${../../assets/cafe-at-night_00_3840x2160.png}";
+        path = "${./assets/cafe-at-night_00_3840x2160.png}";
         blur_passes = 4;
         blur_size = 12;
       }];

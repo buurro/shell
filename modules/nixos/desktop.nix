@@ -48,8 +48,8 @@ in
           InputMethod = "";
         };
       };
-      theme = toString catppuccin.sddm;
     };
+    catppuccin.sddm.enable = true;
 
     boot.loader.grub = {
       enable = true;

@@ -1,8 +1,5 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  imports = [
-    "${inputs.self}/common/nixos-configuration.nix"
-  ];
   networking.hostName = "qraspi";
 
   modules.home-manager.enable = true;

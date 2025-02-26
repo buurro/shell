@@ -2,7 +2,6 @@
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
-    ../../common/nixos-minimal-configuration.nix
   ];
 
   networking.hostName = "k8s-lab";

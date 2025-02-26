@@ -14,13 +14,13 @@ in
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
-    ./nixos-minimal-configuration.nix
-    ../modules/backup.nix
-    ../modules/network-stuff.nix
-    ../modules/desktop.nix
-    ../modules/nixos-home-manager.nix
-    ../modules/authelia/default.nix
-    ../modules/hyprland
+    ./minimal.nix
+    ../backup.nix
+    ../network-stuff.nix
+    ../desktop.nix
+    ../home-manager.nix
+    ../authelia
+    ../hyprland
   ];
 
   options = { };

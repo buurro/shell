@@ -2,7 +2,6 @@
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
-    ../../common/nixos-configuration.nix
   ];
 
   networking.hostName = "ionos-m";

@@ -6,7 +6,7 @@ in
 {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
-    ./programs
+    ../programs
   ];
 
   nix.settings = {

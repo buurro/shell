@@ -1,12 +1,11 @@
 { config, pkgs, inputs, ... }:
 let
-  authelia = import ../../modules/authelia/stuff.nix;
+  authelia = import ../../modules/nixos/authelia/stuff.nix;
 in
 {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
-    "${inputs.self}/common/nixos-configuration.nix"
   ];
 
   networking.hostName = "blender";

@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ../../common/nixos-configuration.nix
     ./hardware-configuration.nix
     ./disk-config.nix
 

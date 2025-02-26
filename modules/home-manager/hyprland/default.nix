@@ -68,10 +68,10 @@ in
     enable = true;
     settings = {
       preload = [
-        "${../../assets/cafe-at-night_00_3840x2160.png}"
+        "${./assets/cafe-at-night_00_3840x2160.png}"
       ];
       wallpaper = [
-        ",${../../assets/cafe-at-night_00_3840x2160.png}"
+        ",${./assets/cafe-at-night_00_3840x2160.png}"
       ];
     };
   };

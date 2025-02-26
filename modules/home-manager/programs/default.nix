@@ -1,7 +1,7 @@
 { hyprland, ... }:
 {
   imports = [ ] ++ (if hyprland then [
-    ./hyprland
-    ./waybar
+    ../hyprland
+    ../waybar
   ] else [ ]);
 }

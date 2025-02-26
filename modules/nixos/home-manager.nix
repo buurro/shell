@@ -10,7 +10,7 @@
     programs.zsh.enable = true;
 
     users.users.marco.shell = pkgs.zsh;
-    home-manager.users.marco = import ../common/home;
+    home-manager.users.marco = import ../home-manager/base/default.nix;
 
     home-manager = {
       useGlobalPkgs = true;

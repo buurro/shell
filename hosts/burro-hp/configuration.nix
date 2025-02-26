@@ -3,7 +3,6 @@
   imports = [
     ./hardware-configuration.nix
     ./disk-configuration.nix
-    ../../common/nixos-configuration.nix
   ];
 
   networking.hostName = "burro-hp"; # Define your hostname.
@@ -51,7 +50,7 @@
     firefox
     gpclient
     insomnia
-    kate
+    kdePackages.kate
     libreoffice-qt
     lightly-qt
     ocs-url

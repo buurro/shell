@@ -56,7 +56,7 @@
         "toaster" = darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
-            ./common/darwin-configuration.nix
+            ./modules/darwin/base/default.nix
             ./hosts/toaster/darwin-configuration.nix
             home-manager.darwinModules.home-manager
           ];
@@ -69,6 +69,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/blender/configuration.nix
+            self.nixosModules.baseDefault
             disko.nixosModules.disko
             agenix.nixosModules.default
           ];
@@ -79,6 +80,7 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/qraspi/configuration.nix
+            self.nixosModules.baseDefault
             nixos-hardware.nixosModules.raspberry-pi-4
             agenix.nixosModules.default
           ];
@@ -89,6 +91,7 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/wraspi/configuration.nix
+            self.nixosModules.baseDefault
             nixos-hardware.nixosModules.raspberry-pi-4
             agenix.nixosModules.default
           ];
@@ -99,25 +102,28 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/burro-hp/configuration.nix
+            self.nixosModules.baseDefault
             disko.nixosModules.disko
           ];
           specialArgs = { inherit inputs; };
         };
 
-        "oven" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            disko.nixosModules.disko
-            ./hosts/oven/configuration.nix
-          ];
-          specialArgs = { inherit inputs; };
-        };
+        # "oven" = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   modules = [
+        #     disko.nixosModules.disko
+        #     self.nixosModules.baseDefault
+        #     ./hosts/oven/configuration.nix
+        #   ];
+        #   specialArgs = { inherit inputs; };
+        # };
 
         "ionos-m" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
+            self.nixosModules.baseDefault
             ./hosts/ionos-m/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -128,6 +134,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
+            self.nixosModules.baseMinimal
             ./hosts/mixer/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -138,6 +145,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
+            self.nixosModules.baseMinimal
             ./hosts/k8s-lab/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -148,6 +156,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
+            self.nixosModules.baseMinimal
             ./hosts/github-runner/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -166,6 +175,8 @@
       };
 
       nixosModules = {
+        baseDefault = ./modules/nixos/base/default.nix;
+        baseMinimal = ./modules/nixos/base/minimal.nix;
         sdImage = ({ lib, ... }: {
           imports = [ "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" ];
           boot.supportedFilesystems.zfs = lib.mkForce false;
@@ -185,7 +196,7 @@
           system = "x86_64-linux";
           format = "vm-nogui";
           modules = [
-            ./common/nixos-configuration.nix
+            self.nixosModules.baseDefault
             ({ ... }: {
               modules.home-manager.enable = true;
               users.users.marco.initialPassword = "marco";
