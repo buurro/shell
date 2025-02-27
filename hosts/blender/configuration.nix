@@ -10,8 +10,6 @@ in
 
   networking.hostName = "blender";
 
-  networking.enableIPv6 = false;
-
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [

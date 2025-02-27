@@ -4,6 +4,7 @@
   options = { };
 
   config = {
+    networking.enableIPv6 = false;
     environment.systemPackages = with pkgs; [
       curl
       gcc
