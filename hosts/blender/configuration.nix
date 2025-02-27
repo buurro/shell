@@ -26,7 +26,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    dig
     socat
   ];
 
@@ -171,19 +170,6 @@ in
     };
   };
 
-  services.netdata = {
-    enable = false;
-  };
-  services.nginx.virtualHosts."netdata.pine.marco.ooo" = {
-    forceSSL = true;
-    useACMEHost = "pine.marco.ooo";
-    extraConfig = authelia.nginx.enableVhost;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:19999";
-      extraConfig = authelia.nginx.enableLocation;
-    };
-  };
-
   services.qemuGuest.enable = true;
 
   backup = {
@@ -196,14 +182,6 @@ in
       config.services.sonarr.dataDir
       "/var/lib/secrets"
     ];
-  };
-
-  programs = {
-    _1password.enable = true;
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "marco" ];
-    };
   };
 
   fileSystems."/mnt/persist" = {
