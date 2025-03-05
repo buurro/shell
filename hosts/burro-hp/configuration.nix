@@ -58,7 +58,6 @@
     kitty
     spotify
     discord
-    vesktop
     dbeaver-bin
     postgresql_16
     wl-clipboard
