@@ -134,6 +134,9 @@ in
         done
         nix shell "''${_pkgs[@]}"
       }
+
+      # vi mode
+      bindkey -v
     '';
   };
 

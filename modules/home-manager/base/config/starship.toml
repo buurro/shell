@@ -3,6 +3,7 @@ format = "$all($username$hostname )$character"
 [character]
 success_symbol = '[❯](bold red)[❯](bold yellow)[❯](bold green)'
 error_symbol = '[❯❯❯](bold red)'
+vimcmd_symbol = '[❮](bold green)[❮](bold yellow)[❮](bold red)'
 
 [hostname]
 style = "bold blue"
