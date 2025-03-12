@@ -194,9 +194,21 @@ in
       enable = true;
       settings = {
         keybinds = {
+          "move" = {
+            unbind = { _args = [ "Ctrl h" ]; };
+            "bind \"Ctrl m\"" = { SwitchToMode = "Normal"; };
+          };
           "shared_except \"move\" \"locked\"" = {
             unbind = { _args = [ "Ctrl h" ]; };
             "bind \"Ctrl m\"" = { SwitchToMode = "Move"; };
+          };
+          "session" = {
+            unbind = { _args = [ "Ctrl o" ]; };
+            "bind \"Ctrl u\"" = { SwitchToMode = "Normal"; };
+          };
+          "shared_except \"session\" \"locked\"" = {
+            unbind = { _args = [ "Ctrl o" ]; };
+            "bind \"Ctrl u\"" = { SwitchToMode = "Session"; };
           };
         };
       };
