@@ -24,6 +24,7 @@ in
     asciinema
     bat
     bottom
+    bun
     cachix
     cheat
     cmctl
