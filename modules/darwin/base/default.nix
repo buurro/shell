@@ -41,6 +41,7 @@ in
     gnumake
     python-and-friends
     vim
+    coreutils
   ];
 
   homebrew = {
