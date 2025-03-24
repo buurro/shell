@@ -61,6 +61,7 @@
     dbeaver-bin
     postgresql_16
     wl-clipboard
+    postman
   ];
 
   virtualisation.docker = {
