@@ -193,6 +193,7 @@ in
     zellij = {
       enable = true;
       settings = {
+        show_startup_tips = false;
         keybinds = {
           "move" = {
             unbind = { _args = [ "Ctrl h" ]; };
