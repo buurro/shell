@@ -137,7 +137,7 @@ in
       }
 
       # vi mode
-      bindkey -v
+      # bindkey -v
     '';
   };
 
