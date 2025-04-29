@@ -102,7 +102,7 @@ in
       enable = true;
       plugins = [ "git" "gh" "composer" "rsync" ];
     };
-    initExtra = ''
+    initContent = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
       pasteinit() {
         OLD_SELF_INSERT=''${''${(s.:.)widgets[self-insert]}[2,3]}
@@ -151,7 +151,6 @@ in
 
     lsd = {
       enable = true;
-      enableAliases = true;
     };
 
     neovim = {
