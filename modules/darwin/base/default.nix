@@ -71,7 +71,6 @@ in
       "marta"
       "monitorcontrol"
       "postico"
-      "private-internet-access"
       "raspberry-pi-imager"
       "raycast"
       "slack"
