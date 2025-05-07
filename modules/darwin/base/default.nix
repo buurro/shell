@@ -94,6 +94,7 @@ in
     NSGlobalDomain.InitialKeyRepeat = 25;
     NSGlobalDomain.AppleKeyboardUIMode = 3; # navigate ui with keyboard
     NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
+    NSGlobalDomain.NSWindowShouldDragOnGesture = true;
 
     dock.autohide = true;
     dock.autohide-delay = 0.01;
@@ -105,12 +106,6 @@ in
     finder.ShowPathbar = true;
 
     screencapture.location = "~/Pictures/screenshots";
-
-    CustomSystemPreferences = {
-      NSGlobalDomain = {
-        NSWindowShouldDragOnGesture = true;
-      };
-    };
   };
 
   system.keyboard.enableKeyMapping = true;
