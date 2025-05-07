@@ -56,7 +56,6 @@
         "toaster" = darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
-            ./hosts/toaster/configuration.nix
             self.darwinModules.default
             home-manager.darwinModules.home-manager
           ];
