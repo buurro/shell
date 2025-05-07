@@ -12,6 +12,8 @@ My macOS + Linux shell setup
 
 - Restart the machine
 
+- Install nix via [the official installer](https://nixos.org/download/) (avoid Determinate Nix)
+
 ### Host: smart-blender
 
 ### nginx https:
