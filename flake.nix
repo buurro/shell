@@ -65,6 +65,7 @@
         "heater" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
+            ./hosts/heater/configuration.nix
             self.darwinModules.default
             home-manager.darwinModules.home-manager
           ];
