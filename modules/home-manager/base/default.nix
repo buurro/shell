@@ -124,14 +124,14 @@ in
       run() {
         _pkg=$1
         shift
-        NIXPKGS_ALLOW_UNFREE=1 nix run --impure "nixpkgs/${inputs.nixpkgs.rev}#$_pkg" -- $*
+        NIXPKGS_ALLOW_UNFREE=1 nix run --impure "nixpkgs#$_pkg" -- $*
         unset _pkg
       }
 
       shell() {
         _pkgs=()
         for _pkg in "$@"; do
-          _pkgs+=("nixpkgs/${inputs.nixpkgs.rev}#$_pkg")
+          _pkgs+=("nixpkgs#$_pkg")
         done
         nix shell "''${_pkgs[@]}"
       }
