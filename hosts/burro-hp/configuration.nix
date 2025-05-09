@@ -53,7 +53,6 @@
     lightly-qt
     ocs-url
     qemu
-    ruff
     vscode.fhs
     kitty
     spotify

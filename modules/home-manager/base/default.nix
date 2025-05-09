@@ -59,6 +59,7 @@ in
     ranger
     rename
     ripgrep
+    ruff
     sshfs
     tabview
     unzip
