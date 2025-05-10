@@ -77,6 +77,7 @@ in
       "spotify"
       "tailscale"
       "visual-studio-code"
+      "zed"
     ];
   };
 
