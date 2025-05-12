@@ -49,6 +49,8 @@ in
     mc
     nil
     nix-tree
+    nixd
+    nixfmt-rfc-style
     nixpkgs-fmt
     nnn
     nodejs
