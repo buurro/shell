@@ -64,6 +64,7 @@ in
       "dbeaver-community"
       "discord"
       "firefox"
+      "ghostty"
       "google-chrome"
       "iina"
       "iterm2"
