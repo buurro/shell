@@ -242,6 +242,7 @@ in
     enable = true;
     settings = {
       font.normal.family = "MesloLGSDZ Nerd Font";
+      font.size = 18;
       env.TERM = "xterm-256color";
     } // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
   };
