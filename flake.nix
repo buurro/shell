@@ -170,6 +170,17 @@
           specialArgs = { inherit inputs; };
         };
 
+        "db-1" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            agenix.nixosModules.default
+            self.nixosModules.minimal
+            ./hosts/db-1/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "live" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
