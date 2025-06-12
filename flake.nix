@@ -181,6 +181,17 @@
           specialArgs = { inherit inputs; };
         };
 
+        "wooper" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            disko.nixosModules.disko
+            agenix.nixosModules.default
+            self.nixosModules.default
+            ./hosts/wooper/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         "live" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
