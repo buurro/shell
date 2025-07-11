@@ -12,7 +12,6 @@ let
   };
 in
 {
-
   nix.distributedBuilds = true;
   nix.buildMachines = [{
     hostName = "blender";
@@ -22,10 +21,12 @@ in
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = [ "root" "marco" ];
   users.users."marco".home = "/Users/marco";
+  system.primaryUser = "marco";
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "bak";
     users.marco = import ../../home-manager/base/default.nix;
     extraSpecialArgs = {
       inherit inputs;
