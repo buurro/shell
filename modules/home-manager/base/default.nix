@@ -22,6 +22,7 @@ in
   home.packages = with pkgs; [
     argocd
     asciinema
+    awscli2
     bat
     bottom
     bun
