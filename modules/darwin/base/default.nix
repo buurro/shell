@@ -72,6 +72,7 @@ in
       "jellyfin-media-player"
       "marta"
       "monitorcontrol"
+      "notion"
       "postico"
       "raspberry-pi-imager"
       "raycast"
