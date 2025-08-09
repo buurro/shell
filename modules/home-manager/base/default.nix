@@ -72,7 +72,7 @@ in
     inputs.agenix.packages."${system}".default
   ];
 
-  catppuccin.flavor = "mocha";
+  catppuccin.flavor = "macchiato";
   catppuccin.fzf.enable = true;
   catppuccin.zellij.enable = true;
 
