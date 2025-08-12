@@ -95,6 +95,7 @@ in
 
   home.sessionPath = [
     "/nix/var/nix/profiles/default/bin"
+    "${config.home.homeDirectory}/.local/bin"
   ];
 
   programs.zsh = {
