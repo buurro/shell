@@ -101,6 +101,8 @@ in
     NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
     NSGlobalDomain.NSWindowShouldDragOnGesture = true;
 
+    WindowManager.EnableStandardClickToShowDesktop = false;
+
     dock.autohide = true;
     dock.autohide-delay = 0.01;
     dock.autohide-time-modifier = 0.01;
