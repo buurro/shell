@@ -77,7 +77,6 @@ in
       "postico"
       "raspberry-pi-imager"
       "raycast"
-      "slack"
       "spotify"
       "tailscale"
       "visual-studio-code"
