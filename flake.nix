@@ -70,6 +70,16 @@
           ];
           specialArgs = { inherit inputs; };
         };
+        "lamp" = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./hosts/lamp/configuration.nix
+            self.darwinModules.default
+            home-manager.darwinModules.home-manager
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
       };
 
       nixosConfigurations = {
