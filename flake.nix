@@ -66,6 +66,7 @@
           modules = [
             ./hosts/heater/configuration.nix
             self.darwinModules.default
+            self.darwinModules.work
             home-manager.darwinModules.home-manager
           ];
           specialArgs = { inherit inputs; };
@@ -75,6 +76,7 @@
           modules = [
             ./hosts/lamp/configuration.nix
             self.darwinModules.default
+            self.darwinModules.work
             home-manager.darwinModules.home-manager
           ];
           specialArgs = { inherit inputs; };
@@ -225,6 +227,7 @@
 
       darwinModules = {
         default = ./modules/darwin/base/default.nix;
+        work = ./modules/darwin/work/default.nix;
       };
 
       images = {
