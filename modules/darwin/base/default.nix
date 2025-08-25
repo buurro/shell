@@ -70,6 +70,7 @@ in
       "iina"
       "iterm2"
       "jellyfin-media-player"
+      "mac-mouse-fix"
       "marta"
       "monitorcontrol"
       "notion"
