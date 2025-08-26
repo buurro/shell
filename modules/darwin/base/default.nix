@@ -77,7 +77,7 @@ in
       "raspberry-pi-imager"
       "raycast"
       "spotify"
-      "tailscale"
+      "tailscale-app"
       "visual-studio-code"
       "zed"
     ];
