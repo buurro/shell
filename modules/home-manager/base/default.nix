@@ -172,6 +172,7 @@ in
       userName = inputs.self.users."${username}".fullName;
       userEmail = inputs.self.users."${username}".email;
       difftastic.enable = true;
+      ignores = [ ".DS_Store" ];
       extraConfig = {
         init.defaultBranch = "main";
       };
