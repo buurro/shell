@@ -2,6 +2,7 @@
 
 let
   username = config.home.username;
+  npmGlobalDir = "${config.home.homeDirectory}/.npm-global";
 in
 {
   imports = [
@@ -96,6 +97,7 @@ in
   home.sessionPath = [
     "/nix/var/nix/profiles/default/bin"
     "${config.home.homeDirectory}/.local/bin"
+    "${npmGlobalDir}/bin"
   ];
 
   programs.zsh = {
@@ -228,6 +230,9 @@ in
 
   home.file.".config/starship.toml".source = ./config/starship.toml;
   home.file.".iterm2_shell_integration.zsh".source = ./config/iterm2_shell_integration.zsh;
+  home.file.".npmrc".text = ''
+    prefix=${npmGlobalDir}
+  '';
 
   home.file.".local/share/mc/skins/catppuccin.ini".source =
     let
