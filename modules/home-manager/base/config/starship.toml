@@ -141,11 +141,10 @@ format = "\\[[$symbol($version)]($style)\\]"
 disabled = false
 style = "red bold"
 format = '(\[[$symbol$context]($style)\] )'
-contexts = [
-  { context_pattern = "k3d-knative", context_alias = '', symbol = '' },
-  { context_pattern = "k8s-lab", context_alias = '', symbol = '' },
-  { context_pattern = "wooper", context_alias = '', symbol = '' }
-]
+[kubernetes.contexts]
+context_pattern = "(default|k3d-knative|k8s-lab|wooper)"
+context_alias = ""
+symbol = ""
 
 [lua]
 disabled = true
