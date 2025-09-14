@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  python-and-friends = pkgs.python312.withPackages (
+  python-and-friends = pkgs.python313.withPackages (
     ps: with ps; [ pip pipx ]
   );
 
