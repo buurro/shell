@@ -10,7 +10,6 @@
     ];
     casks = [
       "slack"
-      "orbstack"
     ];
   };
 }
