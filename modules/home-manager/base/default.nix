@@ -30,7 +30,6 @@ in
     cachix
     cheat
     cmctl
-    direnv
     dig
     duf
     fd
