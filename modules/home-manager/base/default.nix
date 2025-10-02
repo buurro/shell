@@ -105,7 +105,7 @@ in
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "gh" "composer" "rsync" ];
+      plugins = [ "git" "gh" "composer" "rsync" "aws" ];
     };
     initContent = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
