@@ -57,7 +57,6 @@ in
     nodejs
     ookla-speedtest
     opentofu
-    poetry
     ranger
     rename
     ripgrep
@@ -80,7 +79,6 @@ in
     c = "code .";
     lg = "lazygit";
     mc = "mc --nosubshell";
-    p = "poetry run";
     s = "ssh";
     devv = "nix develop -c zellij -s `basename $PWD` options --default-shell zsh";
 
