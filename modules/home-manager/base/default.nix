@@ -81,10 +81,7 @@ in
     mc = "mc --nosubshell";
     s = "ssh";
     devv = "nix develop -c zellij -s `basename $PWD` options --default-shell zsh";
-
-    # Since sudo doesn't preserve user PATH,
-    # everything installed via nix isn't accessible. This fixes that.
-    sudoo = "sudo env \"PATH=$PATH\"";
+    k = "kubectl";
   };
 
   home.sessionVariables = {
