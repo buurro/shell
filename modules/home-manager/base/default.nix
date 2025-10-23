@@ -149,9 +149,7 @@ in
       enableZshIntegration = true;
     };
 
-    lsd = {
-      enable = true;
-    };
+    lsd.enable = true;
 
     neovim = {
       enable = true;
@@ -165,18 +163,18 @@ in
 
     git = {
       enable = true;
-      userName = inputs.self.users."${username}".fullName;
-      userEmail = inputs.self.users."${username}".email;
-      difftastic.enable = true;
       ignores = [ ".DS_Store" ];
-      extraConfig = {
+      settings = {
         init.defaultBranch = "main";
+
+        user.name = inputs.self.users."${username}".fullName;
+        user.email = inputs.self.users."${username}".email;
       };
     };
 
-    lazygit = {
-      enable = true;
-    };
+    difftastic.enable = true;
+
+    lazygit.enable = true;
 
     tmux = {
       enable = true;
