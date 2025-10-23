@@ -1,16 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  python-and-friends = pkgs.python313.withPackages (
-    ps: with ps; [ pip pipx ]
-  );
-
-  spotify-volume-control = pkgs.fetchFromGitHub {
-    owner = "buurro";
-    repo = "spotify-volume-skhd";
-    rev = "main";
-    sha256 = "sha256-JCVo2WMkn9OgKAzjofvFotU/nPpwHh/bMiq0s7XmY2s=";
-  };
-in
 {
   nix.distributedBuilds = true;
   # nix.buildMachines = [{
@@ -39,7 +27,7 @@ in
 
   environment.systemPackages = with pkgs; [
     gnumake
-    python-and-friends
+    python314
     vim
     coreutils
   ];
