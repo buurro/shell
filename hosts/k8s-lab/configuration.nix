@@ -11,5 +11,10 @@
   services.k3s.enable = true;
   services.k3s.role = "server";
 
+  nix.gc = {
+    automatic = true;
+    options = "--delete-old";
+  };
+
   system.stateVersion = "24.11";
 }
