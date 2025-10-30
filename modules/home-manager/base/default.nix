@@ -46,6 +46,7 @@ in
     kubectl
     kubernetes-helm
     kubeseal
+    k9s
     lazydocker
     mc
     nil
