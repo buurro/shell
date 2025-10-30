@@ -118,26 +118,6 @@
           specialArgs = { inherit inputs; };
         };
 
-        "burro-hp" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/burro-hp/configuration.nix
-            self.nixosModules.default
-            disko.nixosModules.disko
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
-        # "oven" = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   modules = [
-        #     disko.nixosModules.disko
-        #     self.nixosModules.default
-        #     ./hosts/oven/configuration.nix
-        #   ];
-        #   specialArgs = { inherit inputs; };
-        # };
-
         "ionos-m" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
