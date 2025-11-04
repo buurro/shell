@@ -83,6 +83,7 @@ in
     s = "ssh";
     devv = "nix develop -c zellij -s `basename $PWD` options --default-shell zsh";
     k = "kubectl";
+    ur = "uv run";
   };
 
   home.sessionVariables = {
