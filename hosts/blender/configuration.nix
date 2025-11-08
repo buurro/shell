@@ -60,6 +60,16 @@ in
 
   services.transmission = {
     enable = true;
+    package = pkgs.transmission_4.overrideAttrs (finalAttrs: previousAttrs: {
+      version = "4.0.5";
+      src = pkgs.fetchFromGitHub {
+        owner = "transmission";
+        repo = "transmission";
+        rev = finalAttrs.version;
+        hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
+        fetchSubmodules = true;
+      };
+    });
     openRPCPort = true;
     settings = {
       download-dir = "/mnt/nas-fun/downloads/complete";
