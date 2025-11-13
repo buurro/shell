@@ -143,7 +143,7 @@ style = "red bold"
 symbol = " "
 format = '(\[[$symbol$context]($style)\] )'
 contexts = [
-    { context_pattern = "(default|k3d-knative|k8s-lab|wooper)", context_alias = "", symbol = "" },
+    { context_pattern = "(default|k3d-knative|k3d-fastapicloud|k8s-lab|wooper)", context_alias = "", symbol = "" },
 ]
 
 [lua]
