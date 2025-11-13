@@ -1,7 +1,4 @@
 { config, pkgs, inputs, ... }:
-let
-  authelia = import ../../modules/nixos/authelia/stuff.nix;
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -96,10 +93,8 @@ in
   services.nginx.virtualHosts."torrent.pine.marco.ooo" = {
     forceSSL = true;
     useACMEHost = "pine.marco.ooo";
-    extraConfig = authelia.nginx.enableVhost;
     locations."/" = {
       proxyPass = "http://127.0.0.1:9091";
-      extraConfig = authelia.nginx.enableLocation;
     };
   };
 
@@ -122,24 +117,6 @@ in
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     clientMaxBodySize = "200m";
-  };
-
-  age.secrets."authelia.jwtSecretFile" = {
-    file = ../../secrets/authelia.jwtSecretFile.age;
-    owner = config.services.authelia.instances.main.user;
-    group = config.services.authelia.instances.main.group;
-  };
-  age.secrets."authelia.storageEncryptionKeyFile" = {
-    file = ../../secrets/authelia.storageEncryptionKeyFile.age;
-    owner = config.services.authelia.instances.main.user;
-    group = config.services.authelia.instances.main.group;
-  };
-
-  modules.authelia = {
-    enable = true;
-    domain = "pine.marco.ooo";
-    jwtSecretFile = config.age.secrets."authelia.jwtSecretFile".path;
-    storageEncryptionKeyFile = config.age.secrets."authelia.storageEncryptionKeyFile".path;
   };
 
   services.sonarr = {

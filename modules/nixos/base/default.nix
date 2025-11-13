@@ -19,7 +19,6 @@ in
     ../network-stuff.nix
     ../desktop.nix
     ../home-manager.nix
-    ../authelia
     ../hyprland
   ];
 
