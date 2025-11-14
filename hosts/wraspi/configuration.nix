@@ -1,11 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, ... }:
 {
-
   networking.hostName = "wraspi";
 
   modules.home-manager.enable = true;
 
-  users.groups."sslcerts" = { };
+  modules.adguard-home.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";
@@ -16,4 +15,3 @@
 
   system.stateVersion = "25.05";
 }
-
