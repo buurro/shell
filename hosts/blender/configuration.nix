@@ -161,11 +161,6 @@
 
   services.qemuGuest.enable = true;
 
-  fileSystems."/mnt/persist" = {
-    device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1";
-    fsType = "ext4";
-  };
-
   fileSystems."/mnt/nas-fun" = {
     device = "home-nas.lan:/volume1/fun";
     fsType = "nfs";
