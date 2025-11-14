@@ -161,18 +161,6 @@
 
   services.qemuGuest.enable = true;
 
-  backup = {
-    server = "qraspi";
-    paths = [
-      "/home/marco/Documents/projects"
-      "/home/marco/.zsh_history"
-      "/home/marco/.local/share/zoxide"
-      "/home/marco/.ssh"
-      config.services.sonarr.dataDir
-      "/var/lib/secrets"
-    ];
-  };
-
   fileSystems."/mnt/persist" = {
     device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1";
     fsType = "ext4";

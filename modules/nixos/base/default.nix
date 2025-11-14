@@ -15,7 +15,6 @@ in
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
     ./minimal.nix
-    ../backup.nix
     ../network-stuff.nix
     ../desktop.nix
     ../home-manager.nix
@@ -33,10 +32,6 @@ in
       iperf3
       traceroute
     ];
-
-    environment.shellAliases = {
-      backups_keygen = "ssh-keygen -t ed25519 -C \"`hostname`-backups\" -f ~/.ssh/backups_ed25519";
-    };
 
     programs.nix-ld.enable = lib.mkDefault true; # fixes vscode server and other stuff
 

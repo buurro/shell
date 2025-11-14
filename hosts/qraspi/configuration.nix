@@ -10,13 +10,6 @@
     kmod
   ];
 
-  backup-server = {
-    enable = true;
-    authorizedKeys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+x9F9RIvU+yRnPIo3ACcBvUv3CZfPmBVaVNVdMx4Zx smart-blender-backups"
-    ];
-  };
-
   age.secrets."risaro.la" = {
     file = ../../secrets/risaro.la.age;
   };
