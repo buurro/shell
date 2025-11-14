@@ -10,7 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     # jellyfin hardware acceleration
-    vaapiVdpau
+    libva-vdpau-driver
     libvdpau-va-gl
     libva-utils
   ];
@@ -68,10 +68,17 @@
 
   services.tailscale.enable = true;
 
-  fileSystems."/etc/ssh" = {
-    device = "/mnt/persist/etc/ssh";
-    options = [ "bind" ];
-  };
+  services.openssh.hostKeys = [
+    {
+      type = "rsa";
+      bits = 4096;
+      path = "/mnt/persist/etc/ssh/ssh_host_rsa_key";
+    }
+    {
+      type = "ed25519";
+      path = "/mnt/persist/etc/ssh/ssh_host_ed25519_key";
+    }
+  ];
 
   fileSystems."/var/lib/jellyfin" = {
     device = "/mnt/persist/var/lib/jellyfin";
