@@ -1,10 +1,4 @@
 { pkgs, lib, config, ... }:
-let
-  catppuccin = (import ../packages/catppuccin.nix) {
-    inherit pkgs;
-    variant = "mocha";
-  };
-in
 {
   config = lib.mkIf (config.modules.hyprland.enable || config.services.desktopManager.plasma6.enable) {
     fonts = {

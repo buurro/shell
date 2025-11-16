@@ -69,7 +69,7 @@ in
     wget
     yt-dlp
   ] ++ [
-    inputs.agenix.packages."${system}".default
+    inputs.agenix.packages."${pkgs.stdenv.system}".default
   ];
 
   catppuccin.flavor = "macchiato";
