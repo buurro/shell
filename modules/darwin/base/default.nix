@@ -26,10 +26,11 @@
   programs.zsh.promptInit = "";
 
   environment.systemPackages = with pkgs; [
+    coreutils
     gnumake
+    nixos-rebuild
     python314
     vim
-    coreutils
   ];
 
   homebrew = {
