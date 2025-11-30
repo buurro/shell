@@ -11,6 +11,12 @@
     fsType = "ext4";
   };
 
+  nix.gc = {
+    automatic = true;
+    options = "--delete-old";
+  };
+
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   system.stateVersion = "25.05";
