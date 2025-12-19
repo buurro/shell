@@ -7,7 +7,10 @@ in
 {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
+    inputs.nixvim.homeModules.nixvim
+
     ../programs
+    ./vim.nix
   ];
 
   nix.settings = {
