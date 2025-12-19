@@ -156,11 +156,6 @@ in
 
     lsd.enable = true;
 
-    neovim = {
-      enable = true;
-      vimAlias = true;
-    };
-
     broot = {
       enable = true;
       enableZshIntegration = true;
