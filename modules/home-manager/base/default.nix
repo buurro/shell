@@ -7,7 +7,10 @@ in
 {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
+    inputs.nixvim.homeModules.nixvim
+
     ../programs
+    ./vim.nix
   ];
 
   nix.settings = {
@@ -86,10 +89,6 @@ in
     ur = "uv run";
   };
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
   home.sessionPath = [
     "/nix/var/nix/profiles/default/bin"
     "${config.home.homeDirectory}/.local/bin"
@@ -152,11 +151,6 @@ in
     };
 
     lsd.enable = true;
-
-    neovim = {
-      enable = true;
-      vimAlias = true;
-    };
 
     broot = {
       enable = true;
