@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, lib, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 
 let
   username = config.home.username;
@@ -14,7 +20,10 @@ in
   ];
 
   nix.settings = {
-    experimental-features = [ "flakes" "nix-command" ];
+    experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
   };
 
   home.stateVersion = "23.05";
@@ -23,57 +32,61 @@ in
   programs.home-manager.enable = true;
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
-    argocd
-    asciinema
-    awscli2
-    bat
-    bottom
-    bun
-    cachix
-    cheat
-    cmctl
-    dig
-    duf
-    fd
-    file
-    fluxcd
-    fx
-    gh
-    gnumake
-    htop
-    httpie
-    iftop
-    iperf3
-    jq
-    kubectl
-    kubernetes-helm
-    kubeseal
-    k9s
-    lazydocker
-    mc
-    nil
-    nix-tree
-    nixd
-    nixfmt-rfc-style
-    nixpkgs-fmt
-    nnn
-    nodejs
-    ookla-speedtest
-    opentofu
-    ranger
-    rename
-    ripgrep
-    ruff
-    sshfs
-    tabview
-    unzip
-    uv
-    wget
-    yt-dlp
-  ] ++ [
-    inputs.agenix.packages."${pkgs.stdenv.system}".default
-  ];
+  home.packages =
+    with pkgs;
+    [
+      argocd
+      alejandra
+      asciinema
+      awscli2
+      bat
+      bottom
+      bun
+      cachix
+      cheat
+      cmctl
+      dig
+      duf
+      fd
+      file
+      fluxcd
+      fx
+      gh
+      gnumake
+      htop
+      httpie
+      iftop
+      iperf3
+      jq
+      kubectl
+      kubernetes-helm
+      kubeseal
+      k9s
+      lazydocker
+      mc
+      nil
+      nix-tree
+      nixd
+      nixfmt-rfc-style
+      nixpkgs-fmt
+      nnn
+      nodejs
+      ookla-speedtest
+      opentofu
+      ranger
+      rename
+      ripgrep
+      ruff
+      sshfs
+      tabview
+      unzip
+      uv
+      wget
+      yt-dlp
+    ]
+    ++ [
+      inputs.agenix.packages."${pkgs.stdenv.system}".default
+    ];
 
   catppuccin.flavor = "macchiato";
   catppuccin.fzf.enable = true;
@@ -101,7 +114,13 @@ in
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "gh" "composer" "rsync" "aws" ];
+      plugins = [
+        "git"
+        "gh"
+        "composer"
+        "rsync"
+        "aws"
+      ];
     };
     initContent = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
@@ -193,20 +212,36 @@ in
         show_startup_tips = false;
         keybinds = {
           "move" = {
-            unbind = { _args = [ "Ctrl h" ]; };
-            "bind \"Ctrl m\"" = { SwitchToMode = "Normal"; };
+            unbind = {
+              _args = [ "Ctrl h" ];
+            };
+            "bind \"Ctrl m\"" = {
+              SwitchToMode = "Normal";
+            };
           };
           "shared_except \"move\" \"locked\"" = {
-            unbind = { _args = [ "Ctrl h" ]; };
-            "bind \"Ctrl m\"" = { SwitchToMode = "Move"; };
+            unbind = {
+              _args = [ "Ctrl h" ];
+            };
+            "bind \"Ctrl m\"" = {
+              SwitchToMode = "Move";
+            };
           };
           "session" = {
-            unbind = { _args = [ "Ctrl o" ]; };
-            "bind \"Ctrl u\"" = { SwitchToMode = "Normal"; };
+            unbind = {
+              _args = [ "Ctrl o" ];
+            };
+            "bind \"Ctrl u\"" = {
+              SwitchToMode = "Normal";
+            };
           };
           "shared_except \"session\" \"locked\"" = {
-            unbind = { _args = [ "Ctrl o" ]; };
-            "bind \"Ctrl u\"" = { SwitchToMode = "Session"; };
+            unbind = {
+              _args = [ "Ctrl o" ];
+            };
+            "bind \"Ctrl u\"" = {
+              SwitchToMode = "Session";
+            };
           };
         };
       };
@@ -242,6 +277,7 @@ in
       font.normal.family = "MesloLGSDZ Nerd Font";
       font.size = 18;
       env.TERM = "xterm-256color";
-    } // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
+    }
+    // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
   };
 }
