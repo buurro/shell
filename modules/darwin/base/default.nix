@@ -28,6 +28,7 @@
   environment.systemPackages = with pkgs; [
     coreutils
     gnumake
+    gnused
     nixos-rebuild
     python314
     vim
