@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -65,39 +63,173 @@
     };
 
     keymaps = [
-      { mode = "n"; key = "<Esc>"; action = "<cmd>nohlsearch<CR>"; }
-      { mode = "n"; key = "<C-h>"; action = "<C-w><C-h>"; options.desc = "Move focus left"; }
-      { mode = "n"; key = "<C-l>"; action = "<C-w><C-l>"; options.desc = "Move focus right"; }
-      { mode = "n"; key = "<C-j>"; action = "<C-w><C-j>"; options.desc = "Move focus down"; }
-      { mode = "n"; key = "<C-k>"; action = "<C-w><C-k>"; options.desc = "Move focus up"; }
-      { mode = "n"; key = "<leader>q"; action = "<cmd>lua vim.diagnostic.setloclist()<CR>"; options.desc = "Quickfix list"; }
-      { mode = "t"; key = "<Esc><Esc>"; action = "<C-\\\\><C-n>"; options.desc = "Exit terminal mode"; }
-      { mode = "n"; key = "cd"; action = ":%s/\\\\<<C-r><C-w>\\\\>/<C-r><C-w>/gI<Left><Left><Left>"; options.desc = "Find and replace word"; }
-      { mode = "n"; key = "<leader>f"; action = "<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<CR>"; options.desc = "Format buffer"; }
-      { mode = "n"; key = "\\\\"; action = "<cmd>Neotree toggle<CR>"; options.desc = "Toggle Neo-tree"; }
+      {
+        mode = "n";
+        key = "<Esc>";
+        action = "<cmd>nohlsearch<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-h>";
+        action = "<C-w><C-h>";
+        options.desc = "Move focus left";
+      }
+      {
+        mode = "n";
+        key = "<C-l>";
+        action = "<C-w><C-l>";
+        options.desc = "Move focus right";
+      }
+      {
+        mode = "n";
+        key = "<C-j>";
+        action = "<C-w><C-j>";
+        options.desc = "Move focus down";
+      }
+      {
+        mode = "n";
+        key = "<C-k>";
+        action = "<C-w><C-k>";
+        options.desc = "Move focus up";
+      }
+      {
+        mode = "n";
+        key = "<leader>q";
+        action = "<cmd>lua vim.diagnostic.setloclist()<CR>";
+        options.desc = "Quickfix list";
+      }
+      {
+        mode = "t";
+        key = "<Esc><Esc>";
+        action = "<C-\\\\><C-n>";
+        options.desc = "Exit terminal mode";
+      }
+      {
+        mode = "n";
+        key = "cd";
+        action = ":%s/\\\\<<C-r><C-w>\\\\>/<C-r><C-w>/gI<Left><Left><Left>";
+        options.desc = "Find and replace word";
+      }
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<CR>";
+        options.desc = "Format buffer";
+      }
+      {
+        mode = "n";
+        key = "\\\\";
+        action = "<cmd>Neotree toggle<CR>";
+        options.desc = "Toggle Neo-tree";
+      }
 
       # Trouble
-      { mode = "n"; key = "<leader>xx"; action = "<cmd>Trouble diagnostics toggle<CR>"; options.desc = "Diagnostics"; }
-      { mode = "n"; key = "<leader>xX"; action = "<cmd>Trouble diagnostics toggle filter.buf=0<CR>"; options.desc = "Buffer Diagnostics"; }
-      { mode = "n"; key = "<leader>cs"; action = "<cmd>Trouble symbols toggle focus=false<CR>"; options.desc = "Symbols"; }
-      { mode = "n"; key = "<leader>cl"; action = "<cmd>Trouble lsp toggle focus=false win.position=right<CR>"; options.desc = "LSP refs"; }
-      { mode = "n"; key = "<leader>xL"; action = "<cmd>Trouble loclist toggle<CR>"; options.desc = "Location List"; }
-      { mode = "n"; key = "<leader>xQ"; action = "<cmd>Trouble qflist toggle<CR>"; options.desc = "Quickfix List"; }
+      {
+        mode = "n";
+        key = "<leader>xx";
+        action = "<cmd>Trouble diagnostics toggle<CR>";
+        options.desc = "Diagnostics";
+      }
+      {
+        mode = "n";
+        key = "<leader>xX";
+        action = "<cmd>Trouble diagnostics toggle filter.buf=0<CR>";
+        options.desc = "Buffer Diagnostics";
+      }
+      {
+        mode = "n";
+        key = "<leader>cs";
+        action = "<cmd>Trouble symbols toggle focus=false<CR>";
+        options.desc = "Symbols";
+      }
+      {
+        mode = "n";
+        key = "<leader>cl";
+        action = "<cmd>Trouble lsp toggle focus=false win.position=right<CR>";
+        options.desc = "LSP refs";
+      }
+      {
+        mode = "n";
+        key = "<leader>xL";
+        action = "<cmd>Trouble loclist toggle<CR>";
+        options.desc = "Location List";
+      }
+      {
+        mode = "n";
+        key = "<leader>xQ";
+        action = "<cmd>Trouble qflist toggle<CR>";
+        options.desc = "Quickfix List";
+      }
 
       # Harpoon
-      { mode = "n"; key = "<leader>a"; action.__raw = "function() require('harpoon'):list():add() end"; options.desc = "Harpoon add"; }
-      { mode = "n"; key = "<leader>e"; action.__raw = "function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end"; options.desc = "Harpoon menu"; }
-      { mode = "n"; key = "<leader>1"; action.__raw = "function() require('harpoon'):list():select(1) end"; options.desc = "Harpoon 1"; }
-      { mode = "n"; key = "<leader>2"; action.__raw = "function() require('harpoon'):list():select(2) end"; options.desc = "Harpoon 2"; }
-      { mode = "n"; key = "<leader>3"; action.__raw = "function() require('harpoon'):list():select(3) end"; options.desc = "Harpoon 3"; }
-      { mode = "n"; key = "<leader>4"; action.__raw = "function() require('harpoon'):list():select(4) end"; options.desc = "Harpoon 4"; }
-      { mode = "n"; key = "<C-S-P>"; action.__raw = "function() require('harpoon'):list():prev() end"; options.desc = "Harpoon prev"; }
-      { mode = "n"; key = "<C-S-N>"; action.__raw = "function() require('harpoon'):list():next() end"; options.desc = "Harpoon next"; }
+      {
+        mode = "n";
+        key = "<leader>a";
+        action.__raw = "function() require('harpoon'):list():add() end";
+        options.desc = "Harpoon add";
+      }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action.__raw = "function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end";
+        options.desc = "Harpoon menu";
+      }
+      {
+        mode = "n";
+        key = "<leader>1";
+        action.__raw = "function() require('harpoon'):list():select(1) end";
+        options.desc = "Harpoon 1";
+      }
+      {
+        mode = "n";
+        key = "<leader>2";
+        action.__raw = "function() require('harpoon'):list():select(2) end";
+        options.desc = "Harpoon 2";
+      }
+      {
+        mode = "n";
+        key = "<leader>3";
+        action.__raw = "function() require('harpoon'):list():select(3) end";
+        options.desc = "Harpoon 3";
+      }
+      {
+        mode = "n";
+        key = "<leader>4";
+        action.__raw = "function() require('harpoon'):list():select(4) end";
+        options.desc = "Harpoon 4";
+      }
+      {
+        mode = "n";
+        key = "<C-S-P>";
+        action.__raw = "function() require('harpoon'):list():prev() end";
+        options.desc = "Harpoon prev";
+      }
+      {
+        mode = "n";
+        key = "<C-S-N>";
+        action.__raw = "function() require('harpoon'):list():next() end";
+        options.desc = "Harpoon next";
+      }
 
       # Dropbar
-      { mode = "n"; key = "<Leader>;"; action.__raw = "function() require('dropbar.api').pick() end"; options.desc = "Pick symbols"; }
-      { mode = "n"; key = "[;"; action.__raw = "function() require('dropbar.api').goto_context_start() end"; options.desc = "Context start"; }
-      { mode = "n"; key = "];"; action.__raw = "function() require('dropbar.api').select_next_context() end"; options.desc = "Next context"; }
+      {
+        mode = "n";
+        key = "<Leader>;";
+        action.__raw = "function() require('dropbar.api').pick() end";
+        options.desc = "Pick symbols";
+      }
+      {
+        mode = "n";
+        key = "[;";
+        action.__raw = "function() require('dropbar.api').goto_context_start() end";
+        options.desc = "Context start";
+      }
+      {
+        mode = "n";
+        key = "];";
+        action.__raw = "function() require('dropbar.api').select_next_context() end";
+        options.desc = "Next context";
+      }
     ];
 
     autoGroups = {
@@ -113,7 +245,11 @@
         callback.__raw = "function() vim.highlight.on_yank() end";
       }
       {
-        event = [ "BufEnter" "BufWritePost" "InsertLeave" ];
+        event = [
+          "BufEnter"
+          "BufWritePost"
+          "InsertLeave"
+        ];
         group = "lint";
         callback.__raw = ''
           function()
@@ -136,11 +272,30 @@
         settings = {
           preset = "modern";
           spec = [
-            { __unkeyed-1 = "<leader>s"; group = "[S]earch"; }
-            { __unkeyed-1 = "<leader>t"; group = "[T]oggle"; }
-            { __unkeyed-1 = "<leader>h"; group = "Git [H]unk"; mode = [ "n" "v" ]; }
-            { __unkeyed-1 = "<leader>x"; group = "Trouble"; }
-            { __unkeyed-1 = "<leader>c"; group = "[C]ode"; }
+            {
+              __unkeyed-1 = "<leader>s";
+              group = "[S]earch";
+            }
+            {
+              __unkeyed-1 = "<leader>t";
+              group = "[T]oggle";
+            }
+            {
+              __unkeyed-1 = "<leader>h";
+              group = "Git [H]unk";
+              mode = [
+                "n"
+                "v"
+              ];
+            }
+            {
+              __unkeyed-1 = "<leader>x";
+              group = "Trouble";
+            }
+            {
+              __unkeyed-1 = "<leader>c";
+              group = "[C]ode";
+            }
           ];
         };
       };
@@ -152,20 +307,53 @@
           ui-select.enable = true;
         };
         settings = {
-          defaults.file_ignore_patterns = [ "^.git/" "node_modules" ];
+          defaults.file_ignore_patterns = [
+            "^.git/"
+            "node_modules"
+          ];
           pickers.find_files.hidden = true;
         };
         keymaps = {
-          "<leader>sh" = { action = "help_tags"; options.desc = "[S]earch [H]elp"; };
-          "<leader>sk" = { action = "keymaps"; options.desc = "[S]earch [K]eymaps"; };
-          "<leader>sf" = { action = "find_files"; options.desc = "[S]earch [F]iles"; };
-          "<leader>ss" = { action = "builtin"; options.desc = "[S]earch [S]elect Telescope"; };
-          "<leader>sw" = { action = "grep_string"; options.desc = "[S]earch current [W]ord"; };
-          "<leader>sg" = { action = "live_grep"; options.desc = "[S]earch by [G]rep"; };
-          "<leader>sd" = { action = "diagnostics"; options.desc = "[S]earch [D]iagnostics"; };
-          "<leader>sr" = { action = "resume"; options.desc = "[S]earch [R]esume"; };
-          "<leader>s." = { action = "oldfiles"; options.desc = "[S]earch Recent Files"; };
-          "<leader><leader>" = { action = "buffers"; options.desc = "Find buffers"; };
+          "<leader>sh" = {
+            action = "help_tags";
+            options.desc = "[S]earch [H]elp";
+          };
+          "<leader>sk" = {
+            action = "keymaps";
+            options.desc = "[S]earch [K]eymaps";
+          };
+          "<leader>sf" = {
+            action = "find_files";
+            options.desc = "[S]earch [F]iles";
+          };
+          "<leader>ss" = {
+            action = "builtin";
+            options.desc = "[S]earch [S]elect Telescope";
+          };
+          "<leader>sw" = {
+            action = "grep_string";
+            options.desc = "[S]earch current [W]ord";
+          };
+          "<leader>sg" = {
+            action = "live_grep";
+            options.desc = "[S]earch by [G]rep";
+          };
+          "<leader>sd" = {
+            action = "diagnostics";
+            options.desc = "[S]earch [D]iagnostics";
+          };
+          "<leader>sr" = {
+            action = "resume";
+            options.desc = "[S]earch [R]esume";
+          };
+          "<leader>s." = {
+            action = "oldfiles";
+            options.desc = "[S]earch Recent Files";
+          };
+          "<leader><leader>" = {
+            action = "buffers";
+            options.desc = "Find buffers";
+          };
         };
       };
 
@@ -174,15 +362,42 @@
         inlayHints = true;
         keymaps = {
           lspBuf = {
-            "grn" = { action = "rename"; desc = "Rename"; };
-            "gra" = { action = "code_action"; desc = "Code Action"; };
-            "grr" = { action = "references"; desc = "References"; };
-            "gri" = { action = "implementation"; desc = "Implementation"; };
-            "grd" = { action = "definition"; desc = "Definition"; };
-            "grD" = { action = "declaration"; desc = "Declaration"; };
-            "grt" = { action = "type_definition"; desc = "Type Definition"; };
-            "gO" = { action = "document_symbol"; desc = "Document Symbols"; };
-            "gW" = { action = "workspace_symbol"; desc = "Workspace Symbols"; };
+            "grn" = {
+              action = "rename";
+              desc = "Rename";
+            };
+            "gra" = {
+              action = "code_action";
+              desc = "Code Action";
+            };
+            "grr" = {
+              action = "references";
+              desc = "References";
+            };
+            "gri" = {
+              action = "implementation";
+              desc = "Implementation";
+            };
+            "grd" = {
+              action = "definition";
+              desc = "Definition";
+            };
+            "grD" = {
+              action = "declaration";
+              desc = "Declaration";
+            };
+            "grt" = {
+              action = "type_definition";
+              desc = "Type Definition";
+            };
+            "gO" = {
+              action = "document_symbol";
+              desc = "Document Symbols";
+            };
+            "gW" = {
+              action = "workspace_symbol";
+              desc = "Workspace Symbols";
+            };
           };
         };
         servers = {
@@ -190,7 +405,7 @@
             enable = true;
             settings.Lua = {
               completion.callSnippet = "Replace";
-              diagnostics.globals = [ "vim" ];
+              diagnostics.globals = ["vim"];
             };
           };
           pyright.enable = true;
@@ -221,7 +436,10 @@
       lazydev = {
         enable = true;
         settings.library = [
-          { path = "luvit-meta/library"; words = [ "vim%.uv" ]; }
+          {
+            path = "luvit-meta/library";
+            words = ["vim%.uv"];
+          }
         ];
       };
 
@@ -242,7 +460,12 @@
             menu.auto_show = true;
           };
           sources = {
-            default = [ "lsp" "path" "snippets" "lazydev" ];
+            default = [
+              "lsp"
+              "path"
+              "snippets"
+              "lazydev"
+            ];
             providers.lazydev = {
               name = "LazyDev";
               module = "lazydev.integrations.blink";
@@ -268,7 +491,7 @@
           highlight.enable = true;
           indent = {
             enable = true;
-            disable = [ "ruby" ];
+            disable = ["ruby"];
           };
         };
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
@@ -308,21 +531,21 @@
             lsp_format = "fallback";
           };
           formatters_by_ft = {
-            lua = [ "stylua" ];
-            nix = [ "nixpkgs-fmt" ];
-            python = [ "ruff_fix" "ruff_format" "ruff_organize_imports" ];
-            javascript = [ "prettier" ];
-            typescript = [ "prettier" ];
-            javascriptreact = [ "prettier" ];
-            typescriptreact = [ "prettier" ];
-            json = [ "prettier" ];
-            yaml = [ "prettier" ];
-            markdown = [ "prettier" ];
-            html = [ "prettier" ];
-            css = [ "prettier" ];
-            php = [ "prettier" ];
-            go = [ "gofmt" ];
-            rust = [ "rustfmt" ];
+            lua = ["stylua"];
+            nix = ["alejandra"];
+            python = ["ruff_fix" "ruff_format" "ruff_organize_imports"];
+            javascript = ["prettier"];
+            typescript = ["prettier"];
+            javascriptreact = ["prettier"];
+            typescriptreact = ["prettier"];
+            json = ["prettier"];
+            yaml = ["prettier"];
+            markdown = ["prettier"];
+            html = ["prettier"];
+            css = ["prettier"];
+            php = ["prettier"];
+            go = ["gofmt"];
+            rust = ["rustfmt"];
           };
         };
       };
@@ -330,12 +553,12 @@
       lint = {
         enable = true;
         lintersByFt = {
-          python = [ "ruff" ];
-          javascript = [ "eslint_d" ];
-          typescript = [ "eslint_d" ];
-          lua = [ "luacheck" ];
-          nix = [ "statix" ];
-          go = [ "golangcilint" ];
+          python = ["ruff"];
+          javascript = ["eslint_d"];
+          typescript = ["eslint_d"];
+          lua = ["luacheck"];
+          nix = ["statix"];
+          go = ["golangcilint"];
         };
       };
 
@@ -398,7 +621,7 @@
         enable = true;
         modules = {
           ai.n_lines = 500;
-          surround = { };
+          surround = {};
           statusline.use_icons.__raw = "vim.g.have_nerd_font";
         };
       };
@@ -427,7 +650,7 @@
 
       trouble = {
         enable = true;
-        settings = { };
+        settings = {};
       };
 
       dropbar.enable = true;
@@ -440,9 +663,19 @@
       dap = {
         enable = true;
         signs = {
-          dapBreakpoint = { text = ""; texthl = "DapBreakpoint"; };
-          dapBreakpointCondition = { text = ""; texthl = "DapBreakpointCondition"; };
-          dapStopped = { text = ""; texthl = "DapStopped"; linehl = "DapStopped"; };
+          dapBreakpoint = {
+            text = "";
+            texthl = "DapBreakpoint";
+          };
+          dapBreakpointCondition = {
+            text = "";
+            texthl = "DapBreakpointCondition";
+          };
+          dapStopped = {
+            text = "";
+            texthl = "DapStopped";
+            linehl = "DapStopped";
+          };
         };
       };
 
