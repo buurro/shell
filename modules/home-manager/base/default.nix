@@ -4,13 +4,10 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   username = config.home.username;
   npmGlobalDir = "${config.home.homeDirectory}/.npm-global";
-in
-{
+in {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     inputs.nixvim.homeModules.nixvim
@@ -32,8 +29,7 @@ in
   programs.home-manager.enable = true;
 
   # Packages that should be installed to the user profile.
-  home.packages =
-    with pkgs;
+  home.packages = with pkgs;
     [
       argocd
       alejandra
@@ -67,7 +63,7 @@ in
       nil
       nix-tree
       nixd
-      nixfmt-rfc-style
+      nixfmt
       nixpkgs-fmt
       nnn
       nodejs
@@ -203,7 +199,7 @@ in
         set-option -ga terminal-overrides ",xterm-256color:Tc"
         set -g escape-time 10
       '';
-      plugins = [ pkgs.tmuxPlugins.pain-control ];
+      plugins = [pkgs.tmuxPlugins.pain-control];
     };
 
     zellij = {
@@ -213,7 +209,7 @@ in
         keybinds = {
           "move" = {
             unbind = {
-              _args = [ "Ctrl h" ];
+              _args = ["Ctrl h"];
             };
             "bind \"Ctrl m\"" = {
               SwitchToMode = "Normal";
@@ -221,7 +217,7 @@ in
           };
           "shared_except \"move\" \"locked\"" = {
             unbind = {
-              _args = [ "Ctrl h" ];
+              _args = ["Ctrl h"];
             };
             "bind \"Ctrl m\"" = {
               SwitchToMode = "Move";
@@ -229,7 +225,7 @@ in
           };
           "session" = {
             unbind = {
-              _args = [ "Ctrl o" ];
+              _args = ["Ctrl o"];
             };
             "bind \"Ctrl u\"" = {
               SwitchToMode = "Normal";
@@ -237,7 +233,7 @@ in
           };
           "shared_except \"session\" \"locked\"" = {
             unbind = {
-              _args = [ "Ctrl o" ];
+              _args = ["Ctrl o"];
             };
             "bind \"Ctrl u\"" = {
               SwitchToMode = "Session";
@@ -260,24 +256,23 @@ in
     prefix=${npmGlobalDir}
   '';
 
-  home.file.".local/share/mc/skins/catppuccin.ini".source =
-    let
-      src = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "mc";
-        rev = "f1c78f183764cd43e6dd4e325513ef5547a8f28f";
-        sha256 = "sha256-m6MO0Q35YYkTtVqG1v48U7pHcsuPmieDwU2U1ZzQcjo=";
-      };
-    in
-    "${src}/catppuccin.ini";
+  home.file.".local/share/mc/skins/catppuccin.ini".source = let
+    src = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "mc";
+      rev = "f1c78f183764cd43e6dd4e325513ef5547a8f28f";
+      sha256 = "sha256-m6MO0Q35YYkTtVqG1v48U7pHcsuPmieDwU2U1ZzQcjo=";
+    };
+  in "${src}/catppuccin.ini";
 
   programs.alacritty = {
     enable = true;
-    settings = {
-      font.normal.family = "MesloLGSDZ Nerd Font";
-      font.size = 18;
-      env.TERM = "xterm-256color";
-    }
-    // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
+    settings =
+      {
+        font.normal.family = "MesloLGSDZ Nerd Font";
+        font.size = 18;
+        env.TERM = "xterm-256color";
+      }
+      // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
   };
 }
