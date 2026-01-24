@@ -31,9 +31,8 @@ in {
   # Packages that should be installed to the user profile.
   home.packages = with pkgs;
     [
-      argocd
       alejandra
-      ffmpeg
+      argocd
       asciinema
       awscli2
       bat
@@ -45,6 +44,7 @@ in {
       dig
       duf
       fd
+      ffmpeg
       file
       fluxcd
       fx
@@ -55,10 +55,10 @@ in {
       iftop
       iperf3
       jq
+      k9s
       kubectl
       kubernetes-helm
       kubeseal
-      k9s
       lazydocker
       mc
       nil
