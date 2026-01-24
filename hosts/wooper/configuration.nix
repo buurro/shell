@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
@@ -6,31 +6,27 @@
 
   networking.hostName = "wooper";
 
-  networking.firewall.allowedTCPPorts = [ 6443 ];
+  networking.firewall.allowedTCPPorts = [6443];
 
-  environment.systemPackages = [ pkgs.k3s ];
-
+  environment.systemPackages = [pkgs.k3s];
 
   services.k3s.enable = true;
   services.k3s.role = "server";
 
   systemd.services.argocd = {
-    requires = [ "k3s.service" ];
-    after = [ "k3s.service" ];
-    serviceConfig =
-      let
-        argoscript = pkgs.writeShellScriptBin "argocd" ''
-          set -e
+    requires = ["k3s.service"];
+    after = ["k3s.service"];
+    serviceConfig = let
+      argoscript = pkgs.writeShellScriptBin "argocd" ''
+        set -e
 
-          ${pkgs.k3s}/bin/k3s kubectl create namespace argocd
-          ${pkgs.k3s}/bin/k3s kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-        '';
-      in
-      {
-        ExecStart = "${argoscript}/bin/argocd";
-      };
+        ${pkgs.k3s}/bin/k3s kubectl create namespace argocd
+        ${pkgs.k3s}/bin/k3s kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+      '';
+    in {
+      ExecStart = "${argoscript}/bin/argocd";
+    };
   };
-
 
   services.postgresql = {
     enable = true;

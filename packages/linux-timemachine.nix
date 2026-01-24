@@ -1,13 +1,13 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.stdenv.mkDerivation
 {
   name = "timemachine";
-  src = pkgs.fetchFromGitHub ({
+  src = pkgs.fetchFromGitHub {
     owner = "cytopia";
     repo = "linux-timemachine";
     rev = "v1.3.2";
     sha256 = "k0FUVwgRFKiZkzmqLrAYxtxsAjcjTfR11SxTEffSUVo=";
-  });
+  };
 
   # buildInputs = with pkgs; [
   #   rsync

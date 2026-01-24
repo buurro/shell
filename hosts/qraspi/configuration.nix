@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   networking.hostName = "qraspi";
 
   modules.home-manager.enable = true;

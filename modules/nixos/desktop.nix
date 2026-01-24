@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkIf (config.services.desktopManager.plasma6.enable) {
     fonts = {
       fontDir.enable = true;

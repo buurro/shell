@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
@@ -6,7 +11,7 @@
 
   networking.hostName = "k8s-lab";
 
-  networking.firewall.allowedTCPPorts = [ 80 443 6443 ];
+  networking.firewall.allowedTCPPorts = [80 443 6443];
 
   services.k3s.enable = true;
   services.k3s.role = "server";

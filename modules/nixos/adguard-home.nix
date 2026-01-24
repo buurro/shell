@@ -1,5 +1,9 @@
-{ config, inputs, lib, ... }:
 {
+  config,
+  inputs,
+  lib,
+  ...
+}: {
   options = {
     modules.adguard-home.enable = lib.mkEnableOption "AdGuard Home";
   };
@@ -9,7 +13,7 @@
       file = ../../secrets/risaro.la.age;
     };
 
-    users.groups."sslcerts" = { };
+    users.groups."sslcerts" = {};
 
     security.acme = {
       acceptTerms = true;
@@ -41,12 +45,12 @@
       openFirewall = true;
     };
 
-    users.groups."adguardhome" = { };
+    users.groups."adguardhome" = {};
 
     users.users.adguardhome = {
       group = "adguardhome";
       isSystemUser = true;
-      extraGroups = [ "sslcerts" ];
+      extraGroups = ["sslcerts"];
     };
   };
 }

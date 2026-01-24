@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
@@ -6,7 +11,7 @@
 
   networking.hostName = "mixer";
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [80 443];
 
   environment.systemPackages = with pkgs; [
     # jellyfin hardware acceleration
@@ -82,7 +87,7 @@
 
   fileSystems."/var/lib/jellyfin" = {
     device = "/mnt/persist/var/lib/jellyfin";
-    options = [ "bind" ];
+    options = ["bind"];
   };
 
   fileSystems."/mnt/persist" = {
@@ -93,7 +98,7 @@
   fileSystems."/mnt/nas-fun" = {
     device = "dmz-nas.dmz:/volume1/fun";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
+    options = ["x-systemd.automount" "noauto"];
   };
 
   nix.gc = {

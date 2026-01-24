@@ -1,6 +1,11 @@
-{ config, pkgs, inputs, lib, ... }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
+  imports = [inputs.home-manager.nixosModules.home-manager];
 
   options = {
     modules.home-manager.enable = lib.mkEnableOption "Home Manager";

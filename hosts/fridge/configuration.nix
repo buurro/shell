@@ -1,4 +1,9 @@
-{ pkgs, config, inputs, ... }: {
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
@@ -76,8 +81,8 @@
   };
 
   systemd.services.transmission = {
-    after = [ "mnt-nas\\x2dfun.mount" ];
-    requires = [ "mnt-nas\\x2dfun.mount" ];
+    after = ["mnt-nas\\x2dfun.mount"];
+    requires = ["mnt-nas\\x2dfun.mount"];
   };
 
   services.sonarr = {
@@ -147,7 +152,7 @@
   fileSystems."/mnt/nas-fun" = {
     device = "dmz-nas.dmz:/volume1/fun";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
+    options = ["x-systemd.automount" "noauto"];
   };
 
   nix.gc = {

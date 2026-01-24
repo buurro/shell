@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   nix.distributedBuilds = true;
   # nix.buildMachines = [{
   #   hostName = "blender";
@@ -7,7 +10,7 @@
   #   sshUser = "marco";
   # }];
   nixpkgs.config.allowUnfree = true;
-  nix.settings.trusted-users = [ "root" "marco" ];
+  nix.settings.trusted-users = ["root" "marco"];
   users.users."marco".home = "/Users/marco";
   system.primaryUser = "marco";
 
@@ -94,7 +97,6 @@
     dock.autohide-delay = 0.01;
     dock.autohide-time-modifier = 0.01;
     dock.show-recents = false;
-
 
     finder.AppleShowAllExtensions = true;
     finder.ShowPathbar = true;

@@ -1,11 +1,16 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./disk-config.nix
     ./hardware-config.nix
   ];
 
   networking.hostName = "db-1";
-  networking.firewall.allowedTCPPorts = [ 5432 ];
+  networking.firewall.allowedTCPPorts = [5432];
 
   services.postgresql = {
     enable = true;

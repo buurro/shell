@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   networking.hostName = "wraspi";
 
   modules.home-manager.enable = true;
@@ -15,7 +14,6 @@
     automatic = true;
     options = "--delete-old";
   };
-
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

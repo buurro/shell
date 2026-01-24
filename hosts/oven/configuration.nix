@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -25,7 +28,7 @@
     _1password.enable = true;
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "marco" ];
+      polkitPolicyOwners = ["marco"];
     };
   };
 
@@ -44,7 +47,7 @@
   virtualisation.oci-containers.containers = {
     cheshire_cat_core = {
       image = "ghcr.io/cheshire-cat-ai/core:1.7.1";
-      extraOptions = [ "--network=host" ];
+      extraOptions = ["--network=host"];
       volumes = [
         "cheshire_cat_static:/app/cat/static"
         "cheshire_cat_plugins:/app/cat/plugins"
@@ -60,7 +63,7 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux" "armv6l-linux"];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

@@ -1,7 +1,11 @@
-{ config, pkgs, lib, inputs, ... }:
 {
-
-  options = { };
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
+  options = {};
 
   config = {
     networking.enableIPv6 = false;
@@ -26,7 +30,7 @@
     users.users = {
       marco = {
         isNormalUser = true;
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = ["networkmanager" "wheel"];
         openssh.authorizedKeys.keys = inputs.self.users.marco.ssh.publicKeys;
       };
       jellyfin = lib.mkIf config.services.jellyfin.enable {
@@ -54,7 +58,7 @@
 
     nix.settings = {
       experimental-features = lib.mkDefault "nix-command flakes";
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
     };
 
     system.autoUpgrade = {

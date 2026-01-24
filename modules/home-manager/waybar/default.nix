@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   programs.waybar = {
     enable = true;
     style = ''
@@ -82,73 +80,75 @@
         background-color: rgb(69, 71, 90);
       }
     '';
-    settings = [{
-      "layer" = "top";
-      "position" = "top";
-      # "height" = 35;
-      modules-left = [
-        "hyprland/workspaces"
-        "tray"
-      ];
-      modules-center = [
-        "clock"
-      ];
-      modules-right = [
-        "custom/spotify"
-        "backlight"
-        "pulseaudio"
-        "network"
-        "battery"
-      ];
-      "pulseaudio" = {
-        "scroll-step" = 1;
-        "format" = "{icon} {volume}%";
-        "format-muted" = "󰖁 Muted";
-        "format-icons" = {
-          "default" = [ "" "" "" ];
+    settings = [
+      {
+        "layer" = "top";
+        "position" = "top";
+        # "height" = 35;
+        modules-left = [
+          "hyprland/workspaces"
+          "tray"
+        ];
+        modules-center = [
+          "clock"
+        ];
+        modules-right = [
+          "custom/spotify"
+          "backlight"
+          "pulseaudio"
+          "network"
+          "battery"
+        ];
+        "pulseaudio" = {
+          "scroll-step" = 1;
+          "format" = "{icon} {volume}%";
+          "format-muted" = "󰖁 Muted";
+          "format-icons" = {
+            "default" = ["" "" ""];
+          };
+          "on-click" = "pavucontrol";
+          "tooltip" = false;
         };
-        "on-click" = "pavucontrol";
-        "tooltip" = false;
-      };
-      "clock" = {
-        "interval" = 1;
-        "format" = "{:%a %d %b  %H:%M}";
-      };
-      "network" = {
-        "format-disconnected" = "󰯡 Disconnected";
-        "format-ethernet" = "󰈀 {ifname}";
-        "format-linked" = "󰖪 {essid} (No IP)";
-        "format-wifi" = "󰖩 {essid}";
-        "interval" = 1;
-        "tooltip" = true;
-        "tooltip-format" = "{ifname} {ipaddr}/{cidr}";
-      };
-      "tray" = {
-        "spacing" = 6;
-        "icon-size" = 14;
-      };
-      "custom/spotify" = {
-        "format" = "{}";
-        "escape" = true;
-        "interval" = 5;
-        "exec" = "playerctl -f '{{artist}} - {{title}}' -p spotify metadata";
-        "exec-if" = "pgrep spotify";
-      };
-      "hyprland/workspaces" = {
-        "format" = "{icon}";
-      };
-      "battery" = {
-        "format" = "{icon}  {capacity}%";
-        "format-icons" = {
-          "default" = [ "" "" "" "" "" ];
-          "plugged" = "";
-          "charging" = "";
+        "clock" = {
+          "interval" = 1;
+          "format" = "{:%a %d %b  %H:%M}";
         };
-      };
-      "backlight" = {
-        "format" = "{icon} {percent}%";
-        "format-icons" = [ "󰃞" "󰃟" "󰃠" ];
-      };
-    }];
+        "network" = {
+          "format-disconnected" = "󰯡 Disconnected";
+          "format-ethernet" = "󰈀 {ifname}";
+          "format-linked" = "󰖪 {essid} (No IP)";
+          "format-wifi" = "󰖩 {essid}";
+          "interval" = 1;
+          "tooltip" = true;
+          "tooltip-format" = "{ifname} {ipaddr}/{cidr}";
+        };
+        "tray" = {
+          "spacing" = 6;
+          "icon-size" = 14;
+        };
+        "custom/spotify" = {
+          "format" = "{}";
+          "escape" = true;
+          "interval" = 5;
+          "exec" = "playerctl -f '{{artist}} - {{title}}' -p spotify metadata";
+          "exec-if" = "pgrep spotify";
+        };
+        "hyprland/workspaces" = {
+          "format" = "{icon}";
+        };
+        "battery" = {
+          "format" = "{icon}  {capacity}%";
+          "format-icons" = {
+            "default" = ["" "" "" "" ""];
+            "plugged" = "";
+            "charging" = "";
+          };
+        };
+        "backlight" = {
+          "format" = "{icon} {percent}%";
+          "format-icons" = ["󰃞" "󰃟" "󰃠"];
+        };
+      }
+    ];
   };
 }

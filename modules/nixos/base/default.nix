@@ -1,5 +1,9 @@
-{ pkgs, lib, inputs, ... }:
-let
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
   resize = pkgs.writeScriptBin "resize" ''
     if [ -e /dev/tty ]; then
       old=$(stty -g)
@@ -10,8 +14,7 @@ let
       stty cols "$cols" rows "$rows"
     fi
   ''; # https://unix.stackexchange.com/questions/16578/resizable-serial-console-window
-in
-{
+in {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
     ./minimal.nix
@@ -21,7 +24,7 @@ in
     ../adguard-home.nix
   ];
 
-  options = { };
+  options = {};
 
   config = {
     networking.firewall.allowedTCPPorts = [
@@ -43,7 +46,7 @@ in
       ];
       virtualisation.diskSize = 8000;
       virtualisation.memorySize = 2048;
-      environment.systemPackages = [ resize ];
+      environment.systemPackages = [resize];
       environment.loginShellInit = "${resize}/bin/resize";
 
       services.xserver.enable = false;

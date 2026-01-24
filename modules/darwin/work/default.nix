@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   homebrew = {
     enable = true;
     brews = [

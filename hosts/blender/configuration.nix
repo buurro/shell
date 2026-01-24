@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -36,7 +35,7 @@
   fileSystems."/mnt/nas-fun" = {
     device = "home-nas.lan:/volume1/fun";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
+    options = ["x-systemd.automount" "noauto"];
   };
 
   users.users."nas" = {
@@ -48,8 +47,8 @@
   modules.home-manager.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv6l-linux" ];
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux" "armv6l-linux"];
+  boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.grub.enable = true;
