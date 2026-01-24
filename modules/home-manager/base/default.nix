@@ -33,6 +33,7 @@ in {
     [
       argocd
       alejandra
+      ffmpeg
       asciinema
       awscli2
       bat
