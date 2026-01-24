@@ -17,7 +17,6 @@
       useUserPackages = true;
       extraSpecialArgs = {
         inherit inputs;
-        hyprland = config.modules.hyprland.enable;
       };
     };
   };

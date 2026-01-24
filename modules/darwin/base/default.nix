@@ -18,7 +18,6 @@
     users.marco = import ../../home-manager/base/default.nix;
     extraSpecialArgs = {
       inherit inputs;
-      hyprland = false;
     };
   };
 

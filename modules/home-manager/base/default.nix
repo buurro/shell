@@ -12,7 +12,6 @@ in {
     inputs.catppuccin.homeModules.catppuccin
     inputs.nixvim.homeModules.nixvim
 
-    ../programs
     ./vim.nix
   ];
 

@@ -45,7 +45,6 @@
     group = "users";
   };
 
-  modules.hyprland.enable = false;
   modules.home-manager.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";

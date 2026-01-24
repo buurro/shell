@@ -19,7 +19,6 @@ in
     ../desktop.nix
     ../home-manager.nix
     ../adguard-home.nix
-    ../hyprland
   ];
 
   options = { };

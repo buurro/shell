@@ -53,7 +53,6 @@
     };
   };
 
-  modules.hyprland.enable = true;
   modules.home-manager.enable = true;
 
   services.qemuGuest.enable = true;

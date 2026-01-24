@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 {
-  config = lib.mkIf (config.modules.hyprland.enable || config.services.desktopManager.plasma6.enable) {
+  config = lib.mkIf (config.services.desktopManager.plasma6.enable) {
     fonts = {
       fontDir.enable = true;
       packages = with pkgs; [
@@ -34,15 +34,15 @@
 
     catppuccin.flavor = "mocha";
 
-    services.xserver.enable = lib.mkIf (config.modules.hyprland.enable) true;
-    services.displayManager.sddm = lib.mkIf (config.modules.hyprland.enable) {
-      enable = true;
-      settings = {
-        General = {
-          InputMethod = "";
-        };
-      };
-    };
+    # services.xserver.enable = lib.mkIf (config.modules.hyprland.enable) true;
+    # services.displayManager.sddm = lib.mkIf (config.modules.hyprland.enable) {
+    #   enable = true;
+    #   settings = {
+    #     General = {
+    #       InputMethod = "";
+    #     };
+    #   };
+    # };
     catppuccin.sddm.enable = true;
 
     boot.loader.grub = {

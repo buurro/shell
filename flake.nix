@@ -38,10 +38,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.45.2";
-    };
   };
   outputs = {
     self,
@@ -54,7 +50,6 @@
     disko,
     agenix,
     catppuccin,
-    hyprland,
     nixvim,
   } @ inputs:
     {
