@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     catppuccin = {
@@ -16,11 +15,6 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,13 +38,10 @@
     nixpkgs,
     darwin,
     home-manager,
-    flake-utils,
     nixos-hardware,
-    nixos-generators,
     disko,
     agenix,
-    catppuccin,
-    nixvim,
+    ...
   } @ inputs:
     {
       darwinConfigurations = {
@@ -232,25 +223,24 @@
             modules = [self.nixosModules.sdImage];
           }).config.system.build.sdImage;
 
-        vm = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          format = "vm-nogui";
-          modules = [
-            self.nixosModules.default
-            ({...}: {
-              modules.home-manager.enable = true;
-              users.users.marco.initialPassword = "marco";
-            })
-          ];
-          specialArgs = {inherit inputs;};
-        };
-
         live = self.nixosConfigurations.live.config.system.build.isoImage;
       };
 
       users = import ./users.nix;
     }
-    // flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    });
+    // (
+      let
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+          "x86_64-darwin"
+          "aarch64-darwin"
+        ];
+      in {
+        formatter = nixpkgs.lib.genAttrs systems (
+          system:
+            nixpkgs.legacyPackages.${system}.alejandra
+        );
+      }
+    );
 }
