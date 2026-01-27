@@ -90,6 +90,15 @@
     dataDir = "/mnt/persist/var/lib/sonarr/.config/NzbDrone";
     user = "nas";
     group = "users";
+    package = pkgs.sonarr.override {
+      sqlite = pkgs.sqlite.overrideAttrs (old: {
+        version = "3.50.0";
+        src = pkgs.fetchurl {
+          url = "https://sqlite.org/2025/sqlite-autoconf-3500000.tar.gz";
+          sha256 = "09w32b04wbh1d5zmriwla7a02r93nd6vf3xqycap92a3yajpdirv";
+        };
+      });
+    };
   };
 
   services.nginx = {
