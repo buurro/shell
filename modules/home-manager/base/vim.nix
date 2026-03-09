@@ -52,6 +52,14 @@
         source = "if_many";
         prefix = "●";
       };
+      signs = {
+        text = {
+          "__rawKey__vim.diagnostic.severity.ERROR" = "";
+          "__rawKey__vim.diagnostic.severity.WARN" = "";
+          "__rawKey__vim.diagnostic.severity.HINT" = "";
+          "__rawKey__vim.diagnostic.severity.INFO" = "";
+        };
+      };
     };
 
     colorschemes.tokyonight = {
@@ -760,13 +768,6 @@
       -- DAP highlight groups
       vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#993939" })
       vim.api.nvim_set_hl(0, "DapStopped", { fg = "#98c379", bg = "#31353f" })
-
-      -- Diagnostic signs
-      local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
 
       -- Toggle inlay hints
       if vim.lsp.inlay_hint then
