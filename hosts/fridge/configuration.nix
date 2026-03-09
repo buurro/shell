@@ -48,17 +48,6 @@
   services.transmission = {
     enable = true;
 
-    package = pkgs.transmission_4.overrideAttrs (finalAttrs: previousAttrs: {
-      version = "4.0.5";
-      src = pkgs.fetchFromGitHub {
-        owner = "transmission";
-        repo = "transmission";
-        rev = finalAttrs.version;
-        hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
-        fetchSubmodules = true;
-      };
-    });
-
     home = "/mnt/persist/var/lib/transmission";
 
     settings = {
@@ -90,15 +79,6 @@
     dataDir = "/mnt/persist/var/lib/sonarr/.config/NzbDrone";
     user = "nas";
     group = "users";
-    package = pkgs.sonarr.override {
-      sqlite = pkgs.sqlite.overrideAttrs (old: {
-        version = "3.50.0";
-        src = pkgs.fetchurl {
-          url = "https://sqlite.org/2025/sqlite-autoconf-3500000.tar.gz";
-          sha256 = "09w32b04wbh1d5zmriwla7a02r93nd6vf3xqycap92a3yajpdirv";
-        };
-      });
-    };
   };
 
   services.nginx = {
