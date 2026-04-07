@@ -178,6 +178,7 @@ in {
         ".DS_Store"
         ".claude/settings.local.json"
       ];
+      signing.format = null;
       settings = {
         init.defaultBranch = "main";
 
