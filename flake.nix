@@ -91,8 +91,8 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/qraspi/configuration.nix
-            self.nixosModules.default
-            nixos-hardware.nixosModules.raspberry-pi-4
+            ./modules/nixos/adguard-home.nix
+            self.nixosModules.minimal
             agenix.nixosModules.default
           ];
           specialArgs = {inherit inputs;};
@@ -102,8 +102,8 @@
           system = "aarch64-linux";
           modules = [
             ./hosts/wraspi/configuration.nix
-            self.nixosModules.default
-            nixos-hardware.nixosModules.raspberry-pi-4
+            ./modules/nixos/adguard-home.nix
+            self.nixosModules.minimal
             agenix.nixosModules.default
           ];
           specialArgs = {inherit inputs;};

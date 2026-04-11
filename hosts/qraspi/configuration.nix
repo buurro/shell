@@ -1,37 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   networking.hostName = "qraspi";
 
-  modules.home-manager.enable = true;
-
   modules.adguard-home.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    libraspberrypi
-    raspberrypi-eeprom
-    kmod
-  ];
-
-  console.enable = true;
-
-  boot = {
-    loader = {
-      generic-extlinux-compatible.enable = lib.mkDefault true;
-      grub.enable = lib.mkDefault false;
-    };
-  };
-
-  hardware = {
-    raspberry-pi."4".apply-overlays-dtmerge.enable = true;
-    deviceTree = {
-      enable = true;
-      filter = "*-rpi-4-*.dtb";
-      # kernelPackage = pkgs.linuxKernel.kernels.linux_rpi4;
-    };
-  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";
@@ -43,7 +13,10 @@
     options = "--delete-old";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader = {
+    grub.enable = false;
+    generic-extlinux-compatible.enable = true;
+  };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "26.05";
 }

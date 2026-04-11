@@ -21,7 +21,6 @@ in {
     ../network-stuff.nix
     ../desktop.nix
     ../home-manager.nix
-    ../adguard-home.nix
   ];
 
   options = {};

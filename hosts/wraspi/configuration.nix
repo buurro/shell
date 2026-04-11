@@ -1,7 +1,5 @@
-{pkgs, ...}: {
+{...}: {
   networking.hostName = "wraspi";
-
-  modules.home-manager.enable = true;
 
   modules.adguard-home.enable = true;
 
@@ -15,7 +13,10 @@
     options = "--delete-old";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader = {
+    grub.enable = false;
+    generic-extlinux-compatible.enable = true;
+  };
 
   system.stateVersion = "25.05";
 }
