@@ -715,7 +715,7 @@
       # Formatters
       stylua
       nixpkgs-fmt
-      nodePackages.prettier
+      prettier
       ruff
       gofumpt
 
