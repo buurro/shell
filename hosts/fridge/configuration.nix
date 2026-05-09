@@ -112,7 +112,7 @@
       # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
       group = "nginx";
       dnsProvider = "cloudflare";
-      credentialsFile = "/mnt/persist/var/lib/secrets/cloudflare-fridge-acme";
+      environmentFile = "/mnt/persist/var/lib/secrets/cloudflare-fridge-acme";
     };
     certs."risaro.la" = {
       domain = "*.risaro.la";

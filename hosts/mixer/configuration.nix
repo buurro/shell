@@ -30,7 +30,7 @@
     # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
     group = "nginx";
     dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets."somefile.zip".path;
+    environmentFile = config.age.secrets."somefile.zip".path;
   };
 
   services.nginx = {
