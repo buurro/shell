@@ -87,6 +87,7 @@
 
   fileSystems."/var/lib/jellyfin" = {
     device = "/mnt/persist/var/lib/jellyfin";
+    fsType = "none";
     options = ["bind"];
   };
 
