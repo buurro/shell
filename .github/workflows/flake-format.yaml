@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
   check:
@@ -12,8 +13,8 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@v22
       - run: nix fmt .
       - run: |
           if [[ $(git status --porcelain) ]]; then
