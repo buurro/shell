@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -38,7 +37,6 @@
     nixpkgs,
     darwin,
     home-manager,
-    nixos-hardware,
     disko,
     agenix,
     ...
@@ -105,17 +103,6 @@
             ./modules/nixos/adguard-home.nix
             self.nixosModules.minimal
             agenix.nixosModules.default
-          ];
-          specialArgs = {inherit inputs;};
-        };
-
-        "ionos-m" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            disko.nixosModules.disko
-            agenix.nixosModules.default
-            self.nixosModules.default
-            ./hosts/ionos-m/configuration.nix
           ];
           specialArgs = {inherit inputs;};
         };
