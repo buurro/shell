@@ -38,6 +38,7 @@
 
   homebrew = {
     enable = true;
+    enableZshIntegration = true;
     masApps = {
       "1Password for Safari" = 1569813296;
       "Magnet" = 441258766;
