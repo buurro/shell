@@ -37,7 +37,6 @@ in {
       bat
       bottom
       bun
-      cachix
       cheat
       cmctl
       dig
@@ -45,7 +44,6 @@ in {
       fd
       ffmpeg
       file
-      fluxcd
       fx
       gh
       gnumake
