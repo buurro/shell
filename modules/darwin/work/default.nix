@@ -1,11 +1,15 @@
-{...}: {
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    buildkit
+    go
+  ];
   homebrew = {
     enable = true;
     brews = [
       "helm"
       "k3d"
-      "tilt"
       "k9s"
+      "tilt"
     ];
     casks = [
       "slack"
