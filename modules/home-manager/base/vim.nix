@@ -44,7 +44,7 @@
       foldenable = false;
     };
 
-    diagnostics = {
+    diagnostic.settings = {
       severity_sort = true;
       float.border = "rounded";
       underline.severity.min = "Error";
