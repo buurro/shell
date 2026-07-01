@@ -52,7 +52,6 @@ in {
       iftop
       iperf3
       jq
-      k9s
       kubectl
       kubernetes-helm
       kubeseal
@@ -85,6 +84,7 @@ in {
   catppuccin.flavor = "macchiato";
   catppuccin.fzf.enable = true;
   catppuccin.zellij.enable = true;
+  catppuccin.k9s.enable = true;
 
   home.shellAliases = {
     c = "code .";
@@ -188,6 +188,8 @@ in {
     difftastic.enable = true;
 
     lazygit.enable = true;
+
+    k9s.enable = true;
 
     tmux = {
       enable = true;

@@ -8,7 +8,6 @@
     brews = [
       "helm"
       "k3d"
-      "k9s"
       "tilt"
     ];
     casks = [
