@@ -5,6 +5,8 @@
     viAlias = true;
     vimAlias = true;
 
+    nixpkgs.useGlobalPackages = true;
+
     globals = {
       mapleader = " ";
       maplocalleader = " ";

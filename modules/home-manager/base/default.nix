@@ -81,6 +81,8 @@ in {
       inputs.agenix.packages."${pkgs.stdenv.system}".default
     ];
 
+  catppuccin.enable = true;
+  catppuccin.autoEnable = false;
   catppuccin.flavor = "macchiato";
   catppuccin.fzf.enable = true;
   catppuccin.zellij.enable = true;
