@@ -111,13 +111,13 @@
       {
         mode = "t";
         key = "<Esc><Esc>";
-        action = "<C-\\\\><C-n>";
+        action = "<C-\\><C-n>";
         options.desc = "Exit terminal mode";
       }
       {
         mode = "n";
         key = "cd";
-        action = ":%s/\\\\<<C-r><C-w>\\\\>/<C-r><C-w>/gI<Left><Left><Left>";
+        action = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
         options.desc = "Find and replace word";
       }
       {
@@ -128,7 +128,7 @@
       }
       {
         mode = "n";
-        key = "\\\\";
+        key = "\\";
         action = "<cmd>Neotree toggle<CR>";
         options.desc = "Toggle Neo-tree";
       }
@@ -252,7 +252,7 @@
         event = "TextYankPost";
         group = "kickstart-highlight-yank";
         desc = "Highlight when yanking text";
-        callback.__raw = "function() vim.highlight.on_yank() end";
+        callback.__raw = "function() vim.hl.on_yank() end";
       }
       {
         event = [
@@ -462,6 +462,7 @@
           keymap.preset = "enter";
           appearance.nerd_font_variant = "mono";
           signature.enabled = true;
+          snippets.preset = "luasnip";
           completion = {
             documentation = {
               auto_show = false;
@@ -554,7 +555,7 @@
             html = ["prettier"];
             css = ["prettier"];
             php = ["prettier"];
-            go = ["gofmt"];
+            go = ["gofumpt"];
             rust = ["rustfmt"];
           };
         };
@@ -716,10 +717,11 @@
     extraPackages = with pkgs; [
       # Formatters
       stylua
-      nixpkgs-fmt
+      alejandra
       prettier
       ruff
       gofumpt
+      rustfmt
 
       # Linters
       luajitPackages.luacheck
