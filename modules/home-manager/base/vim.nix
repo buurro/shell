@@ -42,7 +42,7 @@
       completeopt = "menu,menuone,noselect";
       termguicolors = true;
       foldmethod = "expr";
-      foldexpr = "nvim_treesitter#foldexpr()";
+      foldexpr = "v:lua.vim.treesitter.foldexpr()";
       foldenable = false;
     };
 
@@ -245,6 +245,7 @@
     autoGroups = {
       kickstart-highlight-yank.clear = true;
       lint.clear = true;
+      bigfile.clear = true;
     };
 
     autoCmd = [
@@ -263,8 +264,70 @@
         group = "lint";
         callback.__raw = ''
           function()
-            if vim.opt_local.modifiable:get() then
+            if vim.opt_local.modifiable:get() and not vim.b.bigfile then
               require("lint").try_lint()
+            end
+          end
+        '';
+      }
+      {
+        event = "BufReadPre";
+        group = "bigfile";
+        desc = "Flag large files and disable expensive buffer options";
+        callback.__raw = ''
+          function(args)
+            local max_size = 1024 * 1024 -- 1 MiB
+            local ok, stats = pcall((vim.uv or vim.loop).fs_stat, vim.api.nvim_buf_get_name(args.buf))
+            if not (ok and stats and stats.size > max_size) then
+              return
+            end
+            vim.b[args.buf].bigfile = true
+            vim.api.nvim_buf_call(args.buf, function()
+              vim.opt_local.foldmethod = "manual"
+              vim.opt_local.foldexpr = "0"
+              vim.opt_local.list = false
+              vim.opt_local.cursorline = false
+              vim.opt_local.undofile = false
+              vim.opt_local.swapfile = false
+            end)
+          end
+        '';
+      }
+      {
+        event = "FileType";
+        group = "bigfile";
+        desc = "Turn off treesitter, syntax and indent guides in large files";
+        callback.__raw = ''
+          function(args)
+            if not vim.b[args.buf].bigfile then
+              return
+            end
+            -- nixvim's own FileType autocmd (nvim-treesitter main branch) starts
+            -- the highlighter unconditionally; undo it after the event chain runs
+            pcall(vim.treesitter.stop, args.buf)
+            vim.schedule(function()
+              if vim.api.nvim_buf_is_valid(args.buf) then
+                pcall(vim.treesitter.stop, args.buf)
+                vim.bo[args.buf].syntax = ""
+                vim.bo[args.buf].indentexpr = ""
+              end
+            end)
+            pcall(function()
+              require("ibl").setup_buffer(args.buf, { enabled = false })
+            end)
+          end
+        '';
+      }
+      {
+        event = "LspAttach";
+        group = "bigfile";
+        desc = "Detach LSP clients from large files";
+        callback.__raw = ''
+          function(args)
+            if vim.b[args.buf].bigfile then
+              vim.schedule(function()
+                pcall(vim.lsp.buf_detach_client, args.buf, args.data.client_id)
+              end)
             end
           end
         '';
@@ -498,13 +561,10 @@
 
       treesitter = {
         enable = true;
-        settings = {
-          highlight.enable = true;
-          indent = {
-            enable = true;
-            disable = ["ruby"];
-          };
-        };
+        # Per-buffer disabling for large files is handled by the bigfile
+        # autocmds; the native disable option only takes filetype names.
+        highlight.enable = true;
+        indent.enable = true;
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           bash
           c
