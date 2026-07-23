@@ -16,10 +16,8 @@
   ''; # https://unix.stackexchange.com/questions/16578/resizable-serial-console-window
 in {
   imports = [
-    inputs.catppuccin.nixosModules.catppuccin
     ./minimal.nix
     ../network-stuff.nix
-    ../desktop.nix
     ../home-manager.nix
   ];
 
@@ -47,9 +45,6 @@ in {
       virtualisation.memorySize = 2048;
       environment.systemPackages = [resize];
       environment.loginShellInit = "${resize}/bin/resize";
-
-      services.xserver.enable = false;
-      services.displayManager.sddm.enable = false;
 
       users.users.marco.initialPassword = "marco";
       security.acme.defaults.server = "https://127.0.0.1";
