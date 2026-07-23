@@ -3,6 +3,11 @@
   inputs,
   ...
 }: {
+  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+
+  environment.etc."flake-revision".text =
+    (inputs.self.rev or inputs.self.dirtyRev or "unknown") + "\n";
+
   nix.distributedBuilds = true;
   # nix.buildMachines = [{
   #   hostName = "blender";

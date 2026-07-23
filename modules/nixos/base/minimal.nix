@@ -8,6 +8,11 @@
   options = {};
 
   config = {
+    system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+
+    environment.etc."flake-revision".text =
+      (inputs.self.rev or inputs.self.dirtyRev or "unknown") + "\n";
+
     networking.enableIPv6 = false;
     environment.systemPackages = with pkgs; [
       curl
