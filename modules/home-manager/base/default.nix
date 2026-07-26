@@ -56,7 +56,6 @@ in {
       kubernetes-helm
       kubeseal
       lazydocker
-      mc
       nil
       nix-tree
       nixd
@@ -91,7 +90,6 @@ in {
   home.shellAliases = {
     c = "code .";
     lg = "lazygit";
-    mc = "mc --nosubshell";
     s = "ssh";
     devv = "nix develop -c zellij -s `basename $PWD` options --default-shell zsh";
     k = "kubectl";
@@ -258,15 +256,6 @@ in {
   home.file.".npmrc".text = ''
     prefix=${npmGlobalDir}
   '';
-
-  home.file.".local/share/mc/skins/catppuccin.ini".source = let
-    src = pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "mc";
-      rev = "f1c78f183764cd43e6dd4e325513ef5547a8f28f";
-      sha256 = "sha256-m6MO0Q35YYkTtVqG1v48U7pHcsuPmieDwU2U1ZzQcjo=";
-    };
-  in "${src}/catppuccin.ini";
 
   programs.alacritty = {
     enable = true;
