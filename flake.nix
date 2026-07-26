@@ -228,6 +228,32 @@
           system:
             nixpkgs.legacyPackages.${system}.alejandra
         );
+
+        packages = nixpkgs.lib.genAttrs systems (system: {
+          vim-docs = import ./lib/vim-docs.nix {
+            pkgs = nixpkgs.legacyPackages.${system};
+            inherit (nixpkgs) lib;
+          };
+        });
+
+        apps = nixpkgs.lib.genAttrs systems (system: let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in {
+          vim-docs = {
+            type = "app";
+            meta.description = "Regenerate docs/vim.md from the nixvim config";
+            program = nixpkgs.lib.getExe (pkgs.writeShellApplication {
+              name = "vim-docs";
+              runtimeInputs = [pkgs.git];
+              text = ''
+                root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+                mkdir -p "$root/docs"
+                install -m 644 ${self.packages.${system}.vim-docs} "$root/docs/vim.md"
+                echo "wrote $root/docs/vim.md"
+              '';
+            });
+          };
+        });
       }
     );
 }
