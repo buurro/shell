@@ -230,26 +230,29 @@
         );
 
         packages = nixpkgs.lib.genAttrs systems (system: {
-          vim-docs = import ./lib/vim-docs.nix {
+          docs = import ./lib/docs {
             pkgs = nixpkgs.legacyPackages.${system};
             inherit (nixpkgs) lib;
+            inherit inputs;
           };
         });
 
         apps = nixpkgs.lib.genAttrs systems (system: let
           pkgs = nixpkgs.legacyPackages.${system};
         in {
-          vim-docs = {
+          docs = {
             type = "app";
-            meta.description = "Regenerate docs/vim.md from the nixvim config";
+            meta.description = "Regenerate docs/ from the flake";
             program = nixpkgs.lib.getExe (pkgs.writeShellApplication {
-              name = "vim-docs";
+              name = "docs";
               runtimeInputs = [pkgs.git];
               text = ''
                 root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
                 mkdir -p "$root/docs"
-                install -m 644 ${self.packages.${system}.vim-docs} "$root/docs/vim.md"
-                echo "wrote $root/docs/vim.md"
+                for f in ${self.packages.${system}.docs}/*; do
+                  install -m 644 "$f" "$root/docs/$(basename "$f")"
+                  echo "wrote docs/$(basename "$f")"
+                done
               '';
             });
           };
