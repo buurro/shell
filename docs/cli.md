@@ -13,7 +13,6 @@ Shell: `zsh` (oh-my-zsh, autosuggestions, syntax highlighting) · Prompt: `stars
 | `devv` | `` nix develop -c zellij -s `basename $PWD` options --default-shell zsh `` |
 | `k` | `kubectl` |
 | `lg` | `lazygit` |
-| `mc` | `mc --nosubshell` |
 | `s` | `ssh` |
 | `ur` | `uv run` |
 
@@ -54,11 +53,10 @@ Catppuccin integrations: `fzf`, `k9s`, `zellij`
 
 ## Packages
 
-`agenix`, `alejandra`, `argocd`, `asciinema`, `awscli2`, `bat`, `bind`, `bottom`, `bun`, `cheat`, `cmctl`, `duf`, `fd`, `ffmpeg`, `file`, `fx`, `gh`, `gnumake`, `htop`, `httpie`, `iftop`, `iperf`, `jq`, `kubectl`, `kubernetes-helm`, `kubeseal`, `lazydocker`, `mc`, `nil`, `nix-tree`, `nixd`, `nixfmt`, `nixpkgs-fmt`, `nnn`, `nodejs`, `ookla-speedtest`, `opentofu`, `ranger`, `rename`, `ripgrep`, `ruff`, `sshfs-fuse`, `tabview`, `unzip`, `uv`, `wget`, `yt-dlp`
+`agenix`, `alejandra`, `argocd`, `asciinema`, `awscli2`, `bat`, `bind`, `bottom`, `bun`, `cheat`, `cmctl`, `duf`, `fd`, `ffmpeg`, `file`, `fx`, `gh`, `gnumake`, `htop`, `httpie`, `iftop`, `iperf`, `jq`, `kubectl`, `kubernetes-helm`, `kubeseal`, `lazydocker`, `nil`, `nix-tree`, `nixd`, `nixfmt`, `nixpkgs-fmt`, `nnn`, `nodejs`, `ookla-speedtest`, `opentofu`, `ranger`, `rename`, `ripgrep`, `ruff`, `sshfs-fuse`, `tabview`, `unzip`, `uv`, `wget`, `yt-dlp`
 
 ## Managed dotfiles
 
 - `.config/starship.toml`
 - `.iterm2_shell_integration.zsh`
-- `.local/share/mc/skins/catppuccin.ini`
 - `.npmrc`
