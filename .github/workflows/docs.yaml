@@ -12,11 +12,22 @@ on:
       - flake.nix
       - flake.lock
       - .github/workflows/docs.yaml
+  pull_request:
+    paths:
+      - modules/**
+      - hosts/**
+      - lib/docs/**
+      - users.nix
+      - flake.nix
+      - flake.lock
+      - .github/workflows/docs.yaml
   workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-24.04
+    # Forked PRs can't be pushed to with the workflow token.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     permissions:
       contents: write
       pull-requests: write
@@ -25,11 +36,27 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       BASE: ${{ github.ref_name }}
       BRANCH: docs/${{ github.ref_name }}
+      HEAD_REF: ${{ github.head_ref }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
       - uses: DeterminateSystems/nix-installer-action@v22
       - run: nix run .#docs
-      - name: Create or update PR
+      - name: Commit updated docs to the PR branch
+        if: github.event_name == 'pull_request'
+        run: |
+          if [[ -z $(git status --porcelain docs/) ]]; then
+            echo "docs/ is up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "docs: regenerate"
+          git push origin HEAD:"$HEAD_REF"
+      - name: Create or update docs PR
+        if: github.event_name != 'pull_request'
         run: |
           if [[ -z $(git status --porcelain docs/) ]]; then
             echo "docs/ is up to date."
