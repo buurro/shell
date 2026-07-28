@@ -15,8 +15,6 @@
     };
   };
 
-  packages = lib.sort lib.lessThan (map lib.getName hm.home.packages);
-
   aliasRows = lib.mapAttrsToList (a: cmd: [(md.code a) (md.code cmd)]) hm.home.shellAliases;
 
   # Best-effort: shell functions defined in programs.zsh.initContent.
@@ -81,7 +79,7 @@ in ''
 
   ## Packages
 
-  ${md.codeList packages}
+  ${md.pkgLinkList hm.home.packages}
 
   ## Managed dotfiles
 

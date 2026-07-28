@@ -13,6 +13,19 @@
 
   codeList = xs: lib.concatStringsSep ", " (map code xs);
 
+  link = text: url: "[${text}](${url})";
+
+  # Package name linked to its upstream homepage, when nixpkgs knows one.
+  pkgLink = p: let
+    name = code (lib.getName p);
+    homepage = p.meta.homepage or null;
+  in
+    if homepage == null
+    then name
+    else link name homepage;
+
+  pkgLinkList = ps: lib.concatStringsSep ", " (map pkgLink (lib.sort (a: b: lib.getName a < lib.getName b) ps));
+
   bullets = xs: lib.concatMapStringsSep "\n" (x: "- ${x}") xs;
 
   table = headers: rows:

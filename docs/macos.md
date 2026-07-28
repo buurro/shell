@@ -6,50 +6,50 @@ nix-darwin base module shared by all Macs.
 
 ## Homebrew casks
 
-- `1password`
+- [`1password`](https://formulae.brew.sh/cask/1password)
 - `1password/tap/1password-cli`
-- `appcleaner`
-- `audacity`
-- `dbeaver-community`
-- `discord`
-- `firefox`
-- `ghostty`
-- `google-chrome`
-- `iina`
-- `iterm2`
-- `jellyfin-media-player`
-- `mac-mouse-fix`
-- `marta`
-- `monitorcontrol`
-- `notion`
-- `postico`
-- `raspberry-pi-imager`
-- `raycast`
-- `spotify`
-- `tailscale-app`
-- `visual-studio-code`
-- `zed`
+- [`appcleaner`](https://formulae.brew.sh/cask/appcleaner)
+- [`audacity`](https://formulae.brew.sh/cask/audacity)
+- [`dbeaver-community`](https://formulae.brew.sh/cask/dbeaver-community)
+- [`discord`](https://formulae.brew.sh/cask/discord)
+- [`firefox`](https://formulae.brew.sh/cask/firefox)
+- [`ghostty`](https://formulae.brew.sh/cask/ghostty)
+- [`google-chrome`](https://formulae.brew.sh/cask/google-chrome)
+- [`iina`](https://formulae.brew.sh/cask/iina)
+- [`iterm2`](https://formulae.brew.sh/cask/iterm2)
+- [`jellyfin-media-player`](https://formulae.brew.sh/cask/jellyfin-media-player)
+- [`mac-mouse-fix`](https://formulae.brew.sh/cask/mac-mouse-fix)
+- [`marta`](https://formulae.brew.sh/cask/marta)
+- [`monitorcontrol`](https://formulae.brew.sh/cask/monitorcontrol)
+- [`notion`](https://formulae.brew.sh/cask/notion)
+- [`postico`](https://formulae.brew.sh/cask/postico)
+- [`raspberry-pi-imager`](https://formulae.brew.sh/cask/raspberry-pi-imager)
+- [`raycast`](https://formulae.brew.sh/cask/raycast)
+- [`spotify`](https://formulae.brew.sh/cask/spotify)
+- [`tailscale-app`](https://formulae.brew.sh/cask/tailscale-app)
+- [`visual-studio-code`](https://formulae.brew.sh/cask/visual-studio-code)
+- [`zed`](https://formulae.brew.sh/cask/zed)
 
 ## Mac App Store apps
 
 | App | ID |
 | --- | --- |
-| 1Password for Safari | `1569813296` |
-| Magnet | `441258766` |
-| Microsoft Excel | `462058435` |
-| Microsoft Remote Desktop | `1295203466` |
-| Microsoft Word | `462054704` |
-| Speedtest by Ookla | `1153157709` |
-| Telegram | `747648890` |
-| WireGuard | `1451685025` |
+| [1Password for Safari](https://apps.apple.com/app/id1569813296) | `1569813296` |
+| [Magnet](https://apps.apple.com/app/id441258766) | `441258766` |
+| [Microsoft Excel](https://apps.apple.com/app/id462058435) | `462058435` |
+| [Microsoft Remote Desktop](https://apps.apple.com/app/id1295203466) | `1295203466` |
+| [Microsoft Word](https://apps.apple.com/app/id462054704) | `462054704` |
+| [Speedtest by Ookla](https://apps.apple.com/app/id1153157709) | `1153157709` |
+| [Telegram](https://apps.apple.com/app/id747648890) | `747648890` |
+| [WireGuard](https://apps.apple.com/app/id1451685025) | `1451685025` |
 
 ## System packages
 
-`coreutils`, `gnumake`, `gnused`, `nixos-rebuild-ng`, `python3`, `vim`
+[`coreutils`](https://www.gnu.org/software/coreutils/), [`gnumake`](https://www.gnu.org/software/make/), [`gnused`](https://www.gnu.org/software/sed/), [`nixos-rebuild-ng`](https://github.com/NixOS/nixpkgs/tree/master/pkgs/by-name/ni/nixos-rebuild-ng), [`python3`](https://www.python.org), [`vim`](https://www.vim.org)
 
 ## Fonts
 
-`nerd-fonts-meslo-lg`
+[`nerd-fonts-meslo-lg`](https://nerdfonts.com/)
 
 ## macOS defaults
 

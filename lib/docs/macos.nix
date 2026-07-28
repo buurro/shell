@@ -9,13 +9,18 @@
 
   masRows =
     lib.mapAttrsToList (
-      name: id: [(md.esc name) (md.code (toString id))]
+      name: id: [
+        (md.link (md.esc name) "https://apps.apple.com/app/id${toString id}")
+        (md.code (toString id))
+      ]
     )
     cfg.homebrew.masApps;
 
-  systemPackages = lib.sort lib.lessThan (map lib.getName cfg.environment.systemPackages);
-
-  fonts = map lib.getName cfg.fonts.packages;
+  # Tap-qualified casks (foo/tap/bar) aren't listed on formulae.brew.sh.
+  caskLink = c:
+    if lib.hasInfix "/" c
+    then md.code c
+    else md.link (md.code c) "https://formulae.brew.sh/cask/${c}";
 
   defaultsRows = lib.concatLists (lib.mapAttrsToList (
       domain: settings:
@@ -34,7 +39,7 @@ in ''
 
   ## Homebrew casks
 
-  ${md.bullets (map md.code cfg.homebrew.casks)}
+  ${md.bullets (map caskLink cfg.homebrew.casks)}
 
   ## Mac App Store apps
 
@@ -42,11 +47,11 @@ in ''
 
   ## System packages
 
-  ${md.codeList systemPackages}
+  ${md.pkgLinkList cfg.environment.systemPackages}
 
   ## Fonts
 
-  ${md.codeList fonts}
+  ${md.pkgLinkList cfg.fonts.packages}
 
   ## macOS defaults
 

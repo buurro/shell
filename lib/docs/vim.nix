@@ -110,8 +110,6 @@
     cfg.plugins.treesitter.grammarPackages
   );
 
-  extraPackages = lib.sort lib.lessThan (map lib.getName cfg.extraPackages);
-
   optRows = lib.mapAttrsToList (name: v: [(md.code name) (md.code (md.value v))]) cfg.opts;
 
   autoCmdRows =
@@ -191,5 +189,5 @@ in ''
 
   ## Extra packages
 
-  ${md.codeList extraPackages}
+  ${md.pkgLinkList cfg.extraPackages}
 ''

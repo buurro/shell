@@ -237,4 +237,4 @@ Leader key: `<Space>` · Colorscheme: `tokyonight` (night)
 
 ## Extra packages
 
-`alejandra`, `eslint_d`, `fd`, `gofumpt`, `golangci-lint`, `luacheck`, `prettier`, `ripgrep`, `ruff`, `rustfmt`, `statix`, `stylua`
+[`alejandra`](https://github.com/kamadorueda/alejandra), [`eslint_d`](https://github.com/mantoni/eslint_d.js), [`fd`](https://github.com/sharkdp/fd), [`gofumpt`](https://github.com/mvdan/gofumpt), [`golangci-lint`](https://golangci-lint.run/), [`luacheck`](https://github.com/lunarmodules/luacheck), [`prettier`](https://prettier.io/), [`ripgrep`](https://github.com/BurntSushi/ripgrep), [`ruff`](https://github.com/astral-sh/ruff), [`rustfmt`](https://github.com/rust-lang-nursery/rustfmt), [`statix`](https://github.com/molybdenumsoftware/statix), [`stylua`](https://github.com/johnnymorganz/stylua)
