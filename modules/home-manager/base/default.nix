@@ -187,7 +187,12 @@ in {
 
     difftastic.enable = true;
 
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings.git.pagers = [
+        {externalDiffCommand = "difft --color=always --display=inline";}
+      ];
+    };
 
     k9s.enable = true;
 
