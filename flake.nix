@@ -199,25 +199,38 @@
         work = ./modules/darwin/work/default.nix;
       };
 
-      homeConfigurations = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"] (system: {
-        default = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          extraSpecialArgs = {inherit inputs;};
-          modules = [
-            ./modules/home-manager/base/default.nix
-            ({pkgs, ...}: {
-              home.username = "dev";
-              home.homeDirectory = "/home/dev";
-              nix.package = pkgs.nix;
-              nix.settings.sandbox = false;
-              programs.bash.enable = true;
-            })
-          ];
+      homeConfigurations = let
+        codebergMirrors = final: prev: {
+          vimPlugins =
+            prev.vimPlugins
+            // nixpkgs.lib.genAttrs ["nvim-lint" "nvim-dap" "nvim-dap-python"] (name:
+              prev.vimPlugins.${name}.overrideAttrs (old: {
+                src = old.src.overrideAttrs (_: {
+                  url = "https://github.com/mfussenegger/${name}";
+                });
+              }));
         };
-      });
+      in
+        nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"] (system: {
+          default = home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+              overlays = [codebergMirrors];
+            };
+            extraSpecialArgs = {inherit inputs;};
+            modules = [
+              ./modules/home-manager/base/default.nix
+              ({pkgs, ...}: {
+                home.username = "dev";
+                home.homeDirectory = "/home/dev";
+                nix.package = pkgs.nix;
+                nix.settings.sandbox = false;
+                programs.bash.enable = true;
+              })
+            ];
+          };
+        });
 
       images = {
         qraspi =
