@@ -176,12 +176,23 @@ in {
         ".DS_Store"
         ".claude/settings.local.json"
       ];
-      signing.format = null;
+      signing = {
+        format = "ssh";
+        key = lib.head inputs.self.users."${username}".ssh.publicKeys;
+        signByDefault = true;
+        signer = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      };
       settings = {
         init.defaultBranch = "main";
 
         user.name = inputs.self.users."${username}".fullName;
         user.email = inputs.self.users."${username}".email;
+
+        gpg.ssh.allowedSignersFile = "${pkgs.writeText "allowed-signers" (
+          lib.concatMapStrings
+          (key: "${inputs.self.users."${username}".email} ${key}\n")
+          inputs.self.users."${username}".ssh.publicKeys
+        )}";
       };
     };
 
