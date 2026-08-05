@@ -271,6 +271,7 @@ in {
   home.file.".iterm2_shell_integration.zsh".source = ./config/iterm2_shell_integration.zsh;
   home.file.".npmrc".text = ''
     prefix=${npmGlobalDir}
+    ignore-scripts=true
   '';
 
   programs.alacritty = {
