@@ -200,9 +200,12 @@ in {
 
     lazygit = {
       enable = true;
-      settings.git.pagers = [
-        {externalDiffCommand = "difft --color=always --display=inline";}
-      ];
+      settings.git = {
+        pagers = [
+          {externalDiffCommand = "difft --color=always --display=inline";}
+        ];
+        overrideGpg = true;
+      };
     };
 
     k9s.enable = true;
