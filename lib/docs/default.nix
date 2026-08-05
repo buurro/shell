@@ -13,6 +13,10 @@
       inherit lib;
       inherit (inputs) self;
     };
+    "gui.md" = import ./gui.nix {
+      inherit lib;
+      inherit (inputs) self;
+    };
   };
 in
   pkgs.linkFarm "docs" (lib.mapAttrsToList (name: text: {

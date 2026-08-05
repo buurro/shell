@@ -104,6 +104,7 @@ in {
 
   programs.zsh = {
     enable = true;
+    dotDir = config.home.homeDirectory; # lock legacy default, silences warning
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
@@ -280,7 +281,6 @@ in {
       {
         font.normal.family = "MesloLGSDZ Nerd Font";
         font.size = 18;
-        env.TERM = "xterm-256color";
       }
       // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
   };
