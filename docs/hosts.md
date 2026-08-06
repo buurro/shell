@@ -11,6 +11,7 @@
 | `db-1` | NixOS | `x86_64-linux` | `25.05` |
 | `fridge` | NixOS | `x86_64-linux` | `25.11` |
 | `github-runner` | NixOS | `x86_64-linux` | `25.05` |
+| `headlessvm` | NixOS | `aarch64-linux` | `25.11` |
 | `k8s-lab` | NixOS | `x86_64-linux` | `24.11` |
 | `live` | NixOS | `x86_64-linux` | `26.11` |
 | `mixer` | NixOS | `x86_64-linux` | `24.11` |
@@ -22,3 +23,13 @@
 ## Images
 
 Buildable via `nix build .#images.<name>`: `live`, `qraspi`, `wraspi`
+
+## Local VMs
+
+Runnable from apple silicon with `nix run .#<name>`: `headlessvm`, `swayvm`
+(`linux-builder start` first if the config changed). Disk state lives in
+`<name>.qcow2` in the directory you run from; delete it to reset.
+
+`swayvm` opens a fullscreen cocoa window — see [gui.md](gui.md).
+`headlessvm` keeps the console in the terminal you launched it from
+(`ctrl-a x` quits) and forwards ssh to `localhost:2222`.
