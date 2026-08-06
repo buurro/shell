@@ -15,6 +15,7 @@
 | `live` | NixOS | `x86_64-linux` | `26.11` |
 | `mixer` | NixOS | `x86_64-linux` | `24.11` |
 | `qraspi` | NixOS | `aarch64-linux` | `26.05` |
+| `swayvm` | NixOS | `aarch64-linux` | `25.11` |
 | `wooper` | NixOS | `aarch64-linux` | `25.05` |
 | `wraspi` | NixOS | `aarch64-linux` | `25.05` |
 

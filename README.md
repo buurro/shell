@@ -32,4 +32,8 @@ CF_DNS_API_TOKEN=<token>
 
 ## Credits
 
-Wallpaper: <https://github.com/D3Ext/aesthetic-wallpapers>
+Desktop background — `modules/home-manager/sway/assets/cafe-at-night_00_3840x2160.png`
+— is "cafe at night" from [tokyo-night/wallpapers][wp] (`misc/cityscape/`), used
+unmodified under the MIT license.
+
+[wp]: https://github.com/tokyo-night/wallpapers/blob/main/misc/cityscape/cafe-at-night_00_3840x2160.png

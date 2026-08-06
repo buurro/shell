@@ -67,6 +67,7 @@
             ./hosts/lamp/configuration.nix
             self.darwinModules.default
             self.darwinModules.work
+            self.darwinModules.linux-builder
             home-manager.darwinModules.home-manager
           ];
           specialArgs = {inherit inputs;};
@@ -173,6 +174,16 @@
           specialArgs = {inherit inputs;};
         };
 
+        "swayvm" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/swayvm/configuration.nix
+            ./modules/nixos/home-manager.nix
+            self.nixosModules.minimal
+          ];
+          specialArgs = {inherit inputs;};
+        };
+
         "live" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -197,6 +208,7 @@
       darwinModules = {
         default = ./modules/darwin/base/default.nix;
         work = ./modules/darwin/work/default.nix;
+        linux-builder = ./modules/darwin/linux-builder.nix;
       };
 
       homeConfigurations = let
@@ -262,13 +274,17 @@
             nixpkgs.legacyPackages.${system}.alejandra
         );
 
-        packages = nixpkgs.lib.genAttrs systems (system: {
-          docs = import ./lib/docs {
-            pkgs = nixpkgs.legacyPackages.${system};
-            inherit (nixpkgs) lib;
-            inherit inputs;
-          };
-        });
+        packages = nixpkgs.lib.genAttrs systems (system:
+          {
+            docs = import ./lib/docs {
+              pkgs = nixpkgs.legacyPackages.${system};
+              inherit (nixpkgs) lib;
+              inherit inputs;
+            };
+          }
+          // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
+            swayvm = self.nixosConfigurations.swayvm.config.system.build.vm;
+          });
 
         apps = nixpkgs.lib.genAttrs systems (system: let
           pkgs = nixpkgs.legacyPackages.${system};
