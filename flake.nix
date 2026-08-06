@@ -184,6 +184,16 @@
           specialArgs = {inherit inputs;};
         };
 
+        "headlessvm" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/headlessvm/configuration.nix
+            ./modules/nixos/home-manager.nix
+            self.nixosModules.minimal
+          ];
+          specialArgs = {inherit inputs;};
+        };
+
         "live" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -284,6 +294,7 @@
           }
           // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
             swayvm = self.nixosConfigurations.swayvm.config.system.build.vm;
+            headlessvm = self.nixosConfigurations.headlessvm.config.system.build.vm;
           });
 
         apps = nixpkgs.lib.genAttrs systems (system: let

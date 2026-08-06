@@ -81,6 +81,10 @@ in ''
 
   ${md.pkgLinkList hm.home.packages}
 
+  On NixOS, `programs.nix-ld` is on so `uv` can run the
+  python-build-standalone interpreters it downloads — they ask for
+  `/lib/ld-linux-*.so`, which nixos otherwise doesn't provide.
+
   ## Managed dotfiles
 
   ${md.bullets (map md.code dotfiles)}
