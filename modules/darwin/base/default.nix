@@ -16,6 +16,8 @@
   # }];
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = ["root" "marco"];
+
+  nix.channel.enable = false;
   users.users."marco".home = "/Users/marco";
   system.primaryUser = "marco";
 

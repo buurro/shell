@@ -25,9 +25,6 @@
 
     security.sudo.wheelNeedsPassword = false;
 
-    # uv downloads python-build-standalone interpreters that ask for
-    # /lib64/ld-linux-*.so.2, which nixos doesn't have. nix-ld puts a stub
-    # loader there so `uv sync` can use uv's own pythons, not just nixpkgs'.
     programs.nix-ld.enable = true;
 
     ids.uids = {
@@ -70,6 +67,8 @@
       experimental-features = lib.mkDefault "nix-command flakes";
       trusted-users = ["root" "@wheel"];
     };
+
+    nix.channel.enable = false;
 
     system.autoUpgrade = {
       enable = lib.mkDefault true;
