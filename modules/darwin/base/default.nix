@@ -33,6 +33,10 @@
 
   programs.zsh.enable = true;
   programs.zsh.promptInit = "";
+  # completion is initialized by oh-my-zsh in the user zshrc; the global
+  # compinit here would scan fpath a second time on every shell start
+  programs.zsh.enableCompletion = false;
+  programs.zsh.enableBashCompletion = false;
 
   environment.systemPackages = with pkgs; [
     coreutils

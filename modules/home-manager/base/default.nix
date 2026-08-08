@@ -13,6 +13,7 @@ in {
     inputs.nixvim.homeModules.nixvim
 
     ./vim.nix
+    ./zsh.nix
   ];
 
   nix.settings = {
@@ -87,89 +88,14 @@ in {
   catppuccin.zellij.enable = true;
   catppuccin.k9s.enable = true;
 
-  home.shellAliases = {
-    c = "code .";
-    lg = "lazygit";
-    s = "ssh";
-    devv = "nix develop -c zellij -s `basename $PWD` options --default-shell zsh";
-    k = "kubectl";
-    ur = "uv run";
-  };
-
   home.sessionPath = [
     "/nix/var/nix/profiles/default/bin"
     "${config.home.homeDirectory}/.local/bin"
     "${npmGlobalDir}/bin"
   ];
 
-  programs.zsh = {
-    enable = true;
-    dotDir = config.home.homeDirectory; # lock legacy default, silences warning
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "gh"
-        "composer"
-        "rsync"
-        "aws"
-      ];
-    };
-    initContent = ''
-      ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
-      pasteinit() {
-        OLD_SELF_INSERT=''${''${(s.:.)widgets[self-insert]}[2,3]}
-        zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-      }
-
-      pastefinish() {
-        zle -N self-insert $OLD_SELF_INSERT
-      }
-      zstyle :bracketed-paste-magic paste-init pasteinit
-      zstyle :bracketed-paste-magic paste-finish pastefinish
-      ### Fix slowness of pastes
-
-      # iterm2 integration
-      if [ -f $HOME/.iterm2_shell_integration.zsh ]; then
-        source $HOME/.iterm2_shell_integration.zsh
-      fi
-
-      run() {
-        _pkg=$1
-        shift
-        NIXPKGS_ALLOW_UNFREE=1 nix run --impure "nixpkgs#$_pkg" -- $*
-        unset _pkg
-      }
-
-      shell() {
-        _pkgs=()
-        for _pkg in "$@"; do
-          _pkgs+=("nixpkgs#$_pkg")
-        done
-        nix shell "''${_pkgs[@]}"
-      }
-
-      # vi mode
-      # bindkey -v
-    '';
-  };
-
   programs = {
-    starship.enable = true;
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
     lsd.enable = true;
-
-    broot = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     git = {
       enable = true;
@@ -265,26 +191,19 @@ in {
       enableZshIntegration = false;
     };
 
-    zoxide = {
+    alacritty = {
       enable = true;
-      enableZshIntegration = true;
+      settings =
+        {
+          font.normal.family = "MesloLGSDZ Nerd Font";
+          font.size = 18;
+        }
+        // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
     };
   };
 
-  home.file.".config/starship.toml".source = ./config/starship.toml;
-  home.file.".iterm2_shell_integration.zsh".source = ./config/iterm2_shell_integration.zsh;
   home.file.".npmrc".text = ''
     prefix=${npmGlobalDir}
     ignore-scripts=true
   '';
-
-  programs.alacritty = {
-    enable = true;
-    settings =
-      {
-        font.normal.family = "MesloLGSDZ Nerd Font";
-        font.size = 18;
-      }
-      // lib.importTOML ./config/alacritty-catppuccin-mocha.toml;
-  };
 }
