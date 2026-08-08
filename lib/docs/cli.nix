@@ -7,13 +7,20 @@
   md = import ./md.nix {inherit lib;};
 
   username = lib.head (lib.attrNames inputs.self.users);
-  hm = import ../../modules/home-manager/base/default.nix {
-    inherit pkgs lib inputs;
-    config.home = {
-      inherit username;
-      homeDirectory = "/Users/${username}";
+  # raw module imports don't follow `imports`, so the zsh config split out
+  # into zsh.nix has to be pulled in and merged by hand
+  callModule = m:
+    import m {
+      inherit pkgs lib inputs;
+      config.home = {
+        inherit username;
+        homeDirectory = "/Users/${username}";
+      };
     };
-  };
+  hm =
+    lib.recursiveUpdate
+    (callModule ../../modules/home-manager/base/default.nix)
+    (callModule ../../modules/home-manager/base/zsh.nix);
 
   aliasRows = lib.mapAttrsToList (a: cmd: [(md.code a) (md.code cmd)]) hm.home.shellAliases;
 
