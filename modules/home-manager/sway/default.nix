@@ -238,7 +238,7 @@ in {
 
       input = {
         "type:keyboard" = {
-          xkb_options = "caps:swapescape,compose:rctrl";
+          xkb_options = "caps:escape,compose:rctrl";
           repeat_rate = "50";
           repeat_delay = "250";
         };
