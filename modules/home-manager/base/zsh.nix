@@ -146,11 +146,6 @@ in {
     enableZshIntegration = false;
   };
 
-  programs.broot = {
-    enable = true;
-    enableZshIntegration = true; # already a static file, no fork
-  };
-
   home.file.".config/starship.toml".source = ./config/starship.toml;
   home.file.".iterm2_shell_integration.zsh".source = ./config/iterm2_shell_integration.zsh;
 }

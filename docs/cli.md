@@ -25,7 +25,6 @@ oh-my-zsh plugins: `git`, `gh`, `composer`, `rsync`, `aws`
 ## Programs (home-manager managed)
 
 - `alacritty`
-- `broot`
 - `difftastic`
 - `fzf`
 - `git`
