@@ -107,7 +107,7 @@ in {
         format = "ssh";
         key = lib.head inputs.self.users."${username}".ssh.publicKeys;
         signByDefault = true;
-        signer = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        signer = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
       settings = {
         init.defaultBranch = "main";
@@ -128,9 +128,6 @@ in {
     lazygit = {
       enable = true;
       settings.git = {
-        pagers = [
-          {externalDiffCommand = "difft --color=always --display=inline";}
-        ];
         overrideGpg = true;
       };
     };
