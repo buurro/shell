@@ -113,11 +113,11 @@ in {
         init.defaultBranch = "main";
 
         user.name = inputs.self.users."${username}".fullName;
-        user.email = inputs.self.users."${username}".email;
+        user.email = inputs.self.users."${username}".emailFor "git";
 
         gpg.ssh.allowedSignersFile = "${pkgs.writeText "allowed-signers" (
           lib.concatMapStrings
-          (key: "${inputs.self.users."${username}".email} ${key}\n")
+          (key: "${inputs.self.users."${username}".emailFor "git"} ${key}\n")
           inputs.self.users."${username}".ssh.publicKeys
         )}";
       };

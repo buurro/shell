@@ -108,7 +108,7 @@
   security.acme = {
     acceptTerms = true;
     defaults = {
-      email = inputs.self.users.marco.email;
+      email = inputs.self.users.marco.emailFor "acme";
       # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
       group = "nginx";
       dnsProvider = "cloudflare";
