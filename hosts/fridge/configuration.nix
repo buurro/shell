@@ -55,10 +55,9 @@
       incomplete-dir = "/mnt/nas-fun/downloads/incomplete";
       watch-dir = "/mnt/nas-fun/downloads/watch";
       watch-dir-enabled = true;
-      speed-limit-up = 1000;
-      speed-limit-up-enabled = true;
       alt-speed-up = 0;
       alt-speed-down = 0;
+      alt-speed-enabled = true;
       peer-port = 51414;
       download-queue-size = 20;
       rpc-whitelist-enabled = false;
