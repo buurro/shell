@@ -37,7 +37,6 @@ nix-darwin base module shared by all Macs.
 | [1Password for Safari](https://apps.apple.com/app/id1569813296) | `1569813296` |
 | [Magnet](https://apps.apple.com/app/id441258766) | `441258766` |
 | [Microsoft Excel](https://apps.apple.com/app/id462058435) | `462058435` |
-| [Microsoft Remote Desktop](https://apps.apple.com/app/id1295203466) | `1295203466` |
 | [Microsoft Word](https://apps.apple.com/app/id462054704) | `462054704` |
 | [Speedtest by Ookla](https://apps.apple.com/app/id1153157709) | `1153157709` |
 | [Telegram](https://apps.apple.com/app/id747648890) | `747648890` |
