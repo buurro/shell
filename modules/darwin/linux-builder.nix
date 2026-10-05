@@ -15,14 +15,10 @@
 # variant shares directories through Virtualization.framework's own
 # virtiofs device instead, and gets x86_64-linux via rosetta for free.
 #
-# note: the `build-dir` setting in `config` changes the guest closure,
-# which is itself an aarch64-linux build (cores, memory and disk size
-# are host-side vzvm settings and leave the stock, cached image alone).
-# on an already-bootstrapped host just `linux-builder start` before
-# switching and the builder rebuilds its own image. on a fresh host,
-# comment out `build-dir` for the first switch (the stock image comes
-# from the binary cache), then restore it and switch again with the
-# builder running.
+# keep `config` to host-side vzvm settings (cores, memory, disk size).
+# anything that touches the guest system changes its closure, an
+# aarch64-linux build missing from the binary cache, so building this
+# darwin system would itself need a running linux builder.
 {
   config,
   pkgs,
@@ -77,20 +73,17 @@ in {
     config = {
       virtualisation.cores = 8;
       virtualisation.darwin-builder = {
-        memorySize = 12 * 1024;
+        # the vz guest's root — and with it /tmp, where builds run — is a
+        # tmpfs capped at half the ram, so this also sets the build scratch
+        # limit (~16g). vz only backs the pages the guest touches. moving
+        # build-dir onto the data disk would lift the cap but changes the
+        # guest closure (see above)
+        memorySize = 32 * 1024;
         # sparse raw data disk (still named nixos.qcow2 so `ephemeral`
         # wipes it), so capacity is free on the host. it backs the guest's
-        # writable store overlay at /nix/.rw-store and, via build-dir
-        # below, build scratch; sized for disk image builds (closure +
-        # raw image + converted qcow2 at peak)
+        # writable store overlay at /nix/.rw-store
         diskSize = 80 * 1024;
       };
-      # the vz guest's root — and with it /tmp and /nix/var — is a tmpfs
-      # capped at half the ram, whereas the qemu guest kept it on the data
-      # disk. without this, build scratch lands in ram and anything past
-      # ~6g fails with enospc
-      nix.settings.build-dir = "/nix/.rw-store/build";
-      systemd.tmpfiles.rules = ["d /nix/.rw-store/build 0755 root root -"];
     };
   };
 
