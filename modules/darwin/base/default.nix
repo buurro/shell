@@ -43,7 +43,7 @@
     gnumake
     gnused
     nixos-rebuild
-    python314
+    python315
     vim
   ];
 
