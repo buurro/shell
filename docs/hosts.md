@@ -6,7 +6,6 @@
 | --- | --- | --- | --- |
 | `heater` | nix-darwin | `aarch64-darwin` | `4` |
 | `lamp` | nix-darwin | `aarch64-darwin` | `4` |
-| `toaster` | nix-darwin | `x86_64-darwin` | `4` |
 | `blender` | NixOS | `x86_64-linux` | `24.05` |
 | `db-1` | NixOS | `x86_64-linux` | `25.05` |
 | `fridge` | NixOS | `x86_64-linux` | `25.11` |

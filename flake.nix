@@ -43,14 +43,6 @@
   } @ inputs:
     {
       darwinConfigurations = {
-        "toaster" = darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          modules = [
-            self.darwinModules.default
-            home-manager.darwinModules.home-manager
-          ];
-          specialArgs = {inherit inputs;};
-        };
         "heater" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
