@@ -362,6 +362,10 @@
               ];
             }
             {
+              __unkeyed-1 = "<leader>g";
+              group = "[G]it";
+            }
+            {
               __unkeyed-1 = "<leader>x";
               group = "Trouble";
             }
@@ -414,6 +418,10 @@
           "<leader>sd" = {
             action = "diagnostics";
             options.desc = "[S]earch [D]iagnostics";
+          };
+          "<leader>gs" = {
+            action = "git_status";
+            options.desc = "[G]it [S]tatus (changed files)";
           };
           "<leader>sr" = {
             action = "resume";
@@ -675,6 +683,10 @@
         };
       };
 
+      # Full-screen review of all changes in a tab. Inside it: <tab>/<s-tab>
+      # cycle files, <leader>b hides the file panel for a full-width diff.
+      diffview.enable = true;
+
       todo-comments = {
         enable = true;
         settings.signs = true;
@@ -812,6 +824,22 @@
       vim.keymap.set("n", "<leader>sn", function()
         builtin.find_files({ cwd = vim.fn.stdpath("config") })
       end, { desc = "[S]earch [N]eovim files" })
+
+      -- Git: full-screen change review
+      vim.keymap.set("n", "<leader>gd", function()
+        if require("diffview.lib").get_current_view() then
+          vim.cmd("DiffviewClose")
+        else
+          vim.cmd("DiffviewOpen")
+        end
+      end, { desc = "[G]it [D]iff view (toggle)" })
+      vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "[G]it file [H]istory" })
+      vim.keymap.set("n", "<leader>gD", function()
+        -- difftastic over everything vs HEAD, in its own full-width tab
+        vim.cmd("tabnew")
+        vim.fn.jobstart({ "git", "-c", "diff.external=difft", "diff", "HEAD" }, { term = true })
+        vim.cmd("startinsert")
+      end, { desc = "[G]it [D]ifftastic (full screen)" })
 
       -- DAP keymaps
       local dap = require("dap")

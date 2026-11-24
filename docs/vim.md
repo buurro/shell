@@ -44,6 +44,7 @@ Leader key: `<Space>` · Colorscheme: `tokyonight` (night)
 | `<leader>s` | [S]earch |
 | `<leader>t` | [T]oggle |
 | `<leader>h` | Git [H]unk |
+| `<leader>g` | [G]it |
 | `<leader>x` | Trouble |
 | `<leader>c` | [C]ode |
 
@@ -52,6 +53,7 @@ Leader key: `<Space>` · Colorscheme: `tokyonight` (night)
 | Key | Picker | Description |
 | --- | --- | --- |
 | `<leader><leader>` | `buffers` | Find buffers |
+| `<leader>gs` | `git_status` | [G]it [S]tatus (changed files) |
 | `<leader>s.` | `oldfiles` | [S]earch Recent Files |
 | `<leader>sd` | `diagnostics` | [S]earch [D]iagnostics |
 | `<leader>sf` | `find_files` | [S]earch [F]iles |
@@ -103,6 +105,9 @@ Leader key: `<Space>` · Colorscheme: `tokyonight` (night)
 | `<leader>/` | normal | Fuzzily search in buffer |
 | `<leader>s/` | normal | [S]earch in Open Files |
 | `<leader>sn` | normal | [S]earch [N]eovim files |
+| `<leader>gd` | normal | [G]it [D]iff view (toggle) |
+| `<leader>gh` | normal | [G]it file [H]istory |
+| `<leader>gD` | normal | [G]it [D]ifftastic (full screen) |
 | `<F5>` | normal | Debug: Continue |
 | `<F1>` | normal | Debug: Step Into |
 | `<F2>` | normal | Debug: Step Over |
@@ -121,6 +126,7 @@ Leader key: `<Space>` · Colorscheme: `tokyonight` (night)
 - `dap-go`
 - `dap-python`
 - `dap-ui`
+- `diffview`
 - `dropbar`
 - `fidget`
 - `friendly-snippets`

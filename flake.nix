@@ -291,24 +291,48 @@
 
         apps = nixpkgs.lib.genAttrs systems (system: let
           pkgs = nixpkgs.legacyPackages.${system};
-        in {
-          docs = {
-            type = "app";
-            meta.description = "Regenerate docs/ from the flake";
-            program = nixpkgs.lib.getExe (pkgs.writeShellApplication {
-              name = "docs";
-              runtimeInputs = [pkgs.git];
-              text = ''
-                root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-                mkdir -p "$root/docs"
-                for f in ${self.packages.${system}.docs}/*; do
-                  install -m 644 "$f" "$root/docs/$(basename "$f")"
-                  echo "wrote docs/$(basename "$f")"
-                done
-              '';
-            });
-          };
-        });
+          # nixvim build from an existing home-manager eval (vim.nix is in base,
+          # so any host gives the same config).
+          nixvimBuild =
+            {
+              aarch64-darwin = self.darwinConfigurations.lamp.config.home-manager.users.marco.programs.nixvim.build;
+              aarch64-linux = self.homeConfigurations.aarch64-linux.default.config.programs.nixvim.build;
+              x86_64-linux = self.homeConfigurations.x86_64-linux.default.config.programs.nixvim.build;
+            }
+            .${
+              system
+            }
+            or null;
+        in
+          nixpkgs.lib.optionalAttrs (nixvimBuild != null) {
+            vim = {
+              type = "app";
+              meta.description = "Preview the repo's nixvim config without switching";
+              # The installed wrapper reads ~/.config/nvim/init.lua; point it at
+              # the freshly built init instead. Plugins come from the wrapper.
+              program = nixpkgs.lib.getExe (pkgs.writeShellScriptBin "vim-preview" ''
+                exec ${nixvimBuild.package}/bin/nvim -u ${nixvimBuild.initFile} "$@"
+              '');
+            };
+          }
+          // {
+            docs = {
+              type = "app";
+              meta.description = "Regenerate docs/ from the flake";
+              program = nixpkgs.lib.getExe (pkgs.writeShellApplication {
+                name = "docs";
+                runtimeInputs = [pkgs.git];
+                text = ''
+                  root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+                  mkdir -p "$root/docs"
+                  for f in ${self.packages.${system}.docs}/*; do
+                    install -m 644 "$f" "$root/docs/$(basename "$f")"
+                    echo "wrote docs/$(basename "$f")"
+                  done
+                '';
+              });
+            };
+          });
       }
     );
 }
