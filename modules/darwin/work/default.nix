@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     buildkit
     go
+    terragrunt
   ];
   homebrew = {
     enable = true;
